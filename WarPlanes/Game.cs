@@ -21,6 +21,7 @@ namespace WarPlanes
             level = new Level();
             p1 = new Player(new MiG_51S(new Point(100, 100)));
             enemies = new List<Enemy>();
+            enemies.AddRange(level.Enemies);
             playerBullets = new List<Bullet>();
             enemyBullets = new List<Bullet>();
             score = 0;
@@ -89,6 +90,11 @@ namespace WarPlanes
             foreach (Bullet b in enemyBulletsToRemove)
             {
                 enemyBullets.Remove(b);
+            }
+
+            foreach (Enemy e in enemiesToRemove)
+            {
+                enemies.Remove(e);
             }
         }
 

@@ -16,9 +16,17 @@ namespace WarPlanes
         public Level()
         {
             LevelBackground = Properties.Resources.level0;
-            Enemies = new List<Enemy>();
             ScoreToLevelUp = 100;
             Lvl = 0;
+            Enemies = new List<Enemy>();
+            Point l = new Point(700, 100);
+            Point[] m = new Point[4];
+            m[0] = new Point(700, 100);
+            m[1] = new Point(400, 300);
+            m[2] = new Point(300, 250);
+            m[3] = new Point(100, 400);
+            Enemy e = new Enemy(l, m);
+            Enemies.Add(e);
         }
 
         public Level(int n)
