@@ -33,6 +33,12 @@ namespace WarPlanes
             foreach (Enemy e in enemies)
             {
                 e.Move();
+                Bullet b = e.Fire(p1.plane.Location);
+                if (b != null)
+                    enemyBullets.Add(b);
+                //Bullet b = e.Fire(p1.plane.Location);
+                //if (b != null)
+                //    enemyBullets.Add(b);
             }
             foreach (Bullet b in playerBullets)
             {
@@ -66,6 +72,8 @@ namespace WarPlanes
                         enemiesToRemove.Add(e);
                     }
                 }
+                if (e.Hit(new Bullet(p1.plane.Location, 0, 0)))
+                    enemiesToRemove.Add(e);
             }
 
             foreach (Bullet b in playerBullets)
@@ -77,7 +85,10 @@ namespace WarPlanes
             foreach (Bullet b in enemyBullets)
             {
                 if (p1.plane.Hit(b))
+                {
                     score -= 100;           // TO-DO?
+                    enemyBulletsToRemove.Add(b);
+                }
                 if (b.Location.X > 800 || b.Location.X < 0 || b.Location.X > 600 || b.Location.Y < 0)
                     enemyBulletsToRemove.Add(b);
             }

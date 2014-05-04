@@ -11,7 +11,7 @@ namespace WarPlanes
         //location
         public int MoveX;
         public int MoveY;
-
+        public int CanFire; // Ako e 0, puca
         // currCoord e momentalno nakude se dvizi, kt ke se doblizi do njuma (radius?), 
         // currcoord ke se inkrementira, ke se presmetav MoveX i MoveY za da stigne do 
         // narednu poziciju
@@ -24,9 +24,11 @@ namespace WarPlanes
             Location = location;
             coordinates = c;
             currCoord = 0;
-            SpriteDraw = Properties.Resources.MiG_51S_Down;
-            MoveX = -5;
-            MoveY = 0;
+            SpriteDraw = Properties.Resources.test1;
+            double d = distance(Location, coordinates[currCoord]);
+            int steps = (int)(d / 5);
+            MoveX = (coordinates[currCoord].X - Location.X) / steps;
+            MoveY = (coordinates[currCoord].Y - Location.Y) / steps;
         }
 
         public override void Move()
@@ -44,13 +46,33 @@ namespace WarPlanes
 
         public override void Draw(Graphics g)
         {
-            Pen p = new Pen(new SolidBrush(Color.Red));
-            g.DrawEllipse(p, Location.X, Location.Y, 30, 30);
+            g.DrawImageUnscaled(SpriteDraw, Location.X - SpriteDraw.Width / 2, Location.Y - SpriteDraw.Height / 2);
         }
 
         public override Bullet Fire()
         {
             throw new NotImplementedException();
+        }
+
+        public Bullet Fire(Point p)
+        {
+            if (Math.Abs(p.Y - Location.Y) < 20)
+            {
+                if (CanFire == 0)
+                {
+                    CanFire = 20;
+                    return new Bullet(new Point(Location.X - SpriteDraw.Width / 2, Location.Y), -5, 0);
+                }
+                else
+                {
+                    CanFire--;
+                }
+            }
+
+            if (CanFire > 0)
+                CanFire--;
+
+            return null;
         }
 
         private double distance(Point A, Point B)

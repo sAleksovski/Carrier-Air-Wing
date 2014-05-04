@@ -85,11 +85,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Images\EnemyPlanes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Resources\Images\Bullet.png" />
+    <Content Include="Resources\Images\EnemyPlanes\test1.gif" />
     <Content Include="Resources\Images\Levels\level0.jpg" />
     <Content Include="Resources\Images\Levels\level1.png" />
     <Content Include="Resources\Images\Levels\level2.png" />

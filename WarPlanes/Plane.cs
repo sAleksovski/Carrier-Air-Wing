@@ -29,7 +29,7 @@ namespace WarPlanes
         public abstract Bullet Fire();
         public bool Hit(Bullet b)
         {
-            if (Math.Abs(Location.X - b.Location.X) < SpriteDraw.Height / 2 && Math.Abs(Location.Y - b.Location.Y) < SpriteDraw.Width / 2)
+            if (Math.Abs(Location.X - b.Location.X) < SpriteDraw.Width / 2 && Math.Abs(Location.Y - b.Location.Y) < SpriteDraw.Height / 2)
             {
                 return true;
             }
