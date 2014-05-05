@@ -8,3 +8,5 @@ Carrier Air Wing
   <li>Create Bullet class</li>
   <li>Add enemy sprites</li>
 </ul>
+
+<img src="http://upload.wikimedia.org/wikipedia/en/0/0f/Carrier_Airwing_game_flyer.png" alt="game" />
