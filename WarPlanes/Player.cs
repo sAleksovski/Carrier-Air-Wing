@@ -8,10 +8,11 @@ namespace WarPlanes
 {
     public class Player
     {
-        public PlayerPlane plane;
+        public Plane plane;
         public int Lives { get; set; }
+        public int Score { get; set; }
 
-        public Player(PlayerPlane p)
+        public Player(Plane p)
         {
             plane = p;
         }
@@ -26,7 +27,7 @@ namespace WarPlanes
             plane.Draw(g);
         }
 
-        public Bullet Fire()
+        public Rocket Fire()
         {
             return plane.Fire();
         }

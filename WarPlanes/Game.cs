@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace WarPlanes
 {
@@ -10,129 +11,65 @@ namespace WarPlanes
     {
         public Level level;
         public Player p1;
+        public LinkedList<Rocket> playerRockets;
+        public int BoundsX { get; set; }
+        public int BoundsY { get; set; }
         //public Player p2;
-        public List<Enemy> enemies;
-        public List<Bullet> playerBullets;
-        public List<Bullet> enemyBullets;
-        public int score;
 
         public Game()
         {
+            GraphicsEngine.Init();
             level = new Level();
-            p1 = new Player(new MiG_51S(new Point(100, 100)));
-            enemies = new List<Enemy>();
-            enemies.AddRange(level.Enemies);
-            playerBullets = new List<Bullet>();
-            enemyBullets = new List<Bullet>();
-            score = 0;
+            p1 = new Player(new A10Thunderbolt(100, 100));
+            playerRockets = new LinkedList<Rocket>();
         }
         
         public void Move()
         {
             p1.Move();
-            foreach (Enemy e in enemies)
+
+            if (p1.plane.keys.ctrl == 1)
             {
-                e.Move();
-                Bullet b = e.Fire(p1.plane.Location);
-                if (b != null)
-                    enemyBullets.Add(b);
-                //Bullet b = e.Fire(p1.plane.Location);
-                //if (b != null)
-                //    enemyBullets.Add(b);
+                Rocket r = p1.Fire();
+                if (r != null)
+                    playerRockets.AddFirst(r); //ili AddLast?
             }
-            foreach (Bullet b in playerBullets)
+
+            LinkedList<Rocket> deleteRockets = new LinkedList<Rocket>();
+
+            foreach (Rocket r in playerRockets)
             {
-                b.Move();
+                if (r.X >= BoundsX - 100)
+                {
+                    deleteRockets.AddFirst(r);
+                }
+                else
+                {
+                    r.Move();
+                }
             }
-            foreach (Bullet b in enemyBullets)
+
+            foreach (Rocket r in deleteRockets)
             {
-                b.Move();
+                playerRockets.Remove(r);
             }
-            if (score >= level.ScoreToLevelUp || enemies.Count == -1) // enemies.Count == 0, josh nema enemies zatoj -1
-            {
-                level = level.LevelUP();
-                enemies.AddRange(level.Enemies);
-            }
+
             Collision();
         }
 
         private void Collision()
         {
-            List<Bullet> playerBulletsToRemove = new List<Bullet>();
-            List<Bullet> enemyBulletsToRemove = new List<Bullet>();
-            List<Enemy> enemiesToRemove = new List<Enemy>();
-            
-            foreach (Enemy e in enemies)
-            {
-                foreach (Bullet b in playerBullets)
-                {
-                    if (e.Hit(b))
-                    {
-                        playerBulletsToRemove.Add(b);
-                        enemiesToRemove.Add(e);
-                    }
-                }
-                if (e.Hit(new Bullet(p1.plane.Location, 0, 0)))
-                    enemiesToRemove.Add(e);
-            }
-
-            foreach (Bullet b in playerBullets)
-            {
-                if (b.Location.X > 800 || b.Location.X < 0 || b.Location.Y > 600 || b.Location.Y < 0)
-                        playerBulletsToRemove.Add(b);
-            }
-
-            foreach (Bullet b in enemyBullets)
-            {
-                if (p1.plane.Hit(b))
-                {
-                    score -= 100;           // TO-DO?
-                    enemyBulletsToRemove.Add(b);
-                }
-                if (b.Location.X > 800 || b.Location.X < 0 || b.Location.X > 600 || b.Location.Y < 0)
-                    enemyBulletsToRemove.Add(b);
-            }
-
-            foreach (Bullet b in playerBulletsToRemove)
-            {
-                playerBullets.Remove(b);
-            }
-
-            foreach (Bullet b in enemyBulletsToRemove)
-            {
-                enemyBullets.Remove(b);
-            }
-
-            foreach (Enemy e in enemiesToRemove)
-            {
-                enemies.Remove(e);
-            }
+           
         }
 
         public void Draw(Graphics g)
         {
             level.Draw(g);
             p1.Draw(g);
-            foreach (Enemy e in enemies)
+            foreach (Rocket r in playerRockets)
             {
-                e.Draw(g);
+                r.Draw(g);
             }
-            foreach (Bullet b in playerBullets)
-            {
-                b.Draw(g);
-            }
-            foreach (Bullet b in enemyBullets)
-            {
-                b.Draw(g);
-            }
-            Brush br = new SolidBrush(Color.Red);
-            g.DrawString(score.ToString(), new Font(FontFamily.GenericMonospace, 12, FontStyle.Bold), br, new PointF(10f, 20f));
-        }
-
-        public void Fire(Player p)
-        {
-            playerBullets.Add(p.Fire());
-            score += 10;
         }
     }
 }
