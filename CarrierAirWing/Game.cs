@@ -12,6 +12,7 @@ namespace CarrierAirWing
         public Level level;
         public Player p1;
         public LinkedList<Rocket> playerRockets;
+        public LinkedList<Enemy> enemies;
         public int BoundsX { get; set; }
         public int BoundsY { get; set; }
         //public Player p2;
@@ -19,14 +20,25 @@ namespace CarrierAirWing
         public Game()
         {
             GraphicsEngine.Init();
-            level = new Level();
-            p1 = new Player(new A10Thunderbolt(100, 100));
+            level = new Level_1();
+            enemies = new LinkedList<Enemy>();
+            foreach (Enemy e in level.Enemies)
+            {
+                enemies.AddFirst(e);
+            }
+            //p1 = new Player(new A10Thunderbolt(100, 100));
+            p1 = new Player(new F14Tomcat(100, 100));
             playerRockets = new LinkedList<Rocket>();
         }
         
         public void Move()
         {
             p1.Move();
+
+            foreach (Enemy e in enemies)
+            {
+                e.Move();
+            }
 
             if (p1.plane.keys.ctrl == 1)
             {
@@ -39,7 +51,7 @@ namespace CarrierAirWing
 
             foreach (Rocket r in playerRockets)
             {
-                if (r.X >= BoundsX - 100)
+                if (r.X >= BoundsX - 50)
                 {
                     deleteRockets.AddFirst(r);
                 }
@@ -66,6 +78,12 @@ namespace CarrierAirWing
         {
             level.Draw(g);
             p1.Draw(g);
+
+            foreach (Enemy e in enemies)
+            {
+                e.Draw(g);
+            }
+
             foreach (Rocket r in playerRockets)
             {
                 r.Draw(g);

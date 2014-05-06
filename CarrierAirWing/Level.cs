@@ -6,29 +6,22 @@ using System.Drawing;
 
 namespace CarrierAirWing
 {
-    public class Level
+    public abstract class Level
     {
         public int Lvl;
         public Image LevelBackground;
+        public LinkedList<Enemy> Enemies;
 
         public Level()
         {
-            LevelBackground = Properties.Resources.level0;
-        }
 
-        public Level(int n)
-        {
-            LevelBackground = Properties.Resources.level1;
         }
 
         public void Draw(Graphics g)
         {
-            g.DrawImageUnscaled(LevelBackground, 0, 0);
+            g.DrawImageUnscaled(LevelBackground, 0, 0); // Neshto da se dvizi?
         }
 
-        public Level LevelUP()
-        {
-            return new Level(1);
-        }
+        public abstract Level LevelUP();
     }
 }

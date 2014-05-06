@@ -71,7 +71,7 @@ namespace CarrierAirWing
 
         public virtual void Draw(Graphics g)
         {
-            g.DrawRectangle(new Pen(Color.Red), X, Y, sprite.Width, sprite.Height);
+            //g.DrawRectangle(new Pen(Color.Red), X - sprite.Width / 2, Y - sprite.Height / 2, sprite.Width, sprite.Height);
             g.DrawImage(sprite, X, Y);
         }
 

@@ -12,9 +12,11 @@ namespace CarrierAirWing
         //public static Bitmap planeSprites = new Bitmap(Resources.UNSquadronPlayer);
         public static Bitmap[][] planeSprites = new Bitmap[3][];
         public static Bitmap[][] rocketSprites = new Bitmap[3][];
+        public static Bitmap[][] enemySprites = new Bitmap[3][];
 
         public static void Init()
         {
+            // Player Sprites
             //F-14 Tomcat
             planeSprites[0] = new Bitmap[3];
             Bitmap bmp = new Bitmap(Resources.UNSquadronPlayer);
@@ -70,6 +72,7 @@ namespace CarrierAirWing
             croped = new Bitmap(bmp, (int)(bmp.Width * 1.5F), (int)(bmp.Height * 1.2F));
             rocketSprites[2][1] = croped;
 
+            // Enemy Sprites
         }
 
     }

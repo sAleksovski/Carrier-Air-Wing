@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bullet.cs" />
+    <Compile Include="Enemy.cs" />
     <Compile Include="F14Tomcat.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -73,6 +74,8 @@
     <Compile Include="GraphicsEngine.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="A10Thunderbolt.cs" />
+    <Compile Include="Level_1.cs" />
+    <Compile Include="Level_2.cs" />
     <Compile Include="Plane.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />

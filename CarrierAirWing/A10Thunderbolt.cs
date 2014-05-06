@@ -31,7 +31,10 @@ namespace CarrierAirWing
                 RocketsLaunched++;
                 if (RocketsLaunched == 14)
                     RocketBlocked = true;
-                return new Rocket(X + sprite.Width * 0.8F, Y, 12, 0, 2);
+                //return new Rocket(X + sprite.Width * 0.8F, Y, 12, 0, 2); //Rocket 2
+                return new Rocket(X + sprite.Width * 0.8F, Y+5, 12, 0, 1); //Rocket 1
+                //return new Rocket(X + sprite.Width * 0.8F, Y + 5, 12, 0, 0); //Rocket 0
+                
             }
             return null;
         }
