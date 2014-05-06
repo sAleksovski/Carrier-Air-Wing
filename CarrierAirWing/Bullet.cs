@@ -25,7 +25,7 @@ namespace CarrierAirWing
             MoveY = my;
             Damage = damage;
             Status = 0;
-            //type = GraphicsEngine.randomizer.Next(0, 2);
+            type = GraphicsEngine.randomizer.Next(0, 2);
         }
 
         public void Move()
@@ -37,20 +37,20 @@ namespace CarrierAirWing
 
         public void Draw(Graphics g)
         {
-            //if (type == 0)
-            //{
+            if (type == 0)
+            {
                 if (Status > 7)
                     g.DrawImage(Properties.Resources.bullet0, X, Y);
                 else
+                    g.DrawImage(Properties.Resources.bullet1, X, Y);
+            }
+            else
+            {
+                if (Status > 10)
                     g.DrawImage(Properties.Resources.bullet2, X, Y);
-            //}
-            //else
-            //{
-            //    if (Status > 10)
-            //        g.DrawImage(Properties.Resources.bullet2, X, Y);
-            //    else
-            //       g.DrawImage(Properties.Resources.bullet3, X, Y);
-            //}
+                else
+                    g.DrawImage(Properties.Resources.bullet3, X, Y);
+            }
         }
     }
 }
