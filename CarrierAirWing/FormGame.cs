@@ -9,13 +9,14 @@ using System.Windows.Forms;
 
 namespace CarrierAirWing
 {
-    public partial class Form1 : Form
+    public partial class FormGame : Form
     {
+        public Form formMenu;
         public Game game;
         public Timer timer;
         public static int FRAMES_PER_SECOND = 60;
 
-        public Form1()
+        public FormGame()
         {
             InitializeComponent();
             DoubleBuffered = true;
@@ -26,6 +27,11 @@ namespace CarrierAirWing
             timer.Interval = 1000 / FRAMES_PER_SECOND;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
+        }
+
+        public FormGame(Form f) : this()
+        {
+            formMenu = f;
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -87,6 +93,11 @@ namespace CarrierAirWing
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void FormGame_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            formMenu.Show();
         }
     }
 }

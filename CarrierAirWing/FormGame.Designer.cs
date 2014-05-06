@@ -1,6 +1,6 @@
 ﻿namespace CarrierAirWing
 {
-    partial class Form1
+    partial class FormGame
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,15 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // FormGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(792, 573);
-            this.Name = "Form1";
+            this.Name = "FormGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Carrier Air Wing";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormGame_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
