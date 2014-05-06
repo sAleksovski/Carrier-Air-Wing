@@ -29,6 +29,7 @@ namespace CarrierAirWing
         public int BoundsY { get; set; }
 
         public Keys keys; //Dali e podobro da se prosleduev na Move() ili da se cuvav tuj?
+        public int BulletCountdown { get; set; }
         public int RocketCountdown { get; set; }
         public int RocketsLaunched { get; set; }
         public bool RocketBlocked { get; set; }
@@ -44,6 +45,7 @@ namespace CarrierAirWing
             this.Y = y;
             SpeedX = 6F;
             SpeedY = 6F;
+            BulletCountdown = 0;
             RocketCountdown = 0;
             RocketBlocked = false;
             RocketsLaunched = 0;
@@ -57,10 +59,13 @@ namespace CarrierAirWing
             Y -= keys.up * SpeedY;
             ChangeSprite();
 
+            if (BulletCountdown > 0)
+                BulletCountdown--;
+
             if (RocketCountdown > 0)
                 RocketCountdown--;
 
-            if (keys.ctrl == 0)
+            if (keys.alt == 0)
             {
                 RocketBlocked = false;
                 RocketsLaunched = 0;
@@ -75,7 +80,8 @@ namespace CarrierAirWing
             g.DrawImage(sprite, X, Y);
         }
 
-        public abstract Rocket Fire();
+        public abstract Bullet FireBullet();
+        public abstract Rocket FireRocket();
 
         public bool Hit(Bullet b)
         {

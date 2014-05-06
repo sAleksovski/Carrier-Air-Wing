@@ -36,24 +36,26 @@ namespace CarrierAirWing
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == System.Windows.Forms.Keys.A)
+            if (e.KeyCode == game.p1Controls.A)
                 game.p1.plane.keys.ctrl = 1;
-            if (e.KeyCode == System.Windows.Forms.Keys.Up)
+            if (e.KeyCode == game.p1Controls.B)
+                game.p1.plane.keys.alt = 1;
+            if (e.KeyCode == game.p1Controls.UP)
             {
                 game.p1.plane.keys.up = 1;
                 game.p1.plane.keys.down = 0;
             }
-            else if (e.KeyCode == System.Windows.Forms.Keys.Down)
+            else if (e.KeyCode == game.p1Controls.DOWN)
             {
                 game.p1.plane.keys.down = 1;
                 game.p1.plane.keys.up = 0;
             }
-            if (e.KeyCode == System.Windows.Forms.Keys.Left)
+            if (e.KeyCode == game.p1Controls.LEFT)
             {
                 game.p1.plane.keys.left = 1;
                 game.p1.plane.keys.right = 0;
             }
-            else if (e.KeyCode == System.Windows.Forms.Keys.Right)
+            else if (e.KeyCode == game.p1Controls.RIGHT)
             {
                 game.p1.plane.keys.right = 1;
                 game.p1.plane.keys.left = 0;
@@ -63,9 +65,9 @@ namespace CarrierAirWing
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == System.Windows.Forms.Keys.A)
-            {
                 game.p1.plane.keys.ctrl = 0;
-            }
+            if (e.KeyCode == game.p1Controls.B)
+                game.p1.plane.keys.alt = 0;
             if (e.KeyCode == System.Windows.Forms.Keys.Up)
                 game.p1.plane.keys.up = 0;
             else if (e.KeyCode == System.Windows.Forms.Keys.Down)

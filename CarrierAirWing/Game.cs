@@ -7,12 +7,25 @@ using System.Windows.Forms;
 
 namespace CarrierAirWing
 {
+    public struct Controls
+    {
+        public System.Windows.Forms.Keys UP;
+        public System.Windows.Forms.Keys DOWN;
+        public System.Windows.Forms.Keys LEFT;
+        public System.Windows.Forms.Keys RIGHT;
+        public System.Windows.Forms.Keys A;
+        public System.Windows.Forms.Keys B;
+    };
+
     public class Game
     {
         public Level level;
         public Player p1;
-        public LinkedList<Rocket> playerRockets;
+        public Controls p1Controls;
         public LinkedList<Enemy> enemies;
+        public LinkedList<Bullet> playerBullets;
+        public LinkedList<Rocket> playerRockets;
+        public LinkedList<Bullet> enemyBullets;
         public int BoundsX { get; set; }
         public int BoundsY { get; set; }
         //public Player p2;
@@ -21,6 +34,8 @@ namespace CarrierAirWing
         {
             GraphicsEngine.Init();
             level = new Level_1();
+            playerBullets = new LinkedList<Bullet>();
+            playerRockets = new LinkedList<Rocket>();
             enemies = new LinkedList<Enemy>();
             foreach (Enemy e in level.Enemies)
             {
@@ -28,7 +43,12 @@ namespace CarrierAirWing
             }
             //p1 = new Player(new A10Thunderbolt(100, 100));
             p1 = new Player(new F14Tomcat(100, 100));
-            playerRockets = new LinkedList<Rocket>();
+            p1Controls.UP = System.Windows.Forms.Keys.Up;
+            p1Controls.DOWN = System.Windows.Forms.Keys.Down;
+            p1Controls.LEFT = System.Windows.Forms.Keys.Left;
+            p1Controls.RIGHT = System.Windows.Forms.Keys.Right;
+            p1Controls.A = System.Windows.Forms.Keys.A;
+            p1Controls.B = System.Windows.Forms.Keys.S;
         }
         
         public void Move()
@@ -42,12 +62,32 @@ namespace CarrierAirWing
 
             if (p1.plane.keys.ctrl == 1)
             {
-                Rocket r = p1.Fire();
+                Bullet b = p1.FireBullet();
+                if (b != null)
+                    playerBullets.AddFirst(b);
+            }
+
+            if (p1.plane.keys.alt == 1)
+            {
+                Rocket r = p1.FireRocket();
                 if (r != null)
                     playerRockets.AddFirst(r); //ili AddLast?
             }
 
             LinkedList<Rocket> deleteRockets = new LinkedList<Rocket>();
+            LinkedList<Bullet> deletePlayerBullets = new LinkedList<Bullet>();
+
+            foreach (Bullet b in playerBullets)
+            {
+                if (b.X >= BoundsX - 50)
+                {
+                    deletePlayerBullets.AddFirst(b);
+                }
+                else
+                {
+                    b.Move();
+                }
+            }
 
             foreach (Rocket r in playerRockets)
             {
@@ -66,6 +106,11 @@ namespace CarrierAirWing
                 playerRockets.Remove(r);
             }
 
+            foreach (Bullet b in deletePlayerBullets)
+            {
+                playerBullets.Remove(b);
+            }
+
             Collision();
         }
 
@@ -82,6 +127,11 @@ namespace CarrierAirWing
             foreach (Enemy e in enemies)
             {
                 e.Draw(g);
+            }
+
+            foreach (Bullet b in playerBullets)
+            {
+                b.Draw(g);
             }
 
             foreach (Rocket r in playerRockets)

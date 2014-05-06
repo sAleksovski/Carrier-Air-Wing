@@ -23,7 +23,17 @@ namespace CarrierAirWing
                 sprite = GraphicsEngine.planeSprites[0][0];
         }
 
-        public override Rocket Fire()
+        public override Bullet FireBullet()
+        {
+            if (BulletCountdown == 0)
+            {
+                BulletCountdown = 10;
+                return new Bullet(X + sprite.Width * 0.9F, Y+3, 5, 0);
+            }
+            return null;
+        }
+
+        public override Rocket FireRocket()
         {
             if (RocketCountdown == 0 && RocketBlocked == false)
             {

@@ -8,7 +8,6 @@ namespace CarrierAirWing
 {
     public class Bullet
     {
-        public Point Location;
         public float X;
         public float Y;
         public float MoveX;
@@ -30,7 +29,7 @@ namespace CarrierAirWing
 
         public void Draw(Graphics g)
         {
-            g.DrawImageUnscaled(Properties.Resources.Bullet, Location.X, Location.Y);
+            g.DrawImage(Properties.Resources.Bullet, X, Y);
         }
     }
 }
