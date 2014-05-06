@@ -97,7 +97,8 @@ namespace CarrierAirWing
 
         private void FormGame_FormClosing(object sender, FormClosingEventArgs e)
         {
-            formMenu.Show();
+            if(formMenu != null)
+                formMenu.Show();
         }
     }
 }
