@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarPlanes", "WarPlanes\WarPlanes.csproj", "{F3266E6F-8598-4428-A024-70561ACAE19B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carrier-Air-Wing", "CarrierAirWing\Carrier-Air-Wing.csproj", "{F3266E6F-8598-4428-A024-70561ACAE19B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

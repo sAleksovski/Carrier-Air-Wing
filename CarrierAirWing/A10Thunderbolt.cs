@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace WarPlanes
+namespace CarrierAirWing
 {
     public class A10Thunderbolt : Plane
     {
@@ -31,7 +31,7 @@ namespace WarPlanes
                 RocketsLaunched++;
                 if (RocketsLaunched == 14)
                     RocketBlocked = true;
-                return new Rocket(X + sprite.Width * 0.8F, Y + sprite.Height / 2, 12, 0, 2);
+                return new Rocket(X + sprite.Width * 0.8F, Y, 12, 0, 2);
             }
             return null;
         }
