@@ -12,13 +12,15 @@ namespace CarrierAirWing
         public float Y;
         public float MoveX;
         public float MoveY;
+        public int Damage { get; set; }
 
-        public Bullet(float x, float y, float mx, float my)
+        public Bullet(float x, float y, float mx, float my, int damage)
         {
             X = x;
             Y = y;
             MoveX = mx;
             MoveY = my;
+            Damage = damage;
         }
 
         public void Move()

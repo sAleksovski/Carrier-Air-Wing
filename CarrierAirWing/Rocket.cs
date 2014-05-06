@@ -14,9 +14,10 @@ namespace CarrierAirWing
         public float SpeedX { get; set; }
         public float SpeedY { get; set; }
         public int Status { get; set; }
+        public int Damage { get; set; }
         private int spriteIndex;
 
-        public Rocket(float x, float y, float speedX, float speedY, int spriteIndex)
+        public Rocket(float x, float y, float speedX, float speedY, int spriteIndex, int damage)
         {
             X = x;
             Y = y;
@@ -24,6 +25,7 @@ namespace CarrierAirWing
             SpeedY = speedY;
             Status = 0;
             this.spriteIndex = spriteIndex;
+            Damage = damage;
         }
 
         public void Move()

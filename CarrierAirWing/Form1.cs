@@ -13,7 +13,7 @@ namespace CarrierAirWing
     {
         public Game game;
         public Timer timer;
-        public static int FRAMES_PER_SECOND = 45;
+        public static int FRAMES_PER_SECOND = 60;
 
         public Form1()
         {
@@ -81,7 +81,6 @@ namespace CarrierAirWing
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.Clear(Color.White);
             game.Draw(g);
         }
 

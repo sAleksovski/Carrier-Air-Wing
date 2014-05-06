@@ -25,6 +25,11 @@ namespace CarrierAirWing
 
         public override Bullet FireBullet()
         {
+            if (BulletCountdown == 0)
+            {
+                BulletCountdown = 10;
+                return new Bullet(X + sprite.Width * 0.9F, Y + 3, 5, 0, 20);
+            }
             return null;
         }
 
@@ -36,9 +41,9 @@ namespace CarrierAirWing
                 RocketsLaunched++;
                 if (RocketsLaunched == 14)
                     RocketBlocked = true;
-                //return new Rocket(X + sprite.Width * 0.8F, Y, 12, 0, 2); //Rocket 2
-                return new Rocket(X + sprite.Width * 0.8F, Y+5, 12, 0, 1); //Rocket 1
-                //return new Rocket(X + sprite.Width * 0.8F, Y + 5, 12, 0, 0); //Rocket 0
+                //return new Rocket(X + sprite.Width * 0.8F, Y, 12, 0, 2, 20); //Rocket 2
+                return new Rocket(X + sprite.Width * 0.8F, Y+5, 12, 0, 1, 50); //Rocket 1
+                //return new Rocket(X + sprite.Width * 0.8F, Y + 5, 12, 0, 0, 20); //Rocket 0
                 
             }
             return null;

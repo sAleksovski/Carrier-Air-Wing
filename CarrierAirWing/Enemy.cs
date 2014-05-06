@@ -24,9 +24,11 @@ namespace CarrierAirWing
         public EnemyMovement[] movement;
         public int currentMovement;
         public int ticks;
+        public int CanFire;
+        public int Health;
         
 
-        public Enemy(float x, float y, EnemyMovement[] m, int sr)
+        public Enemy(float x, float y, EnemyMovement[] m, int sr, int health)
         {
             X = x;
             Y = y;
@@ -37,6 +39,9 @@ namespace CarrierAirWing
             SpeedY = movement[currentMovement].SpeedY;
             spriteRow = sr;
             //sprite = GraphicsEngine.enemySprites[spriteRow][0];
+            sprite = GraphicsEngine.planeSprites[0][0];
+            Health = health;
+            CanFire = 0;
         }
 
         public void Move()
@@ -51,6 +56,8 @@ namespace CarrierAirWing
                 SpeedX = movement[currentMovement].SpeedX;
                 SpeedY = movement[currentMovement].SpeedY;
             }
+            if (CanFire > 0)
+                CanFire--;
             //ChangeSprite();
         }
 
@@ -66,15 +73,18 @@ namespace CarrierAirWing
 
         public Bullet Fire(float y)
         {
-            if (Math.Abs(y - Y) < 20)
-                return new Bullet(X, Y, -5, 0);
+            if (Math.Abs(y - Y) < 20 && CanFire == 0)
+            {
+                CanFire = 20;
+                return new Bullet(X, Y, -5, 0, 25);
+            }
             return null;
         }
 
         public void Draw(Graphics g)
         {
-            //g.DrawImage(sprite, X, Y);
-            g.DrawRectangle(new Pen(Color.Red), X, Y, 30, 20);
+            g.DrawImage(sprite, X, Y);
+            //g.DrawRectangle(new Pen(Color.Red), X, Y, 30, 20);
         }
     }
 }

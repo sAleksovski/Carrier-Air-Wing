@@ -11,10 +11,14 @@ namespace CarrierAirWing
         public Plane plane;
         public int Lives { get; set; }
         public int Score { get; set; }
+        public int Health { get; set; }
 
         public Player(Plane p)
         {
             plane = p;
+            Lives = 3;
+            Score = 0;
+            Health = 100;
         }
 
         public void Move()

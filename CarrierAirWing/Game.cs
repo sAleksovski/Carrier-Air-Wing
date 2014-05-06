@@ -36,6 +36,7 @@ namespace CarrierAirWing
             level = new Level_1();
             playerBullets = new LinkedList<Bullet>();
             playerRockets = new LinkedList<Rocket>();
+            enemyBullets = new LinkedList<Bullet>();
             enemies = new LinkedList<Enemy>();
             foreach (Enemy e in level.Enemies)
             {
@@ -58,6 +59,24 @@ namespace CarrierAirWing
             foreach (Enemy e in enemies)
             {
                 e.Move();
+                Bullet b = e.Fire(p1.plane.Y);
+                if (b != null)
+                    enemyBullets.AddFirst(b);
+            }
+
+            foreach (Bullet b in playerBullets)
+            {
+                b.Move();
+            }
+
+            foreach (Rocket r in playerRockets)
+            {
+                r.Move();
+            }
+
+            foreach (Bullet b in enemyBullets)
+            {
+                b.Move();
             }
 
             if (p1.plane.keys.ctrl == 1)
@@ -73,32 +92,32 @@ namespace CarrierAirWing
                 if (r != null)
                     playerRockets.AddFirst(r); //ili AddLast?
             }
+            Remove();
+            Collision();
+        }
 
+        private void Remove()
+        {
             LinkedList<Rocket> deleteRockets = new LinkedList<Rocket>();
             LinkedList<Bullet> deletePlayerBullets = new LinkedList<Bullet>();
+            LinkedList<Bullet> deleteEnemyBullets = new LinkedList<Bullet>();
 
             foreach (Bullet b in playerBullets)
             {
                 if (b.X >= BoundsX - 50)
-                {
                     deletePlayerBullets.AddFirst(b);
-                }
-                else
-                {
-                    b.Move();
-                }
             }
 
             foreach (Rocket r in playerRockets)
             {
                 if (r.X >= BoundsX - 50)
-                {
                     deleteRockets.AddFirst(r);
-                }
-                else
-                {
-                    r.Move();
-                }
+            }
+
+            foreach (Bullet b in enemyBullets)
+            {
+                if (b.X <= 0)
+                    deleteEnemyBullets.AddFirst(b);
             }
 
             foreach (Rocket r in deleteRockets)
@@ -111,12 +130,76 @@ namespace CarrierAirWing
                 playerBullets.Remove(b);
             }
 
-            Collision();
+            foreach (Bullet b in deleteEnemyBullets)
+            {
+                enemyBullets.Remove(b);
+            }
         }
 
         private void Collision()
         {
-           
+            LinkedList<Bullet> deletePlayerBullets = new LinkedList<Bullet>();
+            LinkedList<Rocket> deletePlayerRockets = new LinkedList<Rocket>();
+            LinkedList<Bullet> deleteEnemyBullets = new LinkedList<Bullet>();
+            LinkedList<Enemy> deleteEnemies = new LinkedList<Enemy>();
+
+            foreach (Enemy e in enemies)
+            {
+                foreach (Bullet b in playerBullets)
+                {
+                    if (b.X >= e.X && b.X <= e.X + e.sprite.Width && b.Y >= e.Y && b.Y <= e.Y + e.sprite.Height)
+                    {
+                        deletePlayerBullets.AddFirst(b);
+                        e.Health -= b.Damage;
+                        if (e.Health <= 0)
+                            deleteEnemies.AddFirst(e);
+                        continue;
+                    }
+                }
+
+                foreach (Rocket r in playerRockets)
+                {
+                    if (r.X + 15 >= e.X && r.X <= e.X + e.sprite.Width && r.Y >= e.Y && r.Y <= e.Y + e.sprite.Height)
+                    {
+                        deletePlayerRockets.AddFirst(r);
+                        e.Health -= r.Damage;
+                        if (e.Health <= 0)
+                            deleteEnemies.AddFirst(e);
+                        continue;
+                    }
+                }
+
+                // Enemy-Player collision TO-DO5
+            }
+
+            foreach (Bullet b in enemyBullets)
+            {
+                if (b.X <= p1.plane.X + 50 && b.X >= p1.plane.X && b.Y >= p1.plane.Y && b.Y <= p1.plane.Y + 15)
+                {
+                    deleteEnemyBullets.AddFirst(b);
+                    p1.Health -= b.Damage;
+                    if (p1.Health <= 0)
+                    {
+                        p1.Lives -= 1;
+                        p1.Health = 100;
+                    }
+                    //if (p1.Lives == 0)
+                    //    GameOver();
+                }
+            }
+
+            foreach (Bullet b in deletePlayerBullets)
+                playerBullets.Remove(b);
+
+            foreach (Rocket r in deletePlayerRockets)
+                playerRockets.Remove(r);
+
+            foreach (Bullet b in deleteEnemyBullets)
+                enemyBullets.Remove(b);
+
+            foreach (Enemy e in deleteEnemies)
+                enemies.Remove(e);
+
         }
 
         public void Draw(Graphics g)
@@ -138,6 +221,16 @@ namespace CarrierAirWing
             {
                 r.Draw(g);
             }
+
+            foreach (Bullet b in enemyBullets)
+            {
+                b.Draw(g);
+            }
+
+            g.DrawString(string.Format("Lives: {0}, Health: {1}", p1.Lives, p1.Health), 
+                new Font(FontFamily.GenericMonospace, 12), 
+                new SolidBrush(Color.Red), 
+                new PointF(10, 10));
         }
     }
 }
