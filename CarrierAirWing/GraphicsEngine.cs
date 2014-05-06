@@ -9,13 +9,16 @@ namespace CarrierAirWing
 {
     public class GraphicsEngine
     {
-        //public static Bitmap planeSprites = new Bitmap(Resources.UNSquadronPlayer);
         public static Bitmap[][] planeSprites = new Bitmap[3][];
         public static Bitmap[][] rocketSprites = new Bitmap[3][];
         public static Bitmap[][] enemySprites = new Bitmap[3][];
+        public static Random randomizer;
 
         public static void Init()
         {
+            //Random number generator
+            randomizer = new Random();
+
             // Player Sprites
             //F-14 Tomcat
             planeSprites[0] = new Bitmap[3];
