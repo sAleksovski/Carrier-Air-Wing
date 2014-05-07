@@ -84,18 +84,16 @@ namespace CarrierAirWing
 
         public bool Hit(Enemy e)
         {
-            Rectangle intersect = Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height), new Rectangle(e.X, e.Y, e.Sprite.Width, e.Sprite.Height));
-            if (intersect.Width > 0 && intersect.Height > 0)
-                return true;
-            return false;      
+            if (Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height), new Rectangle(e.X, e.Y, e.Sprite.Width, e.Sprite.Height)).IsEmpty)
+                return false;
+            return true;      
         }
 
         public bool Hit(Bullet b)
         {
-            Rectangle intersect = Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height), new Rectangle(b.X, b.Y, Resources.bullet0.Width, Resources.bullet0.Height));
-            if (intersect.Width > 0 && intersect.Height > 0)
-                return true;
-            return false;
+            if (Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height), new Rectangle(b.X, b.Y, Resources.bullet0.Width, Resources.bullet0.Height)).IsEmpty)
+                return false;
+            return true;
         }
 
     }
