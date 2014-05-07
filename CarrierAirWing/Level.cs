@@ -11,10 +11,14 @@ namespace CarrierAirWing
         public int Lvl;
         public Image LevelBackground;
         public LinkedList<Enemy> Enemies;
+        public LinkedList<int> Ticks;
+        public int tick;
+        public bool CanLevelUP;
 
         public Level()
         {
-
+            tick = 0;
+            CanLevelUP = false;
         }
 
         public void Draw(Graphics g)
@@ -23,5 +27,6 @@ namespace CarrierAirWing
         }
 
         public abstract Level LevelUP();
+        public abstract bool Tick(int enemies);
     }
 }

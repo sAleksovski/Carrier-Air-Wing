@@ -53,6 +53,7 @@ namespace CarrierAirWing
             {
                 ticks = 0;
                 currentMovement = (currentMovement + 1) % movement.Length;
+                if(currentMovement == 0) currentMovement = 1;
                 SpeedX = movement[currentMovement].SpeedX;
                 SpeedY = movement[currentMovement].SpeedY;
             }

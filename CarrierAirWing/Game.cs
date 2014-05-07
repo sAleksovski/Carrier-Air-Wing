@@ -31,7 +31,8 @@ namespace CarrierAirWing
         //public Player p2;
 
         //Explosiont test
-        Explosion exp1;
+        //Explosion exp1;
+        public LinkedList<Explosion> explosions;
 
         public Game()
         {
@@ -41,6 +42,7 @@ namespace CarrierAirWing
             playerRockets = new LinkedList<Rocket>();
             enemyBullets = new LinkedList<Bullet>();
             enemies = new LinkedList<Enemy>();
+            explosions = new LinkedList<Explosion>();
             foreach (Enemy e in level.Enemies)
             {
                 enemies.AddFirst(e);
@@ -57,13 +59,25 @@ namespace CarrierAirWing
             p1Controls.B = System.Windows.Forms.Keys.S;
 
             //Explosion intit
-            exp1 = new Explosion(200, 200);
+            //exp1 = new Explosion(200, 200);
         }
         
         public void Move()
         {
             p1.Move();
-            exp1.Move();
+            foreach (Explosion e in explosions)
+            {
+                e.Move();
+            }
+
+            if (level.Tick(enemies.Count))
+            {
+                foreach(Enemy e in level.Enemies)
+                    enemies.AddFirst(e);
+            }
+
+            if (level.CanLevelUP)
+                level = level.LevelUP();
 
             foreach (Enemy e in enemies)
             {
@@ -110,6 +124,7 @@ namespace CarrierAirWing
             LinkedList<Rocket> deleteRockets = new LinkedList<Rocket>();
             LinkedList<Bullet> deletePlayerBullets = new LinkedList<Bullet>();
             LinkedList<Bullet> deleteEnemyBullets = new LinkedList<Bullet>();
+            LinkedList<Explosion> deleteExplosions = new LinkedList<Explosion>();
 
             //Remove
             foreach (Bullet b in playerBullets)
@@ -122,6 +137,12 @@ namespace CarrierAirWing
             {
                 if (r.X >= BoundsX - 50)
                     deleteRockets.AddFirst(r);
+            }
+
+            foreach (Explosion e in explosions)
+            {
+                if (e.Status == -1)
+                    deleteExplosions.AddFirst(e);
             }
 
             //10 to 0
@@ -145,6 +166,11 @@ namespace CarrierAirWing
             {
                 enemyBullets.Remove(b);
             }
+
+            foreach (Explosion e in deleteExplosions)
+            {
+                explosions.Remove(e);
+            }
         }
 
         private void Collision()
@@ -163,7 +189,11 @@ namespace CarrierAirWing
                         deletePlayerBullets.AddFirst(b);
                         e.Health -= b.Damage;
                         if (e.Health <= 0)
+                        {
                             deleteEnemies.AddFirst(e);
+                            explosions.AddFirst(new Explosion(e.X, e.Y));
+                        }
+                        continue;    
                     }
                 }
 
@@ -175,7 +205,10 @@ namespace CarrierAirWing
                         deletePlayerRockets.AddFirst(r);
                         e.Health -= r.Damage;
                         if (e.Health <= 0)
+                        {
                             deleteEnemies.AddFirst(e);
+                            explosions.AddFirst(new Explosion(e.X, e.Y));
+                        }
                         continue;
                     }
                 }
@@ -185,7 +218,7 @@ namespace CarrierAirWing
                     p1.Health = 100;
                     p1.Lives -= 1;
                     deleteEnemies.AddFirst(e);
-
+                    explosions.AddFirst(new Explosion(e.X, e.Y));
                     //if (p1.Lives == 0)
                     //    GameOver();
                 }
@@ -225,7 +258,6 @@ namespace CarrierAirWing
         {
             level.Draw(g);
             p1.Draw(g);
-            exp1.Draw(g);
 
             foreach (Enemy e in enemies)
             {
@@ -245,6 +277,11 @@ namespace CarrierAirWing
             foreach (Bullet b in enemyBullets)
             {
                 b.Draw(g);
+            }
+
+            foreach (Explosion e in explosions)
+            {
+                e.Draw(g);
             }
 
             g.DrawString(string.Format("Lives: {0}, Health: {1}", p1.Lives, p1.Health), 
