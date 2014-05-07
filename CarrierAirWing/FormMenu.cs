@@ -28,5 +28,11 @@ namespace CarrierAirWing
             Form f = new FormChoosePlane();
             f.ShowDialog();
         }
+
+        private void btnHighScore_Click(object sender, EventArgs e)
+        {
+            Form f = new FormHighScore();
+            f.ShowDialog();
+        }
     }
 }
