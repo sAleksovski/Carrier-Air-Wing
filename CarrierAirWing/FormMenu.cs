@@ -34,5 +34,16 @@ namespace CarrierAirWing
             Form f = new FormHighScore();
             f.ShowDialog();
         }
+
+        private void FormMenu_Load(object sender, EventArgs e)
+        {
+            GraphicsEngine.Init();
+            Settings.Init();
+        }
+
+        private void FormMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Settings.WriteHighScore();
+        }
     }
 }

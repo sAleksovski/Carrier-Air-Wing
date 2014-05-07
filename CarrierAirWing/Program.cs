@@ -15,7 +15,7 @@ namespace CarrierAirWing
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormGame());
+            Application.Run(new FormMenu());
         }
     }
 }

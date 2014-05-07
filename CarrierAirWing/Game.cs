@@ -28,6 +28,7 @@ namespace CarrierAirWing
         public LinkedList<Bullet> enemyBullets;
         public int BoundsX { get; set; }
         public int BoundsY { get; set; }
+        public int Score { get; set; }
         //public Player p2;
 
         //Explosiont test
@@ -188,10 +189,12 @@ namespace CarrierAirWing
                     {
                         deletePlayerBullets.AddFirst(b);
                         e.Health -= b.Damage;
+                        Score += 5;
                         if (e.Health <= 0)
                         {
                             deleteEnemies.AddFirst(e);
                             explosions.AddFirst(new Explosion(e.X, e.Y));
+                            Score += 10;
                         }
                         continue;    
                     }
@@ -204,10 +207,12 @@ namespace CarrierAirWing
                         
                         deletePlayerRockets.AddFirst(r);
                         e.Health -= r.Damage;
+                        Score += 5;
                         if (e.Health <= 0)
                         {
                             deleteEnemies.AddFirst(e);
                             explosions.AddFirst(new Explosion(e.X, e.Y));
+                            Score += 10;
                         }
                         continue;
                     }
@@ -217,10 +222,11 @@ namespace CarrierAirWing
                 {
                     p1.Health = 100;
                     p1.Lives -= 1;
+                    Score += 10;
                     deleteEnemies.AddFirst(e);
                     explosions.AddFirst(new Explosion(e.X, e.Y));
-                    //if (p1.Lives == 0)
-                    //    GameOver();
+                    if (p1.Lives == 0)
+                        GameOver();
                 }
             }
 
@@ -235,8 +241,8 @@ namespace CarrierAirWing
                         p1.Lives -= 1;
                         p1.Health = 100;
                     }
-                    //if (p1.Lives == 0)
-                    //    GameOver();
+                    if (p1.Lives == 0)
+                        GameOver();
                 }
             }
 
@@ -288,6 +294,23 @@ namespace CarrierAirWing
                 new Font(FontFamily.GenericMonospace, 12), 
                 new SolidBrush(Color.Red), 
                 new PointF(10, 10));
+        }
+
+        public void GameOver()
+        {
+            playerBullets = new LinkedList<Bullet>();
+            playerRockets = new LinkedList<Rocket>();
+            enemyBullets = new LinkedList<Bullet>();
+            enemies = new LinkedList<Enemy>();
+
+            if (Settings.highScores.IsTopTen(Score))
+            {
+                Form f = new FormGetName();
+                f.ShowDialog();
+                string name = f.Name;
+                Settings.highScores.AddHighScore(new Score(name, Score));
+            }
+
         }
     }
 }

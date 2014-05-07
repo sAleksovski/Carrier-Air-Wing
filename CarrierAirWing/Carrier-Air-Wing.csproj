@@ -78,6 +78,12 @@
     <Compile Include="FormGame.Designer.cs">
       <DependentUpon>FormGame.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormGetName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGetName.Designer.cs">
+      <DependentUpon>FormGetName.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormHighScore.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,11 +114,15 @@
     </Compile>
     <Compile Include="Rocket.cs" />
     <Compile Include="Score.cs" />
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="FormChoosePlane.resx">
       <DependentUpon>FormChoosePlane.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGame.resx">
       <DependentUpon>FormGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGetName.resx">
+      <DependentUpon>FormGetName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormHighScore.resx">
       <DependentUpon>FormHighScore.cs</DependentUpon>

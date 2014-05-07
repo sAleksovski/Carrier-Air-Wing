@@ -15,12 +15,12 @@ namespace CarrierAirWing
             scores = new List<Score>();
         }
 
-        public bool IsTopTen(Score s)
+        public bool IsTopTen(int s)
         {
             if (scores.Count < 10)
                 return true;
 
-            if (scores[9].Points < s.Points)
+            if (scores[9].Points < s)
                 return true;
             
             return false;
