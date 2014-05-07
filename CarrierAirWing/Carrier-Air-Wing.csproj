@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Bullet.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="Explosion.cs" />
     <Compile Include="F14TomCat.cs" />
     <Compile Include="F20TigerShark.cs" />
     <Compile Include="FormChoosePlane.cs">
@@ -150,6 +151,17 @@
     <Content Include="Resources\Images\Bullets\bullet1.png" />
     <Content Include="Resources\Images\Bullets\bullet2.png" />
     <Content Include="Resources\Images\Bullets\bullet3.png" />
+    <Content Include="Resources\Images\Explosions\exp10.png" />
+    <Content Include="Resources\Images\Explosions\exp11.png" />
+    <Content Include="Resources\Images\Explosions\exp12.png" />
+    <Content Include="Resources\Images\Explosions\exp13.png" />
+    <Content Include="Resources\Images\Explosions\exp14.png" />
+    <Content Include="Resources\Images\Explosions\exp15.png" />
+    <Content Include="Resources\Images\Explosions\exp16.png" />
+    <Content Include="Resources\Images\Explosions\exp20.png" />
+    <Content Include="Resources\Images\Explosions\exp21.png" />
+    <Content Include="Resources\Images\Explosions\exp22.png" />
+    <Content Include="Resources\Images\Explosions\exp23.png" />
     <Content Include="Resources\Images\Levels\level0.jpg" />
     <Content Include="Resources\Images\Levels\level1.png" />
     <Content Include="Resources\Images\Levels\level2.png" />

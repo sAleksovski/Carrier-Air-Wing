@@ -12,6 +12,7 @@ namespace CarrierAirWing
         public static Bitmap[][] planeSprites = new Bitmap[3][];
         public static Bitmap[][] rocketSprites = new Bitmap[3][];
         public static Bitmap[][] enemySprites = new Bitmap[3][];
+        public static Bitmap[][] explosionSprites = new Bitmap[2][];
         public static Random randomizer;
 
         public static void Init()
@@ -89,6 +90,36 @@ namespace CarrierAirWing
             rocketSprites[2][1] = croped;
 
             // Enemy Sprites
+
+            //Explosion sprites
+            explosionSprites[0] = new Bitmap[7];
+            bmp = new Bitmap(Resources.exp10);
+            scaled= new Bitmap(bmp, (int)(bmp.Width * 1.2F), (int)(bmp.Height * 1.2F));
+            explosionSprites[0][0] = scaled;
+
+            bmp = new Bitmap(Resources.exp11);
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 1.2F), (int)(bmp.Height * 1.2F));
+            explosionSprites[0][1] = scaled;
+
+            bmp = new Bitmap(Resources.exp12);
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 1.2F), (int)(bmp.Height * 1.2F));
+            explosionSprites[0][2] = scaled;
+
+            bmp = new Bitmap(Resources.exp13);
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 1.2F), (int)(bmp.Height * 1.2F));
+            explosionSprites[0][3] = scaled;
+
+            bmp = new Bitmap(Resources.exp14);
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 1.2F), (int)(bmp.Height * 1.2F));
+            explosionSprites[0][4] = scaled;
+
+            bmp = new Bitmap(Resources.exp15);
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 1.2F), (int)(bmp.Height * 1.2F));
+            explosionSprites[0][5] = scaled;
+
+            bmp = new Bitmap(Resources.exp16);
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 1.2F), (int)(bmp.Height * 1.2F));
+            explosionSprites[0][6] = scaled;
         }
 
     }

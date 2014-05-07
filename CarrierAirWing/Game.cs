@@ -30,6 +30,9 @@ namespace CarrierAirWing
         public int BoundsY { get; set; }
         //public Player p2;
 
+        //Explosiont test
+        Explosion exp1;
+
         public Game()
         {
             GraphicsEngine.Init();
@@ -44,19 +47,23 @@ namespace CarrierAirWing
             }
             
             //p1 = new Player(new A10ThunderBolt(100, 100));
-            //p1 = new Player(new F14TomCat(100, 100));
-            p1 = new Player(new F20TigerShark(100, 100));
+            p1 = new Player(new F14TomCat(100, 100));
+            //p1 = new Player(new F20TigerShark(100, 100));
             p1Controls.UP = System.Windows.Forms.Keys.Up;
             p1Controls.DOWN = System.Windows.Forms.Keys.Down;
             p1Controls.LEFT = System.Windows.Forms.Keys.Left;
             p1Controls.RIGHT = System.Windows.Forms.Keys.Right;
             p1Controls.A = System.Windows.Forms.Keys.A;
             p1Controls.B = System.Windows.Forms.Keys.S;
+
+            //Explosion intit
+            exp1 = new Explosion(200, 200);
         }
         
         public void Move()
         {
             p1.Move();
+            exp1.Move();
 
             foreach (Enemy e in enemies)
             {
@@ -104,9 +111,10 @@ namespace CarrierAirWing
             LinkedList<Bullet> deletePlayerBullets = new LinkedList<Bullet>();
             LinkedList<Bullet> deleteEnemyBullets = new LinkedList<Bullet>();
 
+            //Remove
             foreach (Bullet b in playerBullets)
             {
-                if (b.X >= BoundsX - 50)
+                if ((b.X >= BoundsX - 50) || (b.X <= 10) || (b.Y <= 10) || (b.Y >= BoundsY - 50))
                     deletePlayerBullets.AddFirst(b);
             }
 
@@ -116,9 +124,10 @@ namespace CarrierAirWing
                     deleteRockets.AddFirst(r);
             }
 
+            //10 to 0
             foreach (Bullet b in enemyBullets)
             {
-                if (b.X <= 0)
+                if ((b.X >= BoundsX - 50) || (b.X <= 10) || (b.Y <= 10) || (b.Y >= BoundsY - 50))
                     deleteEnemyBullets.AddFirst(b);
             }
 
@@ -147,22 +156,11 @@ namespace CarrierAirWing
 
             foreach (Enemy e in enemies)
             {
-                foreach (Bullet b in playerBullets)
-                {
-                    if (b.X >= e.X && b.X <= e.X + e.Sprite.Width && b.Y >= e.Y && b.Y <= e.Y + e.Sprite.Height)
-                    {
-                        deletePlayerBullets.AddFirst(b);
-                        e.Health -= b.Damage;
-                        if (e.Health <= 0)
-                            deleteEnemies.AddFirst(e);
-                        continue;
-                    }
-                }
-
                 foreach (Rocket r in playerRockets)
                 {
-                    if (r.X + 15 >= e.X && r.X <= e.X + e.Sprite.Width && r.Y >= e.Y && r.Y <= e.Y + e.Sprite.Height)
+                    if (r.Hit(e))
                     {
+                        
                         deletePlayerRockets.AddFirst(r);
                         e.Health -= r.Damage;
                         if (e.Health <= 0)
@@ -171,12 +169,18 @@ namespace CarrierAirWing
                     }
                 }
 
+                if (p1.plane.Hit(e))
+                {
+                    p1.Health -= 20;
+                    deleteEnemies.AddFirst(e);
+                }
+
                 // Enemy-Player collision TO-DO5
             }
 
             foreach (Bullet b in enemyBullets)
             {
-                if (b.X <= p1.plane.X + 50 && b.X >= p1.plane.X && b.Y >= p1.plane.Y && b.Y <= p1.plane.Y + 15)
+                if (p1.plane.Hit(b))
                 {
                     deleteEnemyBullets.AddFirst(b);
                     p1.Health -= b.Damage;
@@ -208,6 +212,7 @@ namespace CarrierAirWing
         {
             level.Draw(g);
             p1.Draw(g);
+            exp1.Draw(g);
 
             foreach (Enemy e in enemies)
             {

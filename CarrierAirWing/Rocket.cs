@@ -45,10 +45,10 @@ namespace CarrierAirWing
 
         public bool Hit(Enemy e)
         {
-            if (Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height), new Rectangle(e.X, e.Y, e.Sprite.Width, e.Sprite.Height)) != null)
+            Rectangle intersect = Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height), new Rectangle(e.X, e.Y, e.Sprite.Width, e.Sprite.Height));
+            if (intersect.Width > 0 && intersect.Height > 0)
                 return true;
             return false;
-
         }
     }
 }

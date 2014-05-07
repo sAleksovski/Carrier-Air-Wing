@@ -31,10 +31,10 @@ namespace CarrierAirWing
             m[4].SpeedY = 0;
             m[4].steps = 90;
 
-            Enemy e = new Enemy(700, 200, m, 0, 100);
+            Enemy e = new Enemy(700, 200, m, 0, 10);
             Enemies.AddFirst(e);
 
-            e = new Enemy(700, 300, m, 0, 100);
+            e = new Enemy(700, 300, m, 0, 10);
             Enemies.AddFirst(e);
         }
 
