@@ -2,7 +2,7 @@ Carrier Air Wing
 =========
 
 ## TO-DO-M♫ list
-- [ ] Test the new Hit() method
+- [x] Test the new Hit() method
 - [x] Change repo name to Carrier Air Wing</del>
 - [ ] Refactor and add the existing collision and enemy system</del>
 - [x] Create Bullet class</del>
