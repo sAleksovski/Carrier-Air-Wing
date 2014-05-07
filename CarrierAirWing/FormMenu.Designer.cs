@@ -84,6 +84,8 @@
             this.Controls.Add(this.btnPlay);
             this.Name = "FormMenu";
             this.Text = "FormMenu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMenu_FormClosing);
+            this.Load += new System.EventHandler(this.FormMenu_Load);
             this.ResumeLayout(false);
 
         }
