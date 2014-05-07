@@ -156,9 +156,20 @@ namespace CarrierAirWing
 
             foreach (Enemy e in enemies)
             {
+                foreach (Bullet b in playerBullets)
+                {
+                    if(e.Hit(b))
+                    {
+                        deletePlayerBullets.AddFirst(b);
+                        e.Health -= b.Damage;
+                        if (e.Health <= 0)
+                            deleteEnemies.AddFirst(e);
+                    }
+                }
+
                 foreach (Rocket r in playerRockets)
                 {
-                    if (r.Hit(e))
+                    if (e.Hit(r))
                     {
                         
                         deletePlayerRockets.AddFirst(r);
@@ -171,11 +182,13 @@ namespace CarrierAirWing
 
                 if (p1.plane.Hit(e))
                 {
-                    p1.Health -= 20;
+                    p1.Health = 100;
+                    p1.Lives -= 1;
                     deleteEnemies.AddFirst(e);
-                }
 
-                // Enemy-Player collision TO-DO5
+                    //if (p1.Lives == 0)
+                    //    GameOver();
+                }
             }
 
             foreach (Bullet b in enemyBullets)

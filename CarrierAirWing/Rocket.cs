@@ -43,11 +43,5 @@ namespace CarrierAirWing
             g.DrawImage(Sprite, X, Y);
         }
 
-        public bool Hit(Enemy e)
-        {
-            if (Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height), new Rectangle(e.X, e.Y, e.Sprite.Width, e.Sprite.Height)).IsEmpty)
-                return false;
-            return true;
-        }
     }
 }

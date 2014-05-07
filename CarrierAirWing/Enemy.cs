@@ -84,7 +84,20 @@ namespace CarrierAirWing
         public void Draw(Graphics g)
         {
             g.DrawImage(Sprite, X, Y);
-            //g.DrawRectangle(new Pen(Color.Red), X, Y, 30, 20);
+        }
+
+        public bool Hit(Rocket r)
+        { 
+            if (Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height), new Rectangle(r.X, r.Y, r.Sprite.Width, r.Sprite.Height)).IsEmpty)
+                return false;
+            return true;
+        }
+ 
+        public bool Hit(Bullet b)
+        { 
+            if (Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height), new Rectangle(b.X, b.Y, Properties.Resources.bullet0.Width, Properties.Resources.bullet0.Height)).IsEmpty)
+                return false;
+            return true;
         }
     }
 }
