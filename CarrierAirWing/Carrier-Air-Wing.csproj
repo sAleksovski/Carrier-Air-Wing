@@ -63,7 +63,8 @@
   <ItemGroup>
     <Compile Include="Bullet.cs" />
     <Compile Include="Enemy.cs" />
-    <Compile Include="F14Tomcat.cs" />
+    <Compile Include="F14TomCat.cs" />
+    <Compile Include="F20TigerShark.cs" />
     <Compile Include="FormChoosePlane.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,7 +86,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="GraphicsEngine.cs" />
     <Compile Include="Level.cs" />
-    <Compile Include="A10Thunderbolt.cs" />
+    <Compile Include="A10ThunderBolt.cs" />
     <Compile Include="Level_1.cs" />
     <Compile Include="Level_2.cs" />
     <Compile Include="Plane.cs" />

@@ -8,27 +8,27 @@ namespace CarrierAirWing
 {
     public struct EnemyMovement
     {
-        public float SpeedX;
-        public float SpeedY;
+        public int SpeedX;
+        public int SpeedY;
         public int steps;
     };
 
     public class Enemy
     {
-        public Bitmap sprite;
+        public Bitmap Sprite { get; set; }
         public int spriteRow;
-        public float X;
-        public float Y;
-        public float SpeedX;
-        public float SpeedY;
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int SpeedX { get; set; }
+        public int SpeedY { get; set; }
         public EnemyMovement[] movement;
         public int currentMovement;
         public int ticks;
         public int CanFire;
         public int Health;
-        
 
-        public Enemy(float x, float y, EnemyMovement[] m, int sr, int health)
+
+        public Enemy(int x, int y, EnemyMovement[] m, int sr, int health)
         {
             X = x;
             Y = y;
@@ -39,7 +39,7 @@ namespace CarrierAirWing
             SpeedY = movement[currentMovement].SpeedY;
             spriteRow = sr;
             //sprite = GraphicsEngine.enemySprites[spriteRow][0];
-            sprite = GraphicsEngine.planeSprites[0][0];
+            Sprite = GraphicsEngine.planeSprites[0][0];
             Health = health;
             CanFire = 0;
         }
@@ -64,11 +64,11 @@ namespace CarrierAirWing
         public void ChangeSprite()
         {
             if(SpeedY < 0)
-                sprite = GraphicsEngine.enemySprites[spriteRow][1];
+                Sprite = GraphicsEngine.enemySprites[spriteRow][1];
             else if(SpeedY > 0)
-                sprite = GraphicsEngine.enemySprites[spriteRow][2];
+                Sprite = GraphicsEngine.enemySprites[spriteRow][2];
             else
-                sprite = GraphicsEngine.enemySprites[spriteRow][0];
+                Sprite = GraphicsEngine.enemySprites[spriteRow][0];
         }
 
         public Bullet Fire(float y)
@@ -83,7 +83,7 @@ namespace CarrierAirWing
 
         public void Draw(Graphics g)
         {
-            g.DrawImage(sprite, X, Y);
+            g.DrawImage(Sprite, X, Y);
             //g.DrawRectangle(new Pen(Color.Red), X, Y, 30, 20);
         }
     }

@@ -42,8 +42,10 @@ namespace CarrierAirWing
             {
                 enemies.AddFirst(e);
             }
-            //p1 = new Player(new A10Thunderbolt(100, 100));
-            p1 = new Player(new F14Tomcat(100, 100));
+            
+            //p1 = new Player(new A10ThunderBolt(100, 100));
+            //p1 = new Player(new F14TomCat(100, 100));
+            p1 = new Player(new F20TigerShark(100, 100));
             p1Controls.UP = System.Windows.Forms.Keys.Up;
             p1Controls.DOWN = System.Windows.Forms.Keys.Down;
             p1Controls.LEFT = System.Windows.Forms.Keys.Left;
@@ -147,7 +149,7 @@ namespace CarrierAirWing
             {
                 foreach (Bullet b in playerBullets)
                 {
-                    if (b.X >= e.X && b.X <= e.X + e.sprite.Width && b.Y >= e.Y && b.Y <= e.Y + e.sprite.Height)
+                    if (b.X >= e.X && b.X <= e.X + e.Sprite.Width && b.Y >= e.Y && b.Y <= e.Y + e.Sprite.Height)
                     {
                         deletePlayerBullets.AddFirst(b);
                         e.Health -= b.Damage;
@@ -159,7 +161,7 @@ namespace CarrierAirWing
 
                 foreach (Rocket r in playerRockets)
                 {
-                    if (r.X + 15 >= e.X && r.X <= e.X + e.sprite.Width && r.Y >= e.Y && r.Y <= e.Y + e.sprite.Height)
+                    if (r.X + 15 >= e.X && r.X <= e.X + e.Sprite.Width && r.Y >= e.Y && r.Y <= e.Y + e.Sprite.Height)
                     {
                         deletePlayerRockets.AddFirst(r);
                         e.Health -= r.Damage;

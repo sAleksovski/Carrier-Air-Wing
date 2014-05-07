@@ -19,10 +19,11 @@ namespace CarrierAirWing
 
     public abstract class Plane
     {
-        public float X { get; set; }
-        public float Y { get; set; }
-        public float SpeedX { get; set; }
-        public float SpeedY { get; set; }
+        protected Bitmap Sprite { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int SpeedX { get; set; }
+        public int SpeedY { get; set; }
 
         //Da se implementira
         public int BoundsX { get; set; }
@@ -37,14 +38,12 @@ namespace CarrierAirWing
         public int Health { get; set; }
         public int State { get; set; }
 
-        protected Bitmap sprite;
-
-        public Plane(float x, float y)
+        public Plane(int x, int y)
         {
             this.X = x;
             this.Y = y;
-            SpeedX = 6F;
-            SpeedY = 6F;
+            SpeedX = 6;
+            SpeedY = 6;
             BulletCountdown = 0;
             RocketCountdown = 0;
             RocketBlocked = false;
@@ -77,16 +76,27 @@ namespace CarrierAirWing
         public virtual void Draw(Graphics g)
         {
             //g.DrawRectangle(new Pen(Color.Red), X - sprite.Width / 2, Y - sprite.Height / 2, sprite.Width, sprite.Height);
-            g.DrawImage(sprite, X, Y);
+            g.DrawImage(Sprite, X, Y);
         }
 
         public abstract Bullet FireBullet();
         public abstract Rocket FireRocket();
 
+        public bool Hit(Enemy e)
+        {
+            if (Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height),new Rectangle(e.X, e.Y, e.Sprite.Width, e.Sprite.Height)) != null)
+                return true;
+            return false;
+           
+        }
+
         public bool Hit(Bullet b)
         {
+            if (Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height),new Rectangle(b.X, b.Y, Resources.bullet0.Width, Resources.bullet0.Height)) != null)
+                return true;
             return false;
         }
+
     }
 
 }

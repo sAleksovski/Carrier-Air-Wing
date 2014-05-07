@@ -9,15 +9,16 @@ namespace CarrierAirWing
 {
     public class Rocket
     {
-        public float X { get; set; }
-        public float Y { get; set; }
-        public float SpeedX { get; set; }
-        public float SpeedY { get; set; }
+        public Bitmap Sprite { get; set; }
+        private int spriteIndex;
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int SpeedX { get; set; }
+        public int SpeedY { get; set; }
         public int Status { get; set; }
         public int Damage { get; set; }
-        private int spriteIndex;
 
-        public Rocket(float x, float y, float speedX, float speedY, int spriteIndex, int damage)
+        public Rocket(int x, int y, int speedX, int speedY, int spriteIndex, int damage)
         {
             X = x;
             Y = y;
@@ -26,6 +27,7 @@ namespace CarrierAirWing
             Status = 0;
             this.spriteIndex = spriteIndex;
             Damage = damage;
+            Sprite = GraphicsEngine.rocketSprites[spriteIndex][Status];
         }
 
         public void Move()
@@ -33,13 +35,20 @@ namespace CarrierAirWing
             X += SpeedX;
             Y += SpeedY;
             Status = (Status + 1) % 2;
+            Sprite = GraphicsEngine.rocketSprites[spriteIndex][Status];
         }
 
         public virtual void Draw(Graphics g)
         {
-            //g.DrawImage(GraphicsEngine.rocketSprites[Status], X, Y, GraphicsEngine.rocketSprites[Status].Width * 0.15F, GraphicsEngine.rocketSprites[Status].Height * 0.15F);
-            //g.DrawImage(GraphicsEngine.rocketSprites[Status], X, Y);
-            g.DrawImage(GraphicsEngine.rocketSprites[spriteIndex][Status], X, Y);
+            g.DrawImage(Sprite, X, Y);
+        }
+
+        public bool Hit(Enemy e)
+        {
+            if (Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height), new Rectangle(e.X, e.Y, e.Sprite.Width, e.Sprite.Height)) != null)
+                return true;
+            return false;
+
         }
     }
 }

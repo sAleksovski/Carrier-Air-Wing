@@ -9,15 +9,16 @@ namespace CarrierAirWing
 {
     public class Bullet
     {
-        public float X;
-        public float Y;
-        public float MoveX;
-        public float MoveY;
+        public Bitmap Sprite { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int MoveX { get; set; }
+        public int MoveY { get; set; }
         public int Damage { get; set; }
         public int Status { get; set; }
         private int type;
 
-        public Bullet(float x, float y, float mx, float my, int damage)
+        public Bullet(int x, int y, int mx, int my, int damage)
         {
             X = x;
             Y = y;
@@ -37,6 +38,7 @@ namespace CarrierAirWing
 
         public void Draw(Graphics g)
         {
+            //Optimize & refactor
             if (type == 0)
             {
                 if (Status > 7)
