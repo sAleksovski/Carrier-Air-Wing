@@ -47,10 +47,15 @@ namespace CarrierAirWing
                 enemies.AddFirst(e);
             }
             
-            p1 = new Player(new A10ThunderBolt(100, 100));
+            //p1 = new Player(new A10ThunderBolt(100, 100));
             //p1 = new Player(new F14TomCat(100, 100));
-            //p1 = new Player(new F20TigerShark(100, 100));
-            
+            if(Settings.chosenPlane == 0)
+                p1 = new Player(new F20TigerShark(100, 100));
+            else if(Settings.chosenPlane == 1)
+                p1 = new Player(new F14TomCat(100, 100));
+            else
+                p1 = new Player(new A10ThunderBolt(100, 100));
+
             p1Controls.UP = System.Windows.Forms.Keys.Up;
             p1Controls.DOWN = System.Windows.Forms.Keys.Down;
             p1Controls.LEFT = System.Windows.Forms.Keys.Left;
@@ -299,10 +304,6 @@ namespace CarrierAirWing
             }
 
             DrawHUD(g);
-            //g.DrawString(string.Format("Lives: {0}, Health: {1}", p1.Lives, p1.Health), 
-            //    new Font(FontFamily.GenericMonospace, 12), 
-            //    new SolidBrush(Color.Red), 
-            //    new PointF(10, 10));
         }
 
         public void DrawHUD(Graphics g)
@@ -334,11 +335,14 @@ namespace CarrierAirWing
             {
                 FormGetName f = new FormGetName();
                 f.ShowDialog();
-                string name = f.Name;
+                string name = f.PlayerName;
                 if (name == "FormGetName")
                     return;
                 Settings.highScores.AddHighScore(new Score(name, Score));
             }
+
+            FormHighScore fh = new FormHighScore();
+            fh.ShowDialog();
 
         }
     }

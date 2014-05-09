@@ -10,12 +10,12 @@ namespace CarrierAirWing
     public class Settings
     {
         public static HighScore highScores { get; set; }
-        public static Plane chosenPlane { get; set; }
+        public static int chosenPlane { get; set; }
 
         public static void Init()
         {
             highScores = ReadHighScore();
-            chosenPlane = new F14TomCat(100, 100);
+            chosenPlane = 0;
         }
 
         private static HighScore ReadHighScore()

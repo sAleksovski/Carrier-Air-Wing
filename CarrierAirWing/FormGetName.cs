@@ -11,7 +11,7 @@ namespace CarrierAirWing
 {
     public partial class FormGetName : Form
     {
-        public string Name { get; set; }
+        public string PlayerName { get; set; }
         public FormGetName()
         {
             InitializeComponent();
@@ -19,7 +19,7 @@ namespace CarrierAirWing
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Name = tbName.Text;
+            PlayerName = tbName.Text;
             this.DialogResult = DialogResult.OK;
         }
     }

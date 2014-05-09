@@ -15,5 +15,23 @@ namespace CarrierAirWing
         {
             InitializeComponent();
         }
+
+        private void btnThunderbolt_Click(object sender, EventArgs e)
+        {
+            Settings.chosenPlane = 2;
+            this.Close();
+        }
+
+        private void btnTomcat_Click(object sender, EventArgs e)
+        {
+            Settings.chosenPlane = 1;
+            this.Close();
+        }
+
+        private void btnTigerShark_Click(object sender, EventArgs e)
+        {
+            Settings.chosenPlane = 0;
+            this.Close();
+        }
     }
 }

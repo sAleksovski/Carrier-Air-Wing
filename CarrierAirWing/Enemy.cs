@@ -77,7 +77,7 @@ namespace CarrierAirWing
             if (Math.Abs(y - Y) < 20 && CanFire == 0)
             {
                 CanFire = 20;
-                return new Bullet(X, Y, -5, -3, 25);
+                return new Bullet(X, Y, -5, 0, 25);
             }
             return null;
         }
