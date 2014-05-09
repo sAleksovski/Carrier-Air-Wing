@@ -32,7 +32,7 @@ namespace CarrierAirWing
             m[2].SpeedY = 0;
             m[2].steps = 120;
             
-            Enemy e = new Enemy(800, 100, m, 0, 50);
+            Enemy e = new Enemy(800, 100, m, 0, 20);
             Enemies.AddFirst(e);
 
         }
@@ -76,7 +76,7 @@ namespace CarrierAirWing
                 m[2].SpeedY = 0;
                 m[2].steps = 120;
 
-                Enemy e = new Enemy(800, 100, m, 0, 50);
+                Enemy e = new Enemy(800, 100, m, 0, 20);
                 Enemies.AddFirst(e);
             }
             else if (t == 800)
@@ -164,13 +164,13 @@ namespace CarrierAirWing
                 m3[5].SpeedX = 3;
                 m3[5].SpeedY = 3;
                 m3[5].steps = 30;
-                Enemy e = new Enemy(700, 100, m, 0, 50);
+                Enemy e = new Enemy(700, 100, m, 0, 20);
                 Enemies.AddFirst(e);
-                e = new Enemy(700, 200, m3, 0, 50);
+                e = new Enemy(700, 200, m3, 0, 20);
                 Enemies.AddFirst(e);
-                e = new Enemy(700, 275, m2, 0, 50);
+                e = new Enemy(700, 275, m2, 0, 20);
                 Enemies.AddFirst(e);
-                e = new Enemy(700, 450, m1, 0, 50);
+                e = new Enemy(700, 450, m1, 0, 20);
                 Enemies.AddFirst(e);
             }
         }

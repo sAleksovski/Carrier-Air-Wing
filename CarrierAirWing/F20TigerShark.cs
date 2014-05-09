@@ -10,7 +10,8 @@ namespace CarrierAirWing
         public F20TigerShark(int x, int y)
             : base(x, y)
         {
-            Sprite = GraphicsEngine.planeSprites[1][0];
+            Sprite = GraphicsEngine.planeSprites[0][0];
+            PlayerFace = GraphicsEngine.playerFaceSprites[0];
         }
 
         protected override void ChangeSprite()

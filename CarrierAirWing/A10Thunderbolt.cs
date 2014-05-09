@@ -11,7 +11,8 @@ namespace CarrierAirWing
         public A10ThunderBolt(int x, int y)
             : base(x, y)
         {
-            Sprite = GraphicsEngine.planeSprites[1][0];
+            Sprite = GraphicsEngine.planeSprites[2][0];
+            PlayerFace = GraphicsEngine.playerFaceSprites[2];
         }
 
         protected override void ChangeSprite()

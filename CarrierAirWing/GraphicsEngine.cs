@@ -12,6 +12,7 @@ namespace CarrierAirWing
         public static Bitmap[][] planeSprites = new Bitmap[3][];
         public static Bitmap[][] rocketSprites = new Bitmap[3][];
         public static Bitmap[][] enemySprites = new Bitmap[3][];
+        public static Bitmap[] playerFaceSprites = new Bitmap[3];
         public static Bitmap[][] explosionSprites = new Bitmap[2][];
         public static Random randomizer;
 
@@ -40,13 +41,13 @@ namespace CarrierAirWing
             planeSprites[1] = new Bitmap[3];
             bmp = new Bitmap(Resources.UNSquadronPlayer);
             croped = bmp.Clone(new Rectangle(8, 250, 50, 15), bmp.PixelFormat);
-            scaled = new Bitmap(croped, (int)(croped.Width * 1.5), (int)(croped.Height * 1.5));
+            scaled = new Bitmap(croped, (int)(croped.Width * 1.6), (int)(croped.Height * 1.6));
             planeSprites[1][0] = scaled;
             croped = bmp.Clone(new Rectangle(295, 270, 48, 17), bmp.PixelFormat);
-            scaled = new Bitmap(croped, (int)(croped.Width * 1.5), (int)(croped.Height * 1.5));
+            scaled = new Bitmap(croped, (int)(croped.Width * 1.6), (int)(croped.Height * 1.6));
             planeSprites[1][1] = scaled;
             croped = bmp.Clone(new Rectangle(125, 295, 47, 18), bmp.PixelFormat);
-            scaled = new Bitmap(croped, (int)(croped.Width * 1.5), (int)(croped.Height * 1.5));
+            scaled = new Bitmap(croped, (int)(croped.Width * 1.6), (int)(croped.Height * 1.6));
             planeSprites[1][2] = scaled;
 
             //A-10 ThuderBolt
@@ -75,10 +76,10 @@ namespace CarrierAirWing
 
             rocketSprites[1] = new Bitmap[2];
             bmp = new Bitmap(Resources.rocket2);
-            croped = new Bitmap(bmp, (int)(bmp.Width * 0.7F), (int)(bmp.Height * 0.7F));
+            croped = new Bitmap(bmp, (int)(bmp.Width * 1.0F), (int)(bmp.Height * 1.0F));
             rocketSprites[1][0] = croped;
             bmp = new Bitmap(Resources.rocket3);
-            croped = new Bitmap(bmp, (int)(bmp.Width * 0.7F), (int)(bmp.Height * 0.7F));
+            croped = new Bitmap(bmp, (int)(bmp.Width * 1.0F), (int)(bmp.Height * 1.0F));
             rocketSprites[1][1] = croped;
 
             rocketSprites[2] = new Bitmap[2];
@@ -88,6 +89,19 @@ namespace CarrierAirWing
             bmp = new Bitmap(Resources.rocket1);
             croped = new Bitmap(bmp, (int)(bmp.Width * 0.2F), (int)(bmp.Height * 0.2F));
             rocketSprites[2][1] = croped;
+
+            // Player Face Sprites
+            bmp = new Bitmap(Resources.playerFace);
+            croped = bmp.Clone(new Rectangle(0, 0, 66, 66), bmp.PixelFormat);
+            playerFaceSprites[0] = croped;
+
+            bmp = new Bitmap(Resources.playerFace);
+            croped = bmp.Clone(new Rectangle(135, 0, 66, 66), bmp.PixelFormat);
+            playerFaceSprites[1] = croped;
+
+            bmp = new Bitmap(Resources.playerFace);
+            croped = bmp.Clone(new Rectangle(199, 0, 66, 66), bmp.PixelFormat);
+            playerFaceSprites[2] = croped;
 
             // Enemy Sprites
 

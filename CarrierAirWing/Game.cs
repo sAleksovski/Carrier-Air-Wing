@@ -26,14 +26,12 @@ namespace CarrierAirWing
         public LinkedList<Bullet> playerBullets;
         public LinkedList<Rocket> playerRockets;
         public LinkedList<Bullet> enemyBullets;
+        public LinkedList<Explosion> explosions;
         public int BoundsX { get; set; }
         public int BoundsY { get; set; }
         public int Score { get; set; }
-        //public Player p2;
-
-        //Explosiont test
-        //Explosion exp1;
-        public LinkedList<Explosion> explosions;
+        public bool GameInProgress { get; set; }
+        public int TTL { get; set; }
 
         public Game()
         {
@@ -49,9 +47,10 @@ namespace CarrierAirWing
                 enemies.AddFirst(e);
             }
             
-            //p1 = new Player(new A10ThunderBolt(100, 100));
-            p1 = new Player(new F14TomCat(100, 100));
+            p1 = new Player(new A10ThunderBolt(100, 100));
+            //p1 = new Player(new F14TomCat(100, 100));
             //p1 = new Player(new F20TigerShark(100, 100));
+            
             p1Controls.UP = System.Windows.Forms.Keys.Up;
             p1Controls.DOWN = System.Windows.Forms.Keys.Down;
             p1Controls.LEFT = System.Windows.Forms.Keys.Left;
@@ -59,22 +58,31 @@ namespace CarrierAirWing
             p1Controls.A = System.Windows.Forms.Keys.A;
             p1Controls.B = System.Windows.Forms.Keys.S;
 
-            //Explosion intit
-            //exp1 = new Explosion(200, 200);
+            GameInProgress = true;
         }
         
         public void Move()
         {
+            if (!GameInProgress)
+            {
+                TTL--;
+                if(TTL <= 0)
+                    return;
+            }
+                
+
             p1.Move();
             foreach (Explosion e in explosions)
             {
                 e.Move();
             }
-
-            if (level.Tick(enemies.Count))
+            if (GameInProgress)
             {
-                foreach(Enemy e in level.Enemies)
-                    enemies.AddFirst(e);
+                if (level.Tick(enemies.Count))
+                {
+                    foreach (Enemy e in level.Enemies)
+                        enemies.AddFirst(e);
+                }
             }
 
             if (level.CanLevelUP)
@@ -290,14 +298,33 @@ namespace CarrierAirWing
                 e.Draw(g);
             }
 
-            g.DrawString(string.Format("Lives: {0}, Health: {1}", p1.Lives, p1.Health), 
-                new Font(FontFamily.GenericMonospace, 12), 
+            DrawHUD(g);
+            //g.DrawString(string.Format("Lives: {0}, Health: {1}", p1.Lives, p1.Health), 
+            //    new Font(FontFamily.GenericMonospace, 12), 
+            //    new SolidBrush(Color.Red), 
+            //    new PointF(10, 10));
+        }
+
+        public void DrawHUD(Graphics g)
+        {
+            g.DrawRectangle(new Pen(Color.Red, 3), 1, 1, 220, 88);
+            g.DrawImage(p1.plane.PlayerFace, 160, 1);
+            g.DrawRectangle(new Pen(Color.Red, 3), 160, 1, 60, 70);
+            g.DrawString(string.Format("Lives: {0}", p1.Lives), 
+                new Font(FontFamily.GenericMonospace, 16), 
                 new SolidBrush(Color.Red), 
-                new PointF(10, 10));
+                new PointF(5, 3));
+            g.DrawString("Health:",
+                new Font(FontFamily.GenericMonospace, 16), 
+                new SolidBrush(Color.Red),
+                new PointF(5, 42));
+            g.DrawLine(new Pen(Color.Red, 10), 8, 80, 8 + (int)(2*p1.Health), 80);
         }
 
         public void GameOver()
         {
+            GameInProgress = false;
+            TTL = 15;
             playerBullets = new LinkedList<Bullet>();
             playerRockets = new LinkedList<Rocket>();
             enemyBullets = new LinkedList<Bullet>();
@@ -305,9 +332,11 @@ namespace CarrierAirWing
 
             if (Settings.highScores.IsTopTen(Score))
             {
-                Form f = new FormGetName();
+                FormGetName f = new FormGetName();
                 f.ShowDialog();
                 string name = f.Name;
+                if (name == "FormGetName")
+                    return;
                 Settings.highScores.AddHighScore(new Score(name, Score));
             }
 

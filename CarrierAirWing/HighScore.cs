@@ -30,6 +30,8 @@ namespace CarrierAirWing
         {
             scores.Add(s);
             scores.Sort();
+            if (scores.Count > 10)
+                scores.RemoveAt(10);
         }
     }
 }

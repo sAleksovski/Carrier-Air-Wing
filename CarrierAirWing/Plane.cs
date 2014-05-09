@@ -38,6 +38,8 @@ namespace CarrierAirWing
         public int Health { get; set; }
         public int State { get; set; }
 
+        public Bitmap PlayerFace { get; set; }
+
         public Plane(int x, int y)
         {
             this.X = x;

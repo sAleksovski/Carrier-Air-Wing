@@ -11,7 +11,8 @@ namespace CarrierAirWing
         public F14TomCat(int x, int y)
             : base(x, y)
         {
-            Sprite = GraphicsEngine.planeSprites[0][0];
+            Sprite = GraphicsEngine.planeSprites[1][0];
+            PlayerFace = GraphicsEngine.playerFaceSprites[1];
         }
 
         protected override void ChangeSprite()

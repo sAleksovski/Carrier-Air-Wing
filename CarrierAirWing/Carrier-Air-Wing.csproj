@@ -135,6 +135,13 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Images\Planes\UNSquadronPlayer.png" />
+    <EmbeddedResource Include="Resources\Images\Rockets\rocket0.png" />
+    <EmbeddedResource Include="Resources\Images\Rockets\rocket1.png" />
+    <EmbeddedResource Include="Resources\Images\Rockets\rocket2.png" />
+    <EmbeddedResource Include="Resources\Images\Rockets\rocket3.png" />
+    <EmbeddedResource Include="Resources\Images\Rockets\rocket4.png" />
+    <EmbeddedResource Include="Resources\Images\Rockets\rocket5.png" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -168,6 +175,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Images\bullet2.png" />
+    <Content Include="Resources\Images\bullet4.png" />
     <Content Include="Resources\Images\Bullets\bullet0.png" />
     <Content Include="Resources\Images\Bullets\bullet1.png" />
     <Content Include="Resources\Images\Bullets\bullet2.png" />
@@ -189,13 +198,7 @@
     <Content Include="Resources\Images\Levels\level3.jpg" />
     <Content Include="Resources\Images\Menu\A10-Thunderbolt.png" />
     <Content Include="Resources\Images\Menu\f14-tomcat.jpg" />
-    <EmbeddedResource Include="Resources\Images\Planes\UNSquadronPlayer.png" />
-    <EmbeddedResource Include="Resources\Images\Rockets\rocket0.png" />
-    <EmbeddedResource Include="Resources\Images\Rockets\rocket1.png" />
-    <EmbeddedResource Include="Resources\Images\Rockets\rocket2.png" />
-    <EmbeddedResource Include="Resources\Images\Rockets\rocket3.png" />
-    <EmbeddedResource Include="Resources\Images\Rockets\rocket4.png" />
-    <EmbeddedResource Include="Resources\Images\Rockets\rocket5.png" />
+    <Content Include="Resources\Images\playerFace.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
