@@ -21,10 +21,7 @@ namespace CarrierAirWing
             CanLevelUP = false;
         }
 
-        public void Draw(Graphics g)
-        {
-            g.DrawImageUnscaled(LevelBackground, 0, 0); // Neshto da se dvizi?
-        }
+        public abstract void Draw(Graphics g);
 
         public abstract Level LevelUP();
         public abstract bool Tick(int enemies);

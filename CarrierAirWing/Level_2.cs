@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
 namespace CarrierAirWing
 {
     class Level_2 : Level
     {
+        private int t;
+        private bool forward;
+
         public Level_2()
             : base()
         {
             Lvl = 1;
             LevelBackground = Properties.Resources.level2;
             Enemies = new LinkedList<Enemy>();
+
+            t = 0;
+            forward = true;
 
             Ticks = new LinkedList<int>();
             Ticks.AddLast(50);
@@ -40,6 +47,30 @@ namespace CarrierAirWing
         public override Level LevelUP()
         {
             return new Level_1();
+        }
+
+        public override void Draw(Graphics g)
+        {
+            g.DrawImage(GraphicsEngine.Level2[t], 0, 0);
+            if (forward)
+            {
+                t++;
+                if (t == 6)
+                {
+                    forward = false;
+                    t = 5;
+                }
+            }
+            else
+            {
+                t--;
+                if (t == -1)
+                {
+                    forward = true;
+                    t = 0;
+                }
+            }
+            //g.DrawImageUnscaled(LevelBackground, 0, 0); // Neshto da se dvizi?
         }
 
         public override bool Tick(int enemies)

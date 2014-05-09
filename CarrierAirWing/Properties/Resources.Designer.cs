@@ -263,16 +263,6 @@ namespace CarrierAirWing.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap level3 {
-            get {
-                object obj = ResourceManager.GetObject("level3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap playerFace {
             get {
                 object obj = ResourceManager.GetObject("playerFace", resourceCulture);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
 namespace CarrierAirWing
 {
@@ -35,6 +36,18 @@ namespace CarrierAirWing
             Enemy e = new Enemy(800, 100, m, 0, 20);
             Enemies.AddFirst(e);
 
+        }
+
+        public override void Draw(Graphics g)
+        {
+            g.DrawImage(GraphicsEngine.Level1, 0 - tick % 126, 0);
+            g.DrawImage(GraphicsEngine.Level1, 126 - tick % 126, 0);
+            g.DrawImage(GraphicsEngine.Level1, 252 - tick % 126, 0);
+            g.DrawImage(GraphicsEngine.Level1, 378 - tick % 126, 0);
+            g.DrawImage(GraphicsEngine.Level1, 504 - tick % 126, 0);
+            g.DrawImage(GraphicsEngine.Level1, 630 - tick % 126, 0);
+            g.DrawImage(GraphicsEngine.Level1, 756 - tick % 126, 0);
+            g.DrawImage(GraphicsEngine.Level1, 882 - tick % 126, 0);
         }
 
         public override Level LevelUP()
