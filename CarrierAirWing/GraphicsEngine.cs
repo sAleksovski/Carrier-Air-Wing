@@ -106,10 +106,6 @@ namespace CarrierAirWing
             croped = bmp.Clone(new Rectangle(199, 0, 66, 66), bmp.PixelFormat);
             playerFaceSprites[2] = croped;
 
-            //bmp.Dispose();
-            //croped.Dispose();
-            //scaled.Dispose();
-
             // Enemy Sprites   
             // Green Helis
             bmp = new Bitmap(Resources.enemies);
@@ -278,39 +274,56 @@ namespace CarrierAirWing
 
 
             // Explosion sprites
-            // New to be added
+            // Type 1
             explosionSprites[0] = new Bitmap[7];
             bmp = new Bitmap(Resources.exp10);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.1F), (int)(bmp.Height * 2.1F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
             explosionSprites[0][0] = scaled;
 
             bmp = new Bitmap(Resources.exp11);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.1F), (int)(bmp.Height * 2.1F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
             explosionSprites[0][1] = scaled;
 
             bmp = new Bitmap(Resources.exp12);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.1F), (int)(bmp.Height * 2.1F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
             explosionSprites[0][2] = scaled;
 
             bmp = new Bitmap(Resources.exp13);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.1F), (int)(bmp.Height * 2.1F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
             explosionSprites[0][3] = scaled;
 
             bmp = new Bitmap(Resources.exp14);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.1F), (int)(bmp.Height * 2.1F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
             explosionSprites[0][4] = scaled;
 
             bmp = new Bitmap(Resources.exp15);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.1F), (int)(bmp.Height * 2.1F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
             explosionSprites[0][5] = scaled;
 
             bmp = new Bitmap(Resources.exp16);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.1F), (int)(bmp.Height * 2.1F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
             explosionSprites[0][6] = scaled;
+
+            // Type 2
+            explosionSprites[1] = new Bitmap[4];
+            bmp = new Bitmap(Resources.exp20);
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
+            explosionSprites[1][0] = scaled;
+
+            bmp = new Bitmap(Resources.exp21);
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
+            explosionSprites[1][1] = scaled;
+
+            bmp = new Bitmap(Resources.exp22);
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
+            explosionSprites[1][2] = scaled;
+
+            bmp = new Bitmap(Resources.exp23);
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
+            explosionSprites[1][3] = scaled;
 
 
             // Level Sprites
-
             // Level 1
             bmp = new Bitmap(Resources.level1);
             croped = bmp.Clone(new Rectangle(26, 12, 126, 414), bmp.PixelFormat);

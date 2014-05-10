@@ -117,6 +117,10 @@ namespace CarrierAirWing
 
             if (GraphicsEngine.enemySprites[spriteIndex].Length == 3)
                 Sprite = GraphicsEngine.enemySprites[spriteIndex][2];
+
+            //if (Health <= 0)
+            //    SoundEngine.PlayExplosion(@"sounds\explosions\explosion1.mp3");
+
             return true;
         }
 

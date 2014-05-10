@@ -13,6 +13,7 @@ namespace CarrierAirWing
         public int Y { get; set; }
         public int Status { get; set; }
         private int ticks;
+        private int currentSprite;
         private int spriteIndex;
 
         public Explosion(int x, int y)
@@ -20,9 +21,11 @@ namespace CarrierAirWing
             X = x;
             Y = y;
             ticks = 2;
-            spriteIndex = 0;
+            spriteIndex = GraphicsEngine.randomizer.Next(2);
+            currentSprite = 0;
             Status = 0;
-            Sprite = GraphicsEngine.explosionSprites[0][0];
+            Sprite = GraphicsEngine.explosionSprites[spriteIndex][currentSprite];
+            SoundEngine.PlayExplosionSound(@"sounds\explosions\explosion1.mp3");
         }
 
         public void Move()
@@ -30,12 +33,12 @@ namespace CarrierAirWing
             if (ticks == 0)
             {
                 ticks = 2;
-                spriteIndex++;
+                currentSprite++;
 
-                if (spriteIndex >= GraphicsEngine.explosionSprites[0].Length)
+                if (currentSprite >= GraphicsEngine.explosionSprites[spriteIndex].Length)
                     Status = -1;
                 else
-                    Sprite = GraphicsEngine.explosionSprites[0][spriteIndex];
+                    Sprite = GraphicsEngine.explosionSprites[spriteIndex][currentSprite];
             }
             else
             {

@@ -28,6 +28,7 @@ namespace CarrierAirWing
             this.spriteIndex = spriteIndex;
             Damage = damage;
             Sprite = GraphicsEngine.rocketSprites[spriteIndex][Status];
+            SoundEngine.PlayRocketSound();
         }
 
         public void Move()

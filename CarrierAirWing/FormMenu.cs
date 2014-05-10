@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarrierAirWing.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,7 +39,9 @@ namespace CarrierAirWing
         private void FormMenu_Load(object sender, EventArgs e)
         {
             GraphicsEngine.Init();
+            SoundEngine.Init();
             Settings.Init();
+            SoundEngine.PlayBackgroundMusic(@"sounds\soundtracks\menu.mp3");
         }
 
         private void FormMenu_FormClosing(object sender, FormClosingEventArgs e)

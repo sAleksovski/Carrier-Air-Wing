@@ -128,6 +128,7 @@ namespace CarrierAirWing
                 Rocket r = p1.FireRocket();
                 if (r != null)
                     playerRockets.AddFirst(r); //ili AddLast?
+
             }
             Remove();
             Collision();
@@ -202,6 +203,7 @@ namespace CarrierAirWing
                     {
                         deletePlayerBullets.AddFirst(b);
                         e.Health -= b.Damage;
+
                         Score += 5;
                         if (e.Health <= 0)
                         {
