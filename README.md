@@ -2,6 +2,7 @@ Carrier Air Wing
 =========
 
 ## TO-DO-M♫ list
+- [ ] Resize and correct Rocket and Plane sprites
 - [x] Test the new Hit() method
 - [x] Change repo name to Carrier Air Wing</del>
 - [x] Refactor and add the existing collision and enemy system</del>
