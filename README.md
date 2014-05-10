@@ -5,6 +5,7 @@ Carrier Air Wing
 - [x] Implement Sound Engine
 - [ ] Refactor Game class and Hit() method
 - [ ] Remove collision detection for bullets in Enemy and Game 
+- [ ] Add new eplosion sounds
 - [ ] Resize and correct Rocket and Plane sprites
 - [x] Test the new Hit() method
 - [x] Change repo name to Carrier Air Wing</del>
