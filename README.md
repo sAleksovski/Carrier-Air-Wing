@@ -9,7 +9,7 @@ Carrier Air Wing
 - [x] Change repo name to Carrier Air Wing</del>
 - [x] Refactor and add the existing collision and enemy system</del>
 - [x] Create Bullet class</del>
-- [ ] Add enemy sprites
+- [x] Add enemy sprites
 - [x] Refactor Game class
 - [x] Create menu
 - [ ] Add Documentation
