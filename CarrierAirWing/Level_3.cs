@@ -6,16 +6,15 @@ using System.Drawing;
 
 namespace CarrierAirWing
 {
-    class Level_2 : Level
+    class Level_3 : Level
     {
         private int t;
         private bool forward;
 
-        public Level_2()
+        public Level_3()
             : base()
         {
             Lvl = 1;
-            LevelBackground = Properties.Resources.level2;
             Enemies = new LinkedList<Enemy>();
 
             t = 0;
@@ -38,7 +37,7 @@ namespace CarrierAirWing
             m[2].SpeedX = 3;
             m[2].SpeedY = 0;
             m[2].steps = 120;
-            
+
             Enemy e = new Enemy(800, 100, m, 0, 20);
             Enemies.AddFirst(e);
 
@@ -46,19 +45,30 @@ namespace CarrierAirWing
 
         public override Level LevelUP()
         {
-            return new Level_3();
+            return new Level_1();
         }
 
         public override void Draw(Graphics g)
         {
-            g.DrawImage(GraphicsEngine.Level2, 0 - tick % 127, 0);
-            g.DrawImage(GraphicsEngine.Level2, 127 - tick % 127, 0);
-            g.DrawImage(GraphicsEngine.Level2, 254 - tick % 127, 0);
-            g.DrawImage(GraphicsEngine.Level2, 381 - tick % 127, 0);
-            g.DrawImage(GraphicsEngine.Level2, 508 - tick % 127, 0);
-            g.DrawImage(GraphicsEngine.Level2, 635 - tick % 127, 0);
-            g.DrawImage(GraphicsEngine.Level2, 762 - tick % 127, 0);
-            g.DrawImage(GraphicsEngine.Level2, 889 - tick % 127, 0);
+            g.DrawImage(GraphicsEngine.Level3[t], 0, 0);
+            if (forward)
+            {
+                t++;
+                if (t == 5)
+                {
+                    forward = false;
+                    t = 4;
+                }
+            }
+            else
+            {
+                t--;
+                if (t == -1)
+                {
+                    forward = true;
+                    t = 0;
+                }
+            }
         }
 
         public override bool Tick(int enemies)

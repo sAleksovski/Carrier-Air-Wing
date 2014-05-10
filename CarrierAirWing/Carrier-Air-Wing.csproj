@@ -103,6 +103,7 @@
     <Compile Include="A10ThunderBolt.cs" />
     <Compile Include="Level_1.cs" />
     <Compile Include="Level_2.cs" />
+    <Compile Include="Level_3.cs" />
     <Compile Include="Plane.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
@@ -195,7 +196,6 @@
     <Content Include="Resources\Images\Levels\level0.jpg" />
     <Content Include="Resources\Images\Levels\level1.png" />
     <Content Include="Resources\Images\Levels\level2.png" />
-    <Content Include="Resources\Images\Levels\level3.jpg" />
     <Content Include="Resources\Images\Menu\A10-Thunderbolt.png" />
     <Content Include="Resources\Images\Menu\f14-tomcat.jpg" />
     <Content Include="Resources\Images\playerFace.gif" />
