@@ -196,8 +196,7 @@
     <Content Include="Resources\Images\Levels\level0.jpg" />
     <Content Include="Resources\Images\Levels\level1.png" />
     <Content Include="Resources\Images\Levels\level2.png" />
-    <Content Include="Resources\Images\Menu\A10-Thunderbolt.png" />
-    <Content Include="Resources\Images\Menu\f14-tomcat.jpg" />
+    <None Include="Resources\Images\Menu\MainMenu.gif" />
     <Content Include="Resources\Images\playerFace.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

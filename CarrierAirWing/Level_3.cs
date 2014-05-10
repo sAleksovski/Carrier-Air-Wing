@@ -14,7 +14,7 @@ namespace CarrierAirWing
         public Level_3()
             : base()
         {
-            Lvl = 1;
+            Lvl = 3;
             Enemies = new LinkedList<Enemy>();
 
             t = 0;

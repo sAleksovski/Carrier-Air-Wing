@@ -8,18 +8,12 @@ namespace CarrierAirWing
 {
     class Level_2 : Level
     {
-        private int t;
-        private bool forward;
-
         public Level_2()
             : base()
         {
-            Lvl = 1;
+            Lvl = 2;
             LevelBackground = Properties.Resources.level2;
             Enemies = new LinkedList<Enemy>();
-
-            t = 0;
-            forward = true;
 
             Ticks = new LinkedList<int>();
             Ticks.AddLast(50);

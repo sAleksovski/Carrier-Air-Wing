@@ -320,6 +320,14 @@ namespace CarrierAirWing
                 new SolidBrush(Color.Red),
                 new PointF(5, 42));
             g.DrawLine(new Pen(Color.Red, 10), 8, 80, 8 + (int)(2*p1.Health), 80);
+            g.DrawString(string.Format("Score: {0}", Score.ToString()),
+                new Font(FontFamily.GenericMonospace, 16),
+                new SolidBrush(Color.Red),
+                new PointF(225, 5));
+            g.DrawString(string.Format("Level: {0}", level.Lvl.ToString()),
+                new Font(FontFamily.GenericMonospace, 16),
+                new SolidBrush(Color.Red),
+                new PointF(225, 25));
         }
 
         public void GameOver()
