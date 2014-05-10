@@ -103,6 +103,16 @@ namespace CarrierAirWing.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CarAirWing {
+            get {
+                object obj = ResourceManager.GetObject("CarAirWing", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap enemies {
             get {
                 object obj = ResourceManager.GetObject("enemies", resourceCulture);
@@ -253,9 +263,9 @@ namespace CarrierAirWing.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MainMenu {
+        internal static System.Drawing.Bitmap mainMenu {
             get {
-                object obj = ResourceManager.GetObject("MainMenu", resourceCulture);
+                object obj = ResourceManager.GetObject("mainMenu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
