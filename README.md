@@ -2,7 +2,8 @@ Carrier Air Wing
 =========
 
 ## TO-DO-M♫ list
-- [ ] Implement Sound Engine
+- [x] Implement Sound Engine
+- [ ] Refactor Game class and Hit() method
 - [ ] Remove collision detection for bullets in Enemy and Game 
 - [ ] Resize and correct Rocket and Plane sprites
 - [x] Test the new Hit() method
@@ -10,7 +11,6 @@ Carrier Air Wing
 - [x] Refactor and add the existing collision and enemy system</del>
 - [x] Create Bullet class</del>
 - [x] Add enemy sprites
-- [x] Refactor Game class
 - [x] Create menu
 - [ ] Add Documentation
 
