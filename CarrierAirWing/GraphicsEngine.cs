@@ -15,7 +15,7 @@ namespace CarrierAirWing
         public static Bitmap[] playerFaceSprites = new Bitmap[3];
         public static Bitmap[][] explosionSprites = new Bitmap[2][];
         public static Bitmap Level1;
-        public static Bitmap[] Level2 = new Bitmap[6];
+        public static Bitmap[] Level2 = new Bitmap[5];
         public static Random randomizer;
 
         public static void Init()
@@ -141,45 +141,32 @@ namespace CarrierAirWing
             // Level Sprites
 
             // Level 1
-            // public static Bitmap level1Sky;
-            // public static Bitmap[] level1Ground = new Bitmap[6];
-
-            //planeSprites[2] = new Bitmap[3];
-            //croped = bmp.Clone(new Rectangle(6, 526, 50, 15), bmp.PixelFormat);
-            //scaled = new Bitmap(croped, (int)(croped.Width * 1.5), (int)(croped.Height * 1.5));
-            //planeSprites[2][0] = scaled;
-
-
             bmp = new Bitmap(Resources.level1);
             croped = bmp.Clone(new Rectangle(26, 12, 126, 414), bmp.PixelFormat);
             scaled = new Bitmap(croped, croped.Width, 600);
             Level1 = scaled;
 
 
-            // Losho su isecheni, da se popraviv
-            croped = bmp.Clone(new Rectangle(234, 34, 262, 152), bmp.PixelFormat);
+            // Level 2
+            croped = bmp.Clone(new Rectangle(233, 33, 262, 152), bmp.PixelFormat);
             scaled = new Bitmap(croped, 800, 600);
             Level2[0] = scaled;
 
-            croped = bmp.Clone(new Rectangle(507, 34, 262, 152), bmp.PixelFormat);
+            croped = bmp.Clone(new Rectangle(507, 33, 262, 152), bmp.PixelFormat);
             scaled = new Bitmap(croped, 800, 600);
             Level2[1] = scaled;
 
-            croped = bmp.Clone(new Rectangle(781, 34, 262, 152), bmp.PixelFormat);
+            croped = bmp.Clone(new Rectangle(779, 33, 262, 152), bmp.PixelFormat);
             scaled = new Bitmap(croped, 800, 600);
             Level2[2] = scaled;
 
-            croped = bmp.Clone(new Rectangle(1049, 34, 262, 152), bmp.PixelFormat);
+            croped = bmp.Clone(new Rectangle(1048, 33, 262, 152), bmp.PixelFormat);
             scaled = new Bitmap(croped, 800, 600);
             Level2[3] = scaled;
 
-            croped = bmp.Clone(new Rectangle(1329, 34, 262, 152), bmp.PixelFormat);
+            croped = bmp.Clone(new Rectangle(1328, 33, 262, 152), bmp.PixelFormat);
             scaled = new Bitmap(croped, 800, 600);
             Level2[4] = scaled;
-
-            croped = bmp.Clone(new Rectangle(1611, 34, 262, 152), bmp.PixelFormat);
-            scaled = new Bitmap(croped, 800, 600);
-            Level2[5] = scaled;
         }
 
     }

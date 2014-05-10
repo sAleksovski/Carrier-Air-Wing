@@ -55,10 +55,10 @@ namespace CarrierAirWing
             if (forward)
             {
                 t++;
-                if (t == 6)
+                if (t == 5)
                 {
                     forward = false;
-                    t = 5;
+                    t = 4;
                 }
             }
             else
@@ -70,7 +70,6 @@ namespace CarrierAirWing
                     t = 0;
                 }
             }
-            //g.DrawImageUnscaled(LevelBackground, 0, 0); // Neshto da se dvizi?
         }
 
         public override bool Tick(int enemies)
