@@ -15,20 +15,26 @@ namespace CarrierAirWing
     static class SoundEngine
     {
         static WindowsMediaPlayer backgroundPlayer;
-        static WindowsMediaPlayer explosionPlayer;
+        static WindowsMediaPlayer[] explosionPlayer;
         static WindowsMediaPlayer[] rocketPlayer;
 
         public static void Init()
         {
             backgroundPlayer = new WindowsMediaPlayer();
             rocketPlayer = new WindowsMediaPlayer[15];
-            explosionPlayer = new WindowsMediaPlayer();
+            explosionPlayer = new WindowsMediaPlayer[15];
 
             backgroundPlayer.settings.volume = 30;
             backgroundPlayer.settings.autoStart = false;
             backgroundPlayer.settings.setMode("loop", true);
 
-            explosionPlayer.settings.autoStart = false;
+            for (int i = 0; i < rocketPlayer.Length; i++)
+            {
+                explosionPlayer[i] = new WindowsMediaPlayer();
+                explosionPlayer[i].settings.autoStart = false;
+                explosionPlayer[i].settings.volume = 70;
+            }
+            
 
             for (int i = 0; i < rocketPlayer.Length; i++)
             {
@@ -79,14 +85,23 @@ namespace CarrierAirWing
 
         public static void PlayExplosionSound(String fileName)
         {
-            explosionPlayer = new WindowsMediaPlayer();
-            explosionPlayer.URL = fileName;
-            explosionPlayer.controls.play();
+            foreach (WindowsMediaPlayer wmp in explosionPlayer)
+            {
+                if (wmp.playState != WMPPlayState.wmppsPlaying)
+                {
+                    wmp.URL = fileName;
+                    wmp.controls.play();
+                    return;
+                }
+            }
         }
 
         public static void StopExplosionSound()
         {
-            explosionPlayer.controls.stop();
+            foreach (WindowsMediaPlayer wmp in explosionPlayer)
+            {
+                wmp.controls.stop();
+            }
         }
     }
 }
