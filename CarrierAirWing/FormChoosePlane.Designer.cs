@@ -71,7 +71,10 @@
             this.Controls.Add(this.btnTigerShark);
             this.Controls.Add(this.btnTomcat);
             this.Controls.Add(this.btnThunderbolt);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormChoosePlane";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormChoosePlane";
             this.ResumeLayout(false);
 

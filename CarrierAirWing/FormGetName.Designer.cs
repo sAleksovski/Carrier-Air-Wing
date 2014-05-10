@@ -68,8 +68,11 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormGetName";
-            this.Text = "FormGetName";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "New high score !!!";
             this.ResumeLayout(false);
             this.PerformLayout();
 
