@@ -182,6 +182,7 @@
     <Content Include="Resources\Images\Bullets\bullet1.png" />
     <Content Include="Resources\Images\Bullets\bullet2.png" />
     <Content Include="Resources\Images\Bullets\bullet3.png" />
+    <EmbeddedResource Include="Resources\Images\Enemies\enemies.png" />
     <Content Include="Resources\Images\Explosions\exp10.png" />
     <Content Include="Resources\Images\Explosions\exp11.png" />
     <Content Include="Resources\Images\Explosions\exp12.png" />

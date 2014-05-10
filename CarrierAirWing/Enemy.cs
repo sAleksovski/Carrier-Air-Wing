@@ -16,7 +16,7 @@ namespace CarrierAirWing
     public class Enemy
     {
         public Bitmap Sprite { get; set; }
-        public int spriteRow;
+        private int spriteIndex;
         public int X { get; set; }
         public int Y { get; set; }
         public int SpeedX { get; set; }
@@ -37,9 +37,8 @@ namespace CarrierAirWing
             currentMovement = 0;
             SpeedX = movement[currentMovement].SpeedX;
             SpeedY = movement[currentMovement].SpeedY;
-            spriteRow = sr;
-            //sprite = GraphicsEngine.enemySprites[spriteRow][0];
-            Sprite = GraphicsEngine.planeSprites[0][0];
+            spriteIndex = GraphicsEngine.randomizer.Next(22);
+            Sprite = GraphicsEngine.enemySprites[spriteIndex][0];
             Health = health;
             CanFire = 0;
         }
@@ -53,23 +52,29 @@ namespace CarrierAirWing
             {
                 ticks = 0;
                 currentMovement = (currentMovement + 1) % movement.Length;
-                if(currentMovement == 0) currentMovement = 1;
+                if (currentMovement == 0) currentMovement = 1;
                 SpeedX = movement[currentMovement].SpeedX;
                 SpeedY = movement[currentMovement].SpeedY;
             }
+
             if (CanFire > 0)
                 CanFire--;
+
+            if (ticks % 4 == 0)
+                Sprite = GraphicsEngine.enemySprites[spriteIndex][0];
+            else
+                Sprite = GraphicsEngine.enemySprites[spriteIndex][1];
             //ChangeSprite();
         }
 
         public void ChangeSprite()
         {
-            if(SpeedY < 0)
-                Sprite = GraphicsEngine.enemySprites[spriteRow][1];
-            else if(SpeedY > 0)
-                Sprite = GraphicsEngine.enemySprites[spriteRow][2];
-            else
-                Sprite = GraphicsEngine.enemySprites[spriteRow][0];
+            //if(SpeedY < 0)
+            //    Sprite = GraphicsEngine.enemySprites[spriteRow][1];
+            //else if(SpeedY > 0)
+            //    Sprite = GraphicsEngine.enemySprites[spriteRow][2];
+            //else
+            //    Sprite = GraphicsEngine.enemySprites[spriteRow][0];
         }
 
         public Bullet Fire(float y)
@@ -88,14 +93,14 @@ namespace CarrierAirWing
         }
 
         public bool Hit(Rocket r)
-        { 
+        {
             if (Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height), new Rectangle(r.X, r.Y, r.Sprite.Width, r.Sprite.Height)).IsEmpty)
                 return false;
             return true;
         }
- 
+
         public bool Hit(Bullet b)
-        { 
+        {
             if (Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height), new Rectangle(b.X, b.Y, Properties.Resources.bullet0.Width, Properties.Resources.bullet0.Height)).IsEmpty)
                 return false;
             return true;
