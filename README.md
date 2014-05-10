@@ -2,6 +2,8 @@ Carrier Air Wing
 =========
 
 ## TO-DO-M♫ list
+- [ ] Store EnemyMovement in LinkedList
+- [ ] Remove collision detection for bullets in Enemy and Game 
 - [ ] Resize and correct Rocket and Plane sprites
 - [x] Test the new Hit() method
 - [x] Change repo name to Carrier Air Wing</del>
