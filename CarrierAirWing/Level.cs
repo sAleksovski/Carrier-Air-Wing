@@ -14,6 +14,7 @@ namespace CarrierAirWing
         public LinkedList<int> Ticks;
         public int tick;
         public bool CanLevelUP;
+        public static int ITERATION = 1;
 
         public Level()
         {

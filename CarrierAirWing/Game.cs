@@ -162,7 +162,7 @@ namespace CarrierAirWing
             //10 to 0
             foreach (Bullet b in enemyBullets)
             {
-                if ((b.X >= BoundsX - 50) || (b.X <= 10) || (b.Y <= 10) || (b.Y >= BoundsY - 50))
+                if ((b.X >= BoundsX) || (b.X <= 0) || (b.Y <= 0) || (b.Y >= BoundsY))
                     deleteEnemyBullets.AddFirst(b);
             }
 
@@ -324,7 +324,7 @@ namespace CarrierAirWing
                 new Font(FontFamily.GenericMonospace, 16),
                 new SolidBrush(Color.Red),
                 new PointF(225, 5));
-            g.DrawString(string.Format("Level: {0}", level.Lvl.ToString()),
+            g.DrawString(string.Format("Level: {0}", (Level.ITERATION - 1)*3 + level.Lvl),
                 new Font(FontFamily.GenericMonospace, 16),
                 new SolidBrush(Color.Red),
                 new PointF(225, 25));
