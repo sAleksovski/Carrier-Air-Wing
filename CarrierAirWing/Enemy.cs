@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace CarrierAirWing
 {
@@ -27,7 +28,10 @@ namespace CarrierAirWing
         public int CanFire;
         public int Health;
 
+        // Posle kolko vreme da ispuca metak
+        private int fireDelay;
 
+        // Konstruktor bez fireDelay
         public Enemy(int x, int y, EnemyMovement[] m, int sr, int health)
         {
             X = x;
@@ -37,15 +41,26 @@ namespace CarrierAirWing
             currentMovement = 0;
             SpeedX = movement[currentMovement].SpeedX;
             SpeedY = movement[currentMovement].SpeedY;
-            spriteIndex = GraphicsEngine.randomizer.Next(22);
+            spriteIndex = GraphicsEngine.randomizer.Next(23);
             Sprite = GraphicsEngine.enemySprites[spriteIndex][0];
             Health = health;
             CanFire = 0;
+            fireDelay = 100;
         }
+
+        // Konstruktor sas fireDelay
+        public Enemy(int x, int y, EnemyMovement[] m, int sr, int health, int fireDelay)
+            : this(x, y, m, sr, health)
+        {
+            this.fireDelay = fireDelay;
+        }
+
 
         public void Move()
         {
             ticks++;
+            ChangeSprite();
+
             X += SpeedX;
             Y += SpeedY;
             if (ticks == movement[currentMovement].steps)
@@ -59,31 +74,34 @@ namespace CarrierAirWing
 
             if (CanFire > 0)
                 CanFire--;
-
-            if (ticks % 4 == 0)
-                Sprite = GraphicsEngine.enemySprites[spriteIndex][0];
-            else
-                Sprite = GraphicsEngine.enemySprites[spriteIndex][1];
-            //ChangeSprite();
         }
 
         public void ChangeSprite()
         {
-            //if(SpeedY < 0)
-            //    Sprite = GraphicsEngine.enemySprites[spriteRow][1];
-            //else if(SpeedY > 0)
-            //    Sprite = GraphicsEngine.enemySprites[spriteRow][2];
-            //else
-            //    Sprite = GraphicsEngine.enemySprites[spriteRow][0];
+            if (ticks % 4 == 0)
+                Sprite = GraphicsEngine.enemySprites[spriteIndex][0];
+            else
+                Sprite = GraphicsEngine.enemySprites[spriteIndex][1];
         }
 
-        public Bullet Fire(float y)
+        // X,Y koordinate na avion na player
+        public Bullet Fire(int x, int y)
         {
-            if (Math.Abs(y - Y) < 20 && CanFire == 0)
-            {
-                CanFire = 20;
-                return new Bullet(X, Y, -5, 0, 25);
+            if (CanFire != 0)
+                return null;
+
+            int differenceX = Math.Abs(x - X);
+            int differenceY = Math.Abs(y - Y);
+
+            if (differenceY < 500 && differenceX < 500)
+            {    
+                CanFire = fireDelay;
+                int signX = (x < X) ? -1 : 1;
+                int signY = (y < Y) ? -1 : 1;
+                double agol = Math.Atan2(differenceY, differenceX);
+                return new Bullet(X, Y, (int)(5 * Math.Cos(agol) * signX), (int)(5 * Math.Sin(agol) * signY), 15);
             }
+
             return null;
         }
 
@@ -96,6 +114,9 @@ namespace CarrierAirWing
         {
             if (Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height), new Rectangle(r.X, r.Y, r.Sprite.Width, r.Sprite.Height)).IsEmpty)
                 return false;
+
+            if (GraphicsEngine.enemySprites[spriteIndex].Length == 3)
+                Sprite = GraphicsEngine.enemySprites[spriteIndex][2];
             return true;
         }
 

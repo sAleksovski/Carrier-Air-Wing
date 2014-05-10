@@ -77,20 +77,22 @@ namespace CarrierAirWing
         {
             if (t == 50 || t == 100 || t == 150 || t == 200)
             {
-                Enemies = new LinkedList<Enemy>();
-                EnemyMovement[] m = new EnemyMovement[3];
-                m[0].SpeedX = -3;
-                m[0].SpeedY = 3;
-                m[0].steps = 30;
-                m[1].SpeedX = -3;
-                m[1].SpeedY = 0;
-                m[1].steps = 120;
-                m[2].SpeedX = 3;
-                m[2].SpeedY = 0;
-                m[2].steps = 120;
+            Enemies = new LinkedList<Enemy>();
+            EnemyMovement[] m = new EnemyMovement[3];
+            m[0].SpeedX = -3;
+            m[0].SpeedY = 3;
+            m[0].steps = 30;
+            m[1].SpeedX = -3;
+            m[1].SpeedY = 0;
+            m[1].steps = 120;
+            m[2].SpeedX = 3;
+            m[2].SpeedY = 0;
+            m[2].steps = 120;
 
-                Enemy e = new Enemy(800, 100, m, 0, 20);
+                Enemy e = new Enemy(800, 100, m, 0, 200);
                 Enemies.AddFirst(e);
+
+           
             }
             else if (t == 800)
             {

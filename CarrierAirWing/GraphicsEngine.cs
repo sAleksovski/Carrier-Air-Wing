@@ -106,9 +106,9 @@ namespace CarrierAirWing
             croped = bmp.Clone(new Rectangle(199, 0, 66, 66), bmp.PixelFormat);
             playerFaceSprites[2] = croped;
 
-            bmp.Dispose();
-            croped.Dispose();
-            scaled.Dispose();
+            //bmp.Dispose();
+            //croped.Dispose();
+            //scaled.Dispose();
 
             // Enemy Sprites   
             // Green Helis
@@ -265,6 +265,16 @@ namespace CarrierAirWing
             scaled = new Bitmap(croped, (int)(croped.Width * 2.6), (int)(croped.Height * 2.6));
             enemySprites[17][0] = scaled;
             enemySprites[17][1] = scaled;
+
+            // Large Enemy Plane
+            enemySprites[22] = new Bitmap[3];
+            croped = bmp.Clone(new Rectangle(0, 121, 107, 39), bmp.PixelFormat);
+            scaled = new Bitmap(croped, (int)(croped.Width * 1.3), (int)(croped.Height * 1.3));
+            enemySprites[22][0] = scaled;
+            enemySprites[22][1] = scaled;
+            croped = bmp.Clone(new Rectangle(124, 121, 107, 39), bmp.PixelFormat);
+            scaled = new Bitmap(croped, (int)(croped.Width * 1.3), (int)(croped.Height * 1.3));
+            enemySprites[22][2] = scaled;
 
 
             // Explosion sprites

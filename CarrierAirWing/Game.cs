@@ -96,7 +96,7 @@ namespace CarrierAirWing
             foreach (Enemy e in enemies)
             {
                 e.Move();
-                Bullet b = e.Fire(p1.plane.Y);
+                Bullet b = e.Fire(p1.plane.X, p1.plane.Y);
                 if (b != null)
                     enemyBullets.AddFirst(b);
             }
