@@ -32,7 +32,7 @@ namespace CarrierAirWing
         public int Score { get; set; }
         public bool GameInProgress { get; set; }
         public int TTL { get; set; }
-
+        
         public Game()
         {
             GraphicsEngine.Init();
@@ -350,10 +350,6 @@ namespace CarrierAirWing
                     return;
                 Settings.highScores.AddHighScore(new Score(name, Score));
             }
-            
-            FormHighScore fh = new FormHighScore();
-            fh.ShowDialog();
-
         }
     }
 }

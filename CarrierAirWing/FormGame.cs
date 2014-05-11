@@ -38,6 +38,13 @@ namespace CarrierAirWing
         {
             Invalidate();
             game.Move();
+            if (game.GameInProgress == false && game.TTL == 0)
+            {
+                FormHighScore fh = new FormHighScore();
+                fh.ShowDialog();
+                this.Close();
+            }
+                
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
