@@ -112,7 +112,15 @@ namespace CarrierAirWing
         private void FormGame_FormClosing(object sender, FormClosingEventArgs e)
         {
             if(formMenu != null)
-                formMenu.Show();
+                formMenu.Show();            
+        }
+
+        private void FormGame_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            timer.Dispose();
+            if (Settings.SOUNDS)
+                SoundEngine.PlayBackgroundMusic(@"sounds\soundtracks\menu.mp3");
+            this.Dispose();
         }
     }
 }

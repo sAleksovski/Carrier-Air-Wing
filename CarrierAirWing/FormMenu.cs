@@ -12,6 +12,10 @@ namespace CarrierAirWing
 {
     public partial class FormMenu : Form
     {
+        private Form gameForm;
+        private Form choosePlaneForm;
+        private Form highScore;
+
         public FormMenu()
         {
             InitializeComponent();
@@ -19,21 +23,21 @@ namespace CarrierAirWing
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            Form f = new FormGame(this);
-            f.Show();
+            gameForm = new FormGame(this);
+            gameForm.Show();
             this.Hide();
         }
 
         private void btnChoosePlane_Click(object sender, EventArgs e)
         {
-            Form f = new FormChoosePlane();
-            f.ShowDialog();
+            choosePlaneForm = new FormChoosePlane();
+            choosePlaneForm.ShowDialog();
         }
 
         private void btnHighScore_Click(object sender, EventArgs e)
         {
-            Form f = new FormHighScore();
-            f.ShowDialog();
+            highScore = new FormHighScore();
+            highScore.ShowDialog();
         }
 
         private void FormMenu_Load(object sender, EventArgs e)
@@ -41,6 +45,7 @@ namespace CarrierAirWing
             GraphicsEngine.Init();
             SoundEngine.Init();
             Settings.Init();
+
             if (Settings.SOUNDS)
                 SoundEngine.PlayBackgroundMusic(@"sounds\soundtracks\menu.mp3");
         }
@@ -48,6 +53,27 @@ namespace CarrierAirWing
         private void FormMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             Settings.WriteHighScore();
+        }
+
+        private void FormMenu_Shown(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void FormMenu_Activated(object sender, EventArgs e)
+        {
+            if (gameForm != null)
+                gameForm.Dispose();
+
+            if (choosePlaneForm != null)
+                choosePlaneForm.Dispose();
+
+            if (highScore != null)
+                highScore.Dispose();
+
+            gameForm = null;
+            choosePlaneForm = null;
+            highScore = null;
         }
     }
 }

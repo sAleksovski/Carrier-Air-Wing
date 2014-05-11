@@ -43,7 +43,6 @@ namespace CarrierAirWing
         
         public Game()
         {
-            GraphicsEngine.Init();
             Level.ITERATION = 1;
             level = new Level_1();
             playerBullets = new LinkedList<Bullet>();

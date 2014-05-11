@@ -114,8 +114,10 @@
             this.Name = "FormMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Carrier Air Wing";
+            this.Activated += new System.EventHandler(this.FormMenu_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMenu_FormClosing);
             this.Load += new System.EventHandler(this.FormMenu_Load);
+            this.Shown += new System.EventHandler(this.FormMenu_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
