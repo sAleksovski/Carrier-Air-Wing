@@ -34,6 +34,7 @@
             this.btnChoosePlane = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnCredits = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -43,9 +44,9 @@
             this.btnPlay.BackColor = System.Drawing.SystemColors.ControlText;
             this.btnPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlay.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnPlay.Location = new System.Drawing.Point(90, 408);
+            this.btnPlay.Location = new System.Drawing.Point(43, 408);
             this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(165, 53);
+            this.btnPlay.Size = new System.Drawing.Size(136, 53);
             this.btnPlay.TabIndex = 0;
             this.btnPlay.Text = "Play Game";
             this.btnPlay.UseVisualStyleBackColor = false;
@@ -56,9 +57,9 @@
             this.btnHighScore.BackColor = System.Drawing.SystemColors.ControlText;
             this.btnHighScore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHighScore.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnHighScore.Location = new System.Drawing.Point(472, 408);
+            this.btnHighScore.Location = new System.Drawing.Point(379, 408);
             this.btnHighScore.Name = "btnHighScore";
-            this.btnHighScore.Size = new System.Drawing.Size(165, 53);
+            this.btnHighScore.Size = new System.Drawing.Size(136, 53);
             this.btnHighScore.TabIndex = 2;
             this.btnHighScore.Text = "High Score";
             this.btnHighScore.UseVisualStyleBackColor = false;
@@ -69,9 +70,9 @@
             this.btnChoosePlane.BackColor = System.Drawing.SystemColors.ControlText;
             this.btnChoosePlane.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChoosePlane.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnChoosePlane.Location = new System.Drawing.Point(285, 408);
+            this.btnChoosePlane.Location = new System.Drawing.Point(211, 408);
             this.btnChoosePlane.Name = "btnChoosePlane";
-            this.btnChoosePlane.Size = new System.Drawing.Size(165, 53);
+            this.btnChoosePlane.Size = new System.Drawing.Size(136, 53);
             this.btnChoosePlane.TabIndex = 1;
             this.btnChoosePlane.Text = "Choose Plane";
             this.btnChoosePlane.UseVisualStyleBackColor = false;
@@ -97,12 +98,26 @@
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
             // 
+            // btnCredits
+            // 
+            this.btnCredits.BackColor = System.Drawing.SystemColors.ControlText;
+            this.btnCredits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCredits.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCredits.Location = new System.Drawing.Point(547, 408);
+            this.btnCredits.Name = "btnCredits";
+            this.btnCredits.Size = new System.Drawing.Size(136, 53);
+            this.btnCredits.TabIndex = 5;
+            this.btnCredits.Text = "Credits";
+            this.btnCredits.UseVisualStyleBackColor = false;
+            this.btnCredits.Click += new System.EventHandler(this.btnCredits_Click);
+            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlText;
             this.ClientSize = new System.Drawing.Size(726, 488);
+            this.Controls.Add(this.btnCredits);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnChoosePlane);
             this.Controls.Add(this.btnHighScore);
@@ -131,5 +146,6 @@
         private System.Windows.Forms.Button btnChoosePlane;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnCredits;
     }
 }

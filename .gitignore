@@ -172,3 +172,5 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+CarrierAirWing/obj/x86/Debug/CarrierAirWing.exe
+CarrierAirWing/bin/Debug/CarrierAirWing.exe

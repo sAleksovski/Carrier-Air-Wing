@@ -15,6 +15,7 @@ namespace CarrierAirWing
         private Form gameForm;
         private Form choosePlaneForm;
         private Form highScore;
+        private Form creditsForm;
 
         public FormMenu()
         {
@@ -74,6 +75,12 @@ namespace CarrierAirWing
             gameForm = null;
             choosePlaneForm = null;
             highScore = null;
+        }
+
+        private void btnCredits_Click(object sender, EventArgs e)
+        {
+            creditsForm = new FormCredits();
+            creditsForm.ShowDialog();
         }
     }
 }
