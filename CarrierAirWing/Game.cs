@@ -32,6 +32,7 @@ namespace CarrierAirWing
         public int Score { get; set; }
         public bool GameInProgress { get; set; }
         public int TTL { get; set; }
+        public bool CanClose { get; set; }
         
         public Game()
         {
@@ -64,6 +65,7 @@ namespace CarrierAirWing
             p1Controls.B = System.Windows.Forms.Keys.S;
 
             GameInProgress = true;
+            CanClose = false;
         }
         
         public void Move()
@@ -350,6 +352,7 @@ namespace CarrierAirWing
                     return;
                 Settings.highScores.AddHighScore(new Score(name, Score));
             }
+            CanClose = true;
         }
     }
 }

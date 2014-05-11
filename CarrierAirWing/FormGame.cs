@@ -38,7 +38,7 @@ namespace CarrierAirWing
         {
             Invalidate();
             game.Move();
-            if (game.GameInProgress == false && game.TTL == 0)
+            if (game.GameInProgress == false && game.TTL == 0 && game.CanClose == true)
             {
                 FormHighScore fh = new FormHighScore();
                 fh.ShowDialog();
