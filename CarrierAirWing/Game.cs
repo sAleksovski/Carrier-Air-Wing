@@ -45,7 +45,7 @@ namespace CarrierAirWing
 
         public Game()
         {
-            level = new Level_2();
+            level = new Level_1();
             playerBullets = new LinkedList<Bullet>();
             playerRockets = new LinkedList<Rocket>();
             enemyBullets = new LinkedList<Bullet>();
@@ -301,7 +301,7 @@ namespace CarrierAirWing
             g.DrawLine(new Pen(Color.Yellow, 20), 65, 60, (int)(65 + p1.Health * 2), 60);
             g.DrawRectangle(new Pen(Color.Black, 2), 65, 50, 200, 20);
 
-            g.DrawString(string.Format("Level: {0}", (Level.ITERATION - 1) * 3 + level.Lvl),
+            g.DrawString(string.Format("Level: {0}", (Level.ITERATION - 1) * 2 + level.Lvl),
                 new Font(FontFamily.GenericSansSerif, 13, FontStyle.Bold),
                 new SolidBrush(Color.Gold),
                 new PointF(67, 2));

@@ -1,3 +1,14 @@
-C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Release\CarrierAirWing.Form1.resources
 C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Release\CarrierAirWing.Properties.Resources.resources
 C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Release\Carrier-Air-Wing.csproj.GenerateResource.Cache
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\bin\Release\CarrierAirWing.exe
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\bin\Release\CarrierAirWing.pdb
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Release\Interop.WMPLib.dll
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Release\Carrier-Air-Wing.csproj.ResolveComReference.cache
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Release\CarrierAirWing.FormChoosePlane.resources
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Release\CarrierAirWing.FormCredits.resources
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Release\CarrierAirWing.FormGame.resources
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Release\CarrierAirWing.FormGetName.resources
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Release\CarrierAirWing.FormHighScore.resources
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Release\CarrierAirWing.FormMenu.resources
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Release\CarrierAirWing.exe
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Release\CarrierAirWing.pdb

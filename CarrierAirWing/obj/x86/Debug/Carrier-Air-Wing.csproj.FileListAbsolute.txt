@@ -26,3 +26,4 @@ C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirW
 C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.Properties.Resources.resources
 C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\Carrier-Air-Wing.csproj.GenerateResource.Cache
 C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\Carrier-Air-Wing.csprojResolveAssemblyReference.cache
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormCredits.resources
