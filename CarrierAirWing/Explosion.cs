@@ -25,7 +25,8 @@ namespace CarrierAirWing
             currentSprite = 0;
             Status = 0;
             Sprite = GraphicsEngine.explosionSprites[spriteIndex][currentSprite];
-            SoundEngine.PlayExplosionSound();
+            if (Settings.SOUNDS)
+                SoundEngine.PlayExplosionSound();
         }
 
         public void Move()

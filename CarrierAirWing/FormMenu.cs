@@ -41,7 +41,8 @@ namespace CarrierAirWing
             GraphicsEngine.Init();
             SoundEngine.Init();
             Settings.Init();
-            SoundEngine.PlayBackgroundMusic(@"sounds\soundtracks\menu.mp3");
+            if (Settings.SOUNDS)
+                SoundEngine.PlayBackgroundMusic(@"sounds\soundtracks\menu.mp3");
         }
 
         private void FormMenu_FormClosing(object sender, FormClosingEventArgs e)

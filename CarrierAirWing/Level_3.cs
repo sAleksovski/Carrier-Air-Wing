@@ -14,7 +14,8 @@ namespace CarrierAirWing
         public Level_3()
             : base()
         {
-            SoundEngine.PlayBackgroundMusic(@"sounds\soundtracks\level3.mp3");
+            if (Settings.SOUNDS)
+                SoundEngine.PlayBackgroundMusic(@"sounds\soundtracks\level3.mp3");
             Lvl = 3;
             Enemies = new LinkedList<Enemy>();
 

@@ -11,11 +11,16 @@ namespace CarrierAirWing
     {
         public static HighScore highScores { get; set; }
         public static int chosenPlane { get; set; }
+        public static bool SOUNDS { get; set; }
 
         public static void Init()
         {
             highScores = ReadHighScore();
             chosenPlane = 0;
+            if(Directory.Exists(@"sounds"))
+                SOUNDS = true;
+            else
+                SOUNDS = false;
         }
 
         private static HighScore ReadHighScore()

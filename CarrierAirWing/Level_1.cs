@@ -11,7 +11,8 @@ namespace CarrierAirWing
         public Level_1()
             : base()
         {
-            SoundEngine.PlayBackgroundMusic(@"sounds\soundtracks\level1.mp3");
+            if (Settings.SOUNDS)
+                SoundEngine.PlayBackgroundMusic(@"sounds\soundtracks\level1.mp3");
             Lvl = 1;
             LevelBackground = Properties.Resources.level0;
             Enemies = new LinkedList<Enemy>();

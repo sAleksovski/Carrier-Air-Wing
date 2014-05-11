@@ -350,7 +350,7 @@ namespace CarrierAirWing
                     return;
                 Settings.highScores.AddHighScore(new Score(name, Score));
             }
-
+            
             FormHighScore fh = new FormHighScore();
             fh.ShowDialog();
 
