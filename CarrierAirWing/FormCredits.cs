@@ -41,12 +41,12 @@ namespace CarrierAirWing
             }
 
             plane1 = GraphicsEngine.planeSprites[0][0];
-            plane2 = GraphicsEngine.planeSprites[1][0];
+            plane2 = GraphicsEngine.enemySprites[11][0];
             plane3 = GraphicsEngine.planeSprites[2][0];
 
             p1X = -300;
-            p2X = -200;
-            p3X = -400;
+            p2X = this.Width + 200;
+            p3X = -350;
 
             timer = new Timer();
             timer.Interval = 25;
@@ -60,9 +60,9 @@ namespace CarrierAirWing
             p1X += 3;
             if (p1X > this.Width + plane1.Width + 150)
                 p1X = -plane1.Width;
-            p2X += 3;
-            if (p2X > this.Width + plane2.Width + 150)
-                p2X = -plane3.Width;
+            p2X -= 3;
+            if (p2X < 0 - plane2.Width - 250)
+                p2X = this.Width + 30;
             p3X += 3;
             if (p3X > this.Width + plane3.Width + 150)
                 p3X = -plane3.Width;
@@ -89,8 +89,8 @@ namespace CarrierAirWing
             g.DrawString(creators[0], new Font(FontFamily.GenericMonospace, 12), new SolidBrush(Color.White), p1X - 10 - creators[0].Length * 12, 60);
 
             g.DrawImage(plane2, p2X, 120);
-            g.DrawLine(new Pen(Color.White), p2X - 40, 120 + plane2.Height / 2, p2X, 120 + plane2.Height / 2);
-            g.DrawString(creators[1], new Font(FontFamily.GenericMonospace, 12), new SolidBrush(Color.White), p2X - 10 - creators[1].Length * 12, 120);
+            g.DrawLine(new Pen(Color.White), p2X + plane2.Width + 5, 120 + plane2.Height / 2, p2X + plane2.Width + 5 + 40, 120 + plane2.Height / 2);
+            g.DrawString(creators[1], new Font(FontFamily.GenericMonospace, 12), new SolidBrush(Color.White), p2X + plane2.Width + 40 + 10, 120);
 
             g.DrawImage(plane3, p3X, 180);
             g.DrawLine(new Pen(Color.White), p3X - 40, 180 + plane3.Height / 2, p3X, 180 + plane3.Height / 2);
