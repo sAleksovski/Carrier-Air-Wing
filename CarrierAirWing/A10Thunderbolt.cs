@@ -8,8 +8,8 @@ namespace CarrierAirWing
 {
     public class A10ThunderBolt : Plane
     {
-        public A10ThunderBolt(int x, int y)
-            : base(x, y)
+        public A10ThunderBolt(int x, int y, int boundsX, int boundsY)
+            : base(x, y, boundsX, boundsY)
         {
             Sprite = GraphicsEngine.planeSprites[2][0];
             PlayerFace = GraphicsEngine.playerFaceSprites[2];

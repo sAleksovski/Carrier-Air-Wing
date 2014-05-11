@@ -7,8 +7,8 @@ namespace CarrierAirWing
 {
     class F20TigerShark : Plane
     {
-        public F20TigerShark(int x, int y)
-            : base(x, y)
+        public F20TigerShark(int x, int y, int boundsX, int boundsY)
+            : base(x, y, boundsX, boundsY)
         {
             Sprite = GraphicsEngine.planeSprites[0][0];
             PlayerFace = GraphicsEngine.playerFaceSprites[0];

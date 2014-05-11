@@ -20,7 +20,7 @@ namespace CarrierAirWing
         {
             InitializeComponent();
             DoubleBuffered = true;
-            game = new Game();
+            game = new Game(this.Width, this.Height);
             game.BoundsX = this.Width;
             game.BoundsY = this.Height;
             timer = new Timer();

@@ -40,12 +40,14 @@ namespace CarrierAirWing
 
         public Bitmap PlayerFace { get; set; }
 
-        public Plane(int x, int y)
+        public Plane(int x, int y, int boundsX, int boundsY)
         {
             this.X = x;
             this.Y = y;
             SpeedX = 6;
             SpeedY = 6;
+            BoundsX = boundsX;
+            BoundsY = boundsY;
             BulletCountdown = 0;
             RocketCountdown = 0;
             RocketBlocked = false;
@@ -55,9 +57,17 @@ namespace CarrierAirWing
         public void Move()
         {
             X -= keys.left * SpeedX;
+            if (X < 0)
+                X = 0;
             X += keys.right * SpeedX;
+            if (X > BoundsX - Sprite.Width)
+                X = BoundsX - Sprite.Width;
             Y += keys.down * SpeedY;
+            if (Y > BoundsY - Sprite.Height - 20)
+                Y = BoundsY - Sprite.Height - 20;
             Y -= keys.up * SpeedY;
+            if (Y < 0)
+                Y = 0;
             ChangeSprite();
 
             if (BulletCountdown > 0)

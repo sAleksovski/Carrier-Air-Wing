@@ -8,8 +8,8 @@ namespace CarrierAirWing
 {
     public class F14TomCat : Plane
     {
-        public F14TomCat(int x, int y)
-            : base(x, y)
+        public F14TomCat(int x, int y, int boundsX, int boundsY)
+            : base(x, y, boundsX, boundsY)
         {
             Sprite = GraphicsEngine.planeSprites[1][0];
             PlayerFace = GraphicsEngine.playerFaceSprites[1];

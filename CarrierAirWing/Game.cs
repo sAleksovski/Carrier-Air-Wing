@@ -43,8 +43,9 @@ namespace CarrierAirWing
         LinkedList<Enemy> deleteEnemies;
         LinkedList<EnemyWrapper> brisi;
 
-        public Game()
+        public Game(int boundsX, int boundsY)
         {
+            Level.ITERATION = 1;
             level = new Level_1();
             playerBullets = new LinkedList<Bullet>();
             playerRockets = new LinkedList<Rocket>();
@@ -61,11 +62,14 @@ namespace CarrierAirWing
             brisi = new LinkedList<EnemyWrapper>();
 
             if (Settings.chosenPlane == 0)
-                p1 = new Player(new F20TigerShark(100, 100));
+                p1 = new Player(new F20TigerShark(100, 100, boundsX, boundsY));
             else if (Settings.chosenPlane == 1)
-                p1 = new Player(new F14TomCat(100, 100));
+                p1 = new Player(new F14TomCat(100, 100, boundsX, boundsY));
             else
-                p1 = new Player(new A10ThunderBolt(100, 100));
+                p1 = new Player(new A10ThunderBolt(100, 100, boundsX, boundsY));
+
+            BoundsX = boundsX;
+            BoundsY = boundsY;
 
             p1Controls.UP = System.Windows.Forms.Keys.Up;
             p1Controls.DOWN = System.Windows.Forms.Keys.Down;
