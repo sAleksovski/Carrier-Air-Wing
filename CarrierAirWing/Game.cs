@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace CarrierAirWing
 {
@@ -40,11 +41,11 @@ namespace CarrierAirWing
         LinkedList<Explosion> deleteExplosions;
         LinkedList<Rocket> deletePlayerRockets;
         LinkedList<Enemy> deleteEnemies;
-        
+        LinkedList<EnemyWrapper> brisi;
+
         public Game()
         {
-            Level.ITERATION = 1;
-            level = new Level_1();
+            level = new Level_2();
             playerBullets = new LinkedList<Bullet>();
             playerRockets = new LinkedList<Rocket>();
             enemyBullets = new LinkedList<Bullet>();
@@ -57,15 +58,11 @@ namespace CarrierAirWing
             deleteExplosions = new LinkedList<Explosion>();
             deletePlayerRockets = new LinkedList<Rocket>();
             deleteEnemies = new LinkedList<Enemy>();
+            brisi = new LinkedList<EnemyWrapper>();
 
-            foreach (Enemy e in level.Enemies)
-            {
-                enemies.AddFirst(e);
-            }
-            
-            if(Settings.chosenPlane == 0)
+            if (Settings.chosenPlane == 0)
                 p1 = new Player(new F20TigerShark(100, 100));
-            else if(Settings.chosenPlane == 1)
+            else if (Settings.chosenPlane == 1)
                 p1 = new Player(new F14TomCat(100, 100));
             else
                 p1 = new Player(new A10ThunderBolt(100, 100));
@@ -80,7 +77,7 @@ namespace CarrierAirWing
             GameInProgress = true;
             CanClose = false;
         }
-        
+
         public void Move()
         {
             if (!GameInProgress)
@@ -92,14 +89,29 @@ namespace CarrierAirWing
 
             if (GameInProgress)
             {
-                if (level.Tick(enemies.Count))
+                level.Tick();
+
+                if (level.Enemies.Count != 0)
                 {
-                    foreach (Enemy e in level.Enemies)
-                        enemies.AddFirst(e);
+                    LinkedListNode<EnemyWrapper> temp = level.Enemies.First;
+                        
+                    while (temp != null)
+                    {
+                        if (temp.Value.Ticks <= level.Ticks)
+                        {
+                            enemies.AddLast(temp.Value.EnemyPlane);
+                            brisi.AddFirst(temp.Value);
+                        }
+                        temp = temp.Next;
+                    }
+
+                    foreach (EnemyWrapper e in brisi)
+                        level.Enemies.Remove(e);
+                    brisi.Clear();
                 }
             }
 
-            if (level.CanLevelUP)
+            if (level.CanLevelUP && enemies.Count == 0)
                 level = level.LevelUP();
 
             p1.Move();
@@ -108,6 +120,7 @@ namespace CarrierAirWing
             {
                 if (e.Status == -1)
                 {
+                    Debug.Print("Explosion for delete added");
                     deleteExplosions.AddFirst(e);
                     continue;
                 }
@@ -116,6 +129,13 @@ namespace CarrierAirWing
 
             foreach (Enemy e in enemies)
             {
+                if (e.Status == -1 && (e.X - e.Sprite.Width <=0 || e.Y - e.Sprite.Width <=0 || e.X >= BoundsX || e.Y >= BoundsY))
+                {
+                    Debug.Print("Enemy for delete added");
+                    deleteEnemies.AddFirst(e);
+                    continue;
+                }
+
                 e.Move();
                 Bullet b = e.Fire(p1.plane.X, p1.plane.Y);
                 if (b != null)
@@ -126,6 +146,7 @@ namespace CarrierAirWing
             {
                 if (r.X >= BoundsX - 50)
                 {
+                    Debug.Print("Rocket for delete added");
                     deleteRockets.AddFirst(r);
                     continue;
                 }
@@ -137,11 +158,14 @@ namespace CarrierAirWing
             {
                 if ((b.X >= BoundsX) || (b.X <= 0) || (b.Y <= 0) || (b.Y >= BoundsY))
                 {
+                    Debug.Print("Bullet for delete added");
                     deleteEnemyBullets.AddFirst(b);
                     continue;
                 }
                 b.Move();
             }
+
+
 
             if (p1.plane.keys.ctrl == 1)
             {
@@ -155,6 +179,10 @@ namespace CarrierAirWing
                     playerRockets.AddLast(r); //ili AddLast?
 
             }
+
+            foreach(Enemy e in deleteEnemies)
+                enemies.Remove(e);
+            deleteEnemies.Clear();
 
             foreach (Rocket r in deleteRockets)
                 playerRockets.Remove(r);

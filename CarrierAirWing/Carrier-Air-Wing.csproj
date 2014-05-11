@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Bullet.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="EnemyWrapper.cs" />
     <Compile Include="Explosion.cs" />
     <Compile Include="F14TomCat.cs" />
     <Compile Include="F20TigerShark.cs" />

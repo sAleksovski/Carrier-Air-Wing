@@ -3,40 +3,279 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace CarrierAirWing
 {
     class Level_2 : Level
     {
         public Level_2()
-            : base()
         {
             if (Settings.SOUNDS)
                 SoundEngine.PlayBackgroundMusic(@"sounds\soundtracks\level2.mp3");
             Lvl = 2;
             LevelBackground = Properties.Resources.level2;
-            Enemies = new LinkedList<Enemy>();
+            AddEnemies();
+            
+        }
 
-            Ticks = new LinkedList<int>();
-            Ticks.AddLast(50);
-            Ticks.AddLast(100);
-            Ticks.AddLast(150);
-            Ticks.AddLast(200);
-            Ticks.AddLast(400);
+        private void AddEnemies()
+        {
 
-            EnemyMovement[] m = new EnemyMovement[3];
-            m[0].SpeedX = -3;
-            m[0].SpeedY = 3;
-            m[0].steps = 30;
-            m[1].SpeedX = -3;
-            m[1].SpeedY = 0;
-            m[1].steps = 120;
-            m[2].SpeedX = 3;
-            m[2].SpeedY = 0;
-            m[2].steps = 120;
+            // Heli na pocetak od levo
+            for (int i = 0; i < 4; i++)
+            {
+                EnemyMovement[] m = new EnemyMovement[3];
+                m[0].SpeedX = +4;
+                m[0].SpeedY = 0;
+                m[0].steps = 25;
+                m[1].SpeedX = +3;
+                m[1].SpeedY = +6;
+                m[1].steps = 5;
+                m[2].SpeedX = +4;
+                m[2].SpeedY = 0;
+                m[2].steps = 400;
+                Enemy e = new Enemy(0, 100 + i * 3, m, ITERATION * 20, (i % 2 == 0 ) ? 2 : 6 , 150);
+                Enemies.AddLast(new EnemyWrapper(e, 50 + i * 25));
+            }
 
-            Enemy e = new Enemy(800, 100, m, 0, ITERATION * 20);
-            Enemies.AddFirst(e);
+
+            // Heli od desno
+            for (int i = 0; i < 8; i++)
+            {
+                EnemyMovement[] m = new EnemyMovement[1];
+                m[0].SpeedX = -6;
+                m[0].SpeedY = 1;
+                m[0].steps = 100;
+                Enemy e = new Enemy(740, 200 + i * 2, m, ITERATION * 20, (i % 2 == 0) ? 1 : 5, 150);
+                Enemies.AddLast(new EnemyWrapper(e, 210 + i * 40));
+            }
+
+            // Ne se sekam ni ja
+            for (int i = 0; i < 3; i++)
+            {
+                EnemyMovement[] m = new EnemyMovement[1];
+                m[0].SpeedX = -8;
+                m[0].SpeedY = 0;
+                m[0].steps = 150;
+                Enemy e = new Enemy(740, 200 + i * 2, m, ITERATION * 20, 18, 50);
+                Enemies.AddLast(new EnemyWrapper(e, 540 + i * 30));
+            }
+
+            // Puno heli od desno
+            for (int i = 0; i < 3; i++)
+            {
+                EnemyMovement[] m = new EnemyMovement[2];
+                m[0].SpeedX = -4;
+                m[0].SpeedY = 1;
+                m[0].steps = 20;
+                m[1].SpeedX = -4;
+                m[1].SpeedY = 0;
+                m[1].steps = 150;
+                Enemy e = new Enemy(740, 200 + i * 2, m, ITERATION * 20, 0, 50);
+                Enemy e1 = new Enemy(740, 250 + i * 2, m, ITERATION * 20, 4, 50);
+                Enemies.AddLast(new EnemyWrapper(e, 620 + i * 25));
+                Enemies.AddLast(new EnemyWrapper(e1, 620 + i * 25));
+            }
+
+            // Avionoi krst
+            for (int i = 0; i < 5; i++)
+            {
+                EnemyMovement[] m = new EnemyMovement[2];
+                m[0].SpeedX = -4;
+                m[0].SpeedY = 4;
+                m[0].steps = 30;
+                m[1].SpeedX = -8;
+                m[1].SpeedY = -5;
+                m[1].steps = 150;
+
+                EnemyMovement[] m1 = new EnemyMovement[2];
+                m1[0].SpeedX = -4;
+                m1[0].SpeedY = -4;
+                m1[0].steps = 25;
+                m1[1].SpeedX = -8;
+                m1[1].SpeedY = 5;
+                m1[1].steps = 150;
+
+                Enemy e = new Enemy(740, 200 + i * 2, m, ITERATION * 20, 18, 20);
+                Enemy e1 = new Enemy(740, 250 + i * 2, m1, ITERATION * 20, 12, 20);
+                Enemies.AddLast(new EnemyWrapper(e, 800 + i * 25));
+                Enemies.AddLast(new EnemyWrapper(e1, 800 + i * 25));
+            }
+
+
+            for (int i = 0; i < 4; i++)
+            {
+                EnemyMovement[] m = new EnemyMovement[2];
+                m[0].SpeedX = +4;
+                m[0].SpeedY = 1;
+                m[0].steps = 20;
+                m[1].SpeedX = 6;
+                m[1].SpeedY = 0;
+                m[1].steps = 150;
+                EnemyMovement[] m1 = new EnemyMovement[2];
+                m1[0].SpeedX = +4;
+                m1[0].SpeedY = -1;
+                m1[0].steps = 20;
+                m1[1].SpeedX = 4;
+                m1[1].SpeedY = 0;
+                m1[1].steps = 150;
+                Enemy e = new Enemy(0, 100 + i * 2, m, ITERATION * 20, (i % 2 == 0) ? 2 : 6, 50);
+                Enemy e1 = new Enemy(0, 300 + i * 2, m1, ITERATION * 20, (i % 2 == 0) ? 7 : 3, 50);
+                Enemies.AddLast(new EnemyWrapper(e, 990 + i * 25));
+                Enemies.AddLast(new EnemyWrapper(e1, 990 + i * 25));
+            }
+
+
+            // Zaebani avioni
+            for (int i = 0; i < 2; i++)
+            {
+                EnemyMovement[] m = new EnemyMovement[2];
+                m[0].SpeedX = +4;
+                m[0].SpeedY = 1;
+                m[0].steps = 20;
+                m[1].SpeedX = 6;
+                m[1].SpeedY = 0;
+                m[1].steps = 150;
+
+                EnemyMovement[] m1 = new EnemyMovement[6];
+                m1[0].SpeedX = -2;
+                m1[0].SpeedY = -1;
+                m1[0].steps = 30;
+                m1[1].SpeedX = -2;
+                m1[1].SpeedY = 0;
+                m1[1].steps = 40;
+                m1[2].SpeedX = -3;
+                m1[2].SpeedY = 0;
+                m1[2].steps = 60;
+                m1[3].SpeedX = 3;
+                m1[3].SpeedY = -2;
+                m1[3].steps = 60;
+                m1[4].SpeedX = -3;
+                m1[4].SpeedY = -2;
+                m1[4].steps = 60;
+                m1[5].SpeedX = 1;
+                m1[5].SpeedY = 1;
+                m1[5].steps = 100;
+
+                Enemy e = new Enemy(0, 100 + i * 20, m, ITERATION * 20, 16, 50);
+                Enemy e1 = new Enemy(740, 250 + i * 30, m1, 200 + ITERATION * 20, 22, 40);
+                Enemies.AddLast(new EnemyWrapper(e, 1200 + i * 25));
+                Enemies.AddLast(new EnemyWrapper(e1, 1200 + i * 100));
+            }
+
+
+            {
+                EnemyMovement[] m = new EnemyMovement[1];
+                m[0].SpeedX = +8;
+                m[0].SpeedY = 0;
+                m[0].steps = 150;
+                Enemy e = new Enemy(0, 100, m, ITERATION * 20, 10, 100);
+                Enemies.AddLast(new EnemyWrapper(e, 200));
+            }
+
+            {
+                EnemyMovement[] m = new EnemyMovement[1];
+                m[0].SpeedX = +8;
+                m[0].SpeedY = 0;
+                m[0].steps = 150;
+                Enemy e = new Enemy(0, 400, m, ITERATION * 20, 10, 100);
+                Enemies.AddLast(new EnemyWrapper(e, 400));
+            }
+
+            {
+                EnemyMovement[] m = new EnemyMovement[1];
+                m[0].SpeedX = -8;
+                m[0].SpeedY = 0;
+                m[0].steps = 150;
+                Enemy e = new Enemy(740, 400, m, ITERATION * 20, 11, 100);
+                Enemies.AddLast(new EnemyWrapper(e, 800));
+            }
+
+            {
+                EnemyMovement[] m = new EnemyMovement[1];
+                m[0].SpeedX = -8;
+                m[0].SpeedY = 0;
+                m[0].steps = 150;
+                Enemy e = new Enemy(740, 230, m, ITERATION * 20, 11, 100);
+                Enemies.AddLast(new EnemyWrapper(e, 900));
+            }
+
+            // Zeleno heli
+            {
+                EnemyMovement[] m = new EnemyMovement[3];
+                m[0].SpeedX = 4;
+                m[0].SpeedY = 0;
+                m[0].steps = 150;
+                Enemy e = new Enemy(0, 230, m, ITERATION * 20, 3, 100);
+                Enemies.AddLast(new EnemyWrapper(e, 1000));
+            }
+
+            // Zeleno heli
+            {
+                EnemyMovement[] m = new EnemyMovement[3];
+                m[0].SpeedX = 4;
+                m[0].SpeedY = 0;
+                m[0].steps = 150;
+                Enemy e = new Enemy(0, 400, m, ITERATION * 20, 2, 100);
+                Enemies.AddLast(new EnemyWrapper(e, 1500));
+            }
+
+            // Crveno heli
+            {
+                EnemyMovement[] m = new EnemyMovement[3];
+                m[0].SpeedX = -4;
+                m[0].SpeedY = 0;
+                m[0].steps = 150;
+                Enemy e = new Enemy(740, 50, m, ITERATION * 20, 4, 200);
+                Enemies.AddLast(new EnemyWrapper(e, 1000));
+            }
+
+            // Crveno heli
+            {
+                EnemyMovement[] m = new EnemyMovement[3];
+                m[0].SpeedX = -3;
+                m[0].SpeedY = 0;
+                m[0].steps = 150;
+                Enemy e = new Enemy(740, 400, m, ITERATION * 20, 5, 200);
+                Enemies.AddLast(new EnemyWrapper(e, 1700));
+            }
+
+            // Crveno heli
+            {
+                EnemyMovement[] m = new EnemyMovement[3];
+                m[0].SpeedX = -4;
+                m[0].SpeedY = 0;
+                m[0].steps = 150;
+                Enemy e = new Enemy(740, 400, m, ITERATION * 20, 4, 200);
+                Enemies.AddLast(new EnemyWrapper(e, 1200));
+            }
+
+            // Zaebani avioni
+            for (int i = 0; i < 4; i++)
+            {
+                EnemyMovement[] m1 = new EnemyMovement[6];
+                m1[0].SpeedX = -2;
+                m1[0].SpeedY = -1;
+                m1[0].steps = 30;
+                m1[1].SpeedX = -2;
+                m1[1].SpeedY = 0;
+                m1[1].steps = 40;
+                m1[2].SpeedX = -3;
+                m1[2].SpeedY = 0;
+                m1[2].steps = 60;
+                m1[3].SpeedX = 3;
+                m1[3].SpeedY = -2;
+                m1[3].steps = 60;
+                m1[4].SpeedX = -3;
+                m1[4].SpeedY = -2;
+                m1[4].steps = 60;
+                m1[5].SpeedX = 1;
+                m1[5].SpeedY = 1;
+                m1[5].steps = 100;
+                Enemy e1 = new Enemy(740, 250 + i * 44, m1, 300 + ITERATION * 20, 22, 40);
+                Enemies.AddLast(new EnemyWrapper(e1, 1500 + i * 30));
+            }
 
         }
 
@@ -45,175 +284,25 @@ namespace CarrierAirWing
             return new Level_3();
         }
 
+        public override void Tick()
+        {
+            Ticks++;
+            if (Enemies.Count == 0)
+                CanLevelUP = true;
+        }
+
         public override void Draw(Graphics g)
         {
-            g.DrawImage(GraphicsEngine.Level2, 0 - tick % 127, 0);
-            g.DrawImage(GraphicsEngine.Level2, 127 - tick % 127, 0);
-            g.DrawImage(GraphicsEngine.Level2, 254 - tick % 127, 0);
-            g.DrawImage(GraphicsEngine.Level2, 381 - tick % 127, 0);
-            g.DrawImage(GraphicsEngine.Level2, 508 - tick % 127, 0);
-            g.DrawImage(GraphicsEngine.Level2, 635 - tick % 127, 0);
-            g.DrawImage(GraphicsEngine.Level2, 762 - tick % 127, 0);
-            g.DrawImage(GraphicsEngine.Level2, 889 - tick % 127, 0);
+            g.DrawImage(GraphicsEngine.Level2, 0 - Ticks % 127, 0);
+            g.DrawImage(GraphicsEngine.Level2, 127 - Ticks % 127, 0);
+            g.DrawImage(GraphicsEngine.Level2, 254 - Ticks % 127, 0);
+            g.DrawImage(GraphicsEngine.Level2, 381 - Ticks % 127, 0);
+            g.DrawImage(GraphicsEngine.Level2, 508 - Ticks % 127, 0);
+            g.DrawImage(GraphicsEngine.Level2, 635 - Ticks % 127, 0);
+            g.DrawImage(GraphicsEngine.Level2, 762 - Ticks % 127, 0);
+            g.DrawImage(GraphicsEngine.Level2, 889 - Ticks % 127, 0);
         }
 
-        public override bool Tick(int enemies)
-        {
-            tick++;
-            if (Ticks.First == null)
-            {
-                if (enemies == 0)
-                    CanLevelUP = true;
-                return false;
-            }
-            if (enemies == 0 || tick == Ticks.First.Value)
-            {
-                SetEnemies(Ticks.First.Value);
-                Ticks.RemoveFirst();
-                return true;
-            }
-            return false;
-        }
 
-        private void SetEnemies(int t)
-        {
-            if (t == 50 || t == 100 || t == 150 || t == 200)
-            {
-                Enemies = new LinkedList<Enemy>();
-                EnemyMovement[] m = new EnemyMovement[3];
-                m[0].SpeedX = -3;
-                m[0].SpeedY = 3;
-                m[0].steps = 30;
-                m[1].SpeedX = -3;
-                m[1].SpeedY = 0;
-                m[1].steps = 120;
-                m[2].SpeedX = 3;
-                m[2].SpeedY = 0;
-                m[2].steps = 120;
-
-                Enemy e = new Enemy(800, 100, m, 0, ITERATION * 20);
-                Enemies.AddFirst(e);
-            }
-            else if (t == 400)
-            {
-                Enemies = new LinkedList<Enemy>();
-                EnemyMovement[] m = new EnemyMovement[9];
-                m[0].SpeedX = -4;
-                m[0].SpeedY = 0;
-                m[0].steps = 20;
-                m[1].SpeedX = -4;
-                m[1].SpeedY = 0;
-                m[1].steps = 20;
-                m[2].SpeedX = -4;
-                m[2].SpeedY = 4;
-                m[2].steps = 20;
-                m[3].SpeedX = -4;
-                m[3].SpeedY = 0;
-                m[3].steps = 20;
-                m[4].SpeedX = -4;
-                m[4].SpeedY = 4;
-                m[4].steps = 20;
-                m[5].SpeedX = 4;
-                m[5].SpeedY = -4;
-                m[5].steps = 20;
-                m[6].SpeedX = 4;
-                m[6].SpeedY = 0;
-                m[6].steps = 20;
-                m[7].SpeedX = 4;
-                m[7].SpeedY = -4;
-                m[7].steps = 20;
-                m[8].SpeedX = 4;
-                m[8].SpeedY = 0;
-                m[8].steps = 20;
-
-
-                Enemy e = new Enemy(700, 100, m, 0, ITERATION * 20);
-                Enemies.AddFirst(e);
-
-                EnemyMovement[] m1 = new EnemyMovement[9];
-                m1[0].SpeedX = -4;
-                m1[0].SpeedY = 0;
-                m1[0].steps = 20;
-                m1[1].SpeedX = -4;
-                m1[1].SpeedY = 0;
-                m1[1].steps = 20;
-                m1[2].SpeedX = -4;
-                m1[2].SpeedY = -4;
-                m1[2].steps = 20;
-                m1[3].SpeedX = -4;
-                m1[3].SpeedY = 0;
-                m1[3].steps = 20;
-                m1[4].SpeedX = -4;
-                m1[4].SpeedY = -4;
-                m1[4].steps = 20;
-                m1[5].SpeedX = 4;
-                m1[5].SpeedY = 4;
-                m1[5].steps = 20;
-                m1[6].SpeedX = 4;
-                m1[6].SpeedY = 0;
-                m1[6].steps = 20;
-                m1[7].SpeedX = 4;
-                m1[7].SpeedY = 4;
-                m1[7].steps = 20;
-                m1[8].SpeedX = 4;
-                m1[8].SpeedY = 0;
-                m1[8].steps = 20;
-
-                e = new Enemy(700, 450, m1, 0, ITERATION * 20);
-                Enemies.AddFirst(e);
-
-                EnemyMovement[] m2 = new EnemyMovement[7];
-                m2[0].SpeedX = -3;
-                m2[0].SpeedY = 3;
-                m2[0].steps = 30;
-                m2[1].SpeedX = -3;
-                m2[1].SpeedY = -3;
-                m2[1].steps = 30;
-                m2[2].SpeedX = -3;
-                m2[2].SpeedY = 3;
-                m2[2].steps = 30;
-                m2[3].SpeedX = 3;
-                m2[3].SpeedY = -3;
-                m2[3].steps = 30;
-                m2[4].SpeedX = 3;
-                m2[4].SpeedY = 3;
-                m2[4].steps = 30;
-                m2[5].SpeedX = 3;
-                m2[5].SpeedY = -3;
-                m2[5].steps = 30;
-                m2[6].SpeedX = -3;
-                m2[6].SpeedY = 3;
-                m2[6].steps = 30;
-
-                e = new Enemy(700, 200, m2, 0, ITERATION * 20);
-                Enemies.AddFirst(e);
-
-                EnemyMovement[] m3 = new EnemyMovement[7];
-                m3[0].SpeedX = -3;
-                m3[0].SpeedY = -3;
-                m3[0].steps = 30;
-                m3[1].SpeedX = -3;
-                m3[1].SpeedY = 3;
-                m3[1].steps = 30;
-                m3[2].SpeedX = -3;
-                m3[2].SpeedY = -3;
-                m3[2].steps = 30;
-                m3[3].SpeedX = 3;
-                m3[3].SpeedY = 3;
-                m3[3].steps = 30;
-                m3[4].SpeedX = 3;
-                m3[4].SpeedY = -3;
-                m3[4].steps = 30;
-                m3[5].SpeedX = 3;
-                m3[5].SpeedY = 3;
-                m3[5].steps = 30;
-                m3[6].SpeedX = -3;
-                m3[6].SpeedY = -3;
-                m3[6].steps = 30;
-
-                e = new Enemy(700, 275, m3, 0, ITERATION * 20);
-                Enemies.AddFirst(e);
-            }
-        }
     }
 }

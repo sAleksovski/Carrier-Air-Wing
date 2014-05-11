@@ -23,16 +23,17 @@ namespace CarrierAirWing
         public int SpeedX { get; set; }
         public int SpeedY { get; set; }
         public EnemyMovement[] movement;
-        public int currentMovement;
-        public int ticks;
-        public int CanFire;
-        public int Health;
+        private int currentMovement;
+        private int ticks;
+        private int CanFire;
+        public int Health { get; set; }
+        public int Status { get; set; }
 
         // Posle kolko vreme da ispuca metak
         private int fireDelay;
 
         // Konstruktor bez fireDelay
-        public Enemy(int x, int y, EnemyMovement[] m, int sr, int health)
+        public Enemy(int x, int y, EnemyMovement[] m, int health)
         {
             X = x;
             Y = y;
@@ -46,20 +47,21 @@ namespace CarrierAirWing
             Health = health;
             CanFire = 0;
             fireDelay = 100;
+            Status = 0;
         }
 
         // Konstruktor sas fireDelay
-        public Enemy(int x, int y, EnemyMovement[] m, int sr, int health, int fireDelay)
-            : this(x, y, m, sr, health)
+        public Enemy(int x, int y, EnemyMovement[] m, int health, int fireDelay)
+            : this(x, y, m, health)
         {
             this.fireDelay = fireDelay;
         }
 
         // Konstruktor sas tip i fireDelay
-        public Enemy(int x, int y, EnemyMovement[] m, int sr, int health, int type, int fireDelay)
-            : this(x, y, m, sr, health, fireDelay)
+        public Enemy(int x, int y, EnemyMovement[] m, int health, int type, int fireDelay)
+            : this(x, y, m, health, fireDelay)
         {
-            //Da se doimplementira
+            spriteIndex = type;
         }
 
         public void Move()
@@ -73,7 +75,7 @@ namespace CarrierAirWing
             {
                 ticks = 0;
                 currentMovement = (currentMovement + 1) % movement.Length;
-                if (currentMovement == 0) currentMovement = 1;
+                if (currentMovement == 0) Status = -1; // Treba da se testira
                 SpeedX = movement[currentMovement].SpeedX;
                 SpeedY = movement[currentMovement].SpeedY;
             }
@@ -99,13 +101,13 @@ namespace CarrierAirWing
             int differenceX = Math.Abs(x - X);
             int differenceY = Math.Abs(y - Y);
 
-            if (differenceY < 500 && differenceX < 500)
+            if (differenceY < 450 && differenceX < 450)
             {
                 CanFire = fireDelay;
                 int signX = (x < X) ? -1 : 1;
                 int signY = (y < Y) ? -1 : 1;
                 double agol = Math.Atan2(differenceY, differenceX);
-                return new Bullet(X, Y, (int)(5 * Math.Cos(agol) * signX), (int)(5 * Math.Sin(agol) * signY), 15);
+                return new Bullet(X, Y, (int)(7 * Math.Cos(agol) * signX), (int)(7 * Math.Sin(agol) * signY), 15);
             }
 
             return null;

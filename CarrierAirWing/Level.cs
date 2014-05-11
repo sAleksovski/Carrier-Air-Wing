@@ -8,23 +8,22 @@ namespace CarrierAirWing
 {
     public abstract class Level
     {
-        public int Lvl;
-        public Image LevelBackground;
-        public LinkedList<Enemy> Enemies;
-        public LinkedList<int> Ticks;
-        public int tick;
-        public bool CanLevelUP;
+        public int Lvl { get; set; }
+        public Image LevelBackground { get; set; }
+        public LinkedList<EnemyWrapper> Enemies { get; set; }
+        public int Ticks { get; set; }
+        public bool CanLevelUP { get; set; }
         public static int ITERATION = 1;
 
         public Level()
         {
-            tick = 0;
+            Ticks = 0;
             CanLevelUP = false;
+            Enemies = new LinkedList<EnemyWrapper>();
         }
 
-        public abstract void Draw(Graphics g);
-
         public abstract Level LevelUP();
-        public abstract bool Tick(int enemies);
+        public abstract void Tick();
+        public abstract void Draw(Graphics g);
     }
 }
