@@ -75,6 +75,12 @@
     <Compile Include="FormChoosePlane.Designer.cs">
       <DependentUpon>FormChoosePlane.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCredits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCredits.Designer.cs">
+      <DependentUpon>FormCredits.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormGame.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     <Compile Include="SoundEngine.cs" />
     <EmbeddedResource Include="FormChoosePlane.resx">
       <DependentUpon>FormChoosePlane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCredits.resx">
+      <DependentUpon>FormCredits.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGame.resx">
       <DependentUpon>FormGame.cs</DependentUpon>
