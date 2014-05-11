@@ -1,0 +1,3 @@
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Release\CarrierAirWing.Form1.resources
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Release\CarrierAirWing.Properties.Resources.resources
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Release\Carrier-Air-Wing.csproj.GenerateResource.Cache

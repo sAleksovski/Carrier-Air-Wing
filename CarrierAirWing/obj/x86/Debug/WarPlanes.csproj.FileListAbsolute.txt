@@ -1,0 +1,8 @@
+C:\Users\Stefan\documents\visual studio 2010\Projects\WarPlanes\WarPlanes\obj\x86\Debug\WarPlanes.Form1.resources
+C:\Users\Stefan\documents\visual studio 2010\Projects\WarPlanes\WarPlanes\obj\x86\Debug\WarPlanes.Properties.Resources.resources
+C:\Users\Stefan\documents\visual studio 2010\Projects\WarPlanes\WarPlanes\obj\x86\Debug\WarPlanes.csproj.GenerateResource.Cache
+C:\Users\Stefan\documents\visual studio 2010\Projects\WarPlanes\WarPlanes\bin\Debug\WarPlanes.exe
+C:\Users\Stefan\documents\visual studio 2010\Projects\WarPlanes\WarPlanes\bin\Debug\WarPlanes.pdb
+C:\Users\Stefan\documents\visual studio 2010\Projects\WarPlanes\WarPlanes\obj\x86\Debug\WarPlanes.exe
+C:\Users\Stefan\documents\visual studio 2010\Projects\WarPlanes\WarPlanes\obj\x86\Debug\WarPlanes.pdb
+C:\Users\Stefan\documents\visual studio 2010\Projects\WarPlanes\WarPlanes\obj\x86\Debug\WarPlanes.csprojResolveAssemblyReference.cache

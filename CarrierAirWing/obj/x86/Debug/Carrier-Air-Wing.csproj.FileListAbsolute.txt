@@ -11,3 +11,17 @@ C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\Car
 C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\Carrier-Air-Wing.csproj.GenerateResource.Cache
 C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.exe
 C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.pdb
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\Interop.WMPLib.dll
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\Carrier-Air-Wing.csproj.ResolveComReference.cache
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.exe
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.pdb
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\bin\Debug\CarrierAirWing.exe
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\bin\Debug\CarrierAirWing.pdb
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\Carrier-Air-Wing.csprojResolveAssemblyReference.cache
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormChoosePlane.resources
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormGame.resources
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormGetName.resources
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormHighScore.resources
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormMenu.resources
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.Properties.Resources.resources
+C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\Carrier-Air-Wing.csproj.GenerateResource.Cache

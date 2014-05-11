@@ -66,6 +66,13 @@ namespace CarrierAirWing
                 game.p1.plane.keys.right = 1;
                 game.p1.plane.keys.left = 0;
             }
+            if (e.KeyCode == System.Windows.Forms.Keys.P)
+            {
+                if (timer.Enabled)
+                    timer.Stop();
+                else
+                    timer.Start();
+            }
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
