@@ -48,7 +48,7 @@ namespace CarrierAirWing
 
         public void Draw(Graphics g)
         {
-            g.DrawImage(Sprite, X - Sprite.Width / 2, Y -Sprite.Height / 2);
+            g.DrawImageUnscaled(Sprite, X - Sprite.Width / 2, Y -Sprite.Height / 2);
         }
     }
 }

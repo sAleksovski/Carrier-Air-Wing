@@ -1,0 +1,13 @@
+C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\Interop.WMPLib.dll
+C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\Carrier-Air-Wing.csproj.ResolveComReference.cache
+C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\bin\Debug\CarrierAirWing.exe
+C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\bin\Debug\CarrierAirWing.pdb
+C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormChoosePlane.resources
+C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormGame.resources
+C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormGetName.resources
+C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormHighScore.resources
+C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormMenu.resources
+C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.Properties.Resources.resources
+C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\Carrier-Air-Wing.csproj.GenerateResource.Cache
+C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.exe
+C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.pdb
