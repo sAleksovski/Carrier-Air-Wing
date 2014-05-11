@@ -32,6 +32,7 @@ namespace CarrierAirWing
             {
                 explosionPlayer[i] = new WindowsMediaPlayer();
                 explosionPlayer[i].settings.autoStart = false;
+                explosionPlayer[i].URL = (@"sounds\explosions\explosion1.mp3");
                 explosionPlayer[i].settings.volume = 70;
             }
             
@@ -83,13 +84,12 @@ namespace CarrierAirWing
 
 
 
-        public static void PlayExplosionSound(String fileName)
+        public static void PlayExplosionSound()
         {
             foreach (WindowsMediaPlayer wmp in explosionPlayer)
             {
                 if (wmp.playState != WMPPlayState.wmppsPlaying)
                 {
-                    wmp.URL = fileName;
                     wmp.controls.play();
                     return;
                 }
