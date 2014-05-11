@@ -16,12 +16,10 @@ namespace CarrierAirWing
             Lvl = 2;
             LevelBackground = Properties.Resources.level2;
             AddEnemies();
-            
         }
 
         private void AddEnemies()
         {
-
             // Heli na pocetak od levo
             for (int i = 0; i < 4; i++)
             {
@@ -73,7 +71,7 @@ namespace CarrierAirWing
                 m[1].SpeedY = 0;
                 m[1].steps = 150;
                 Enemy e = new Enemy(740, 200 + i * 2, m, ITERATION * 20, 0, 50);
-                Enemy e1 = new Enemy(740, 250 + i * 2, m, ITERATION * 20, 4, 50);
+                Enemy e1 = new Enemy(740, 250 + i * 2, m, ITERATION * 20, 6, 50);
                 Enemies.AddLast(new EnemyWrapper(e, 620 + i * 25));
                 Enemies.AddLast(new EnemyWrapper(e1, 620 + i * 25));
             }
@@ -104,7 +102,7 @@ namespace CarrierAirWing
             }
 
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
                 EnemyMovement[] m = new EnemyMovement[2];
                 m[0].SpeedX = +4;
@@ -203,50 +201,50 @@ namespace CarrierAirWing
 
             // Zeleno heli
             {
-                EnemyMovement[] m = new EnemyMovement[3];
+                EnemyMovement[] m = new EnemyMovement[1];
                 m[0].SpeedX = 4;
                 m[0].SpeedY = 0;
-                m[0].steps = 150;
+                m[0].steps = 250;
                 Enemy e = new Enemy(0, 230, m, ITERATION * 20, 3, 100);
                 Enemies.AddLast(new EnemyWrapper(e, 1000));
             }
 
             // Zeleno heli
             {
-                EnemyMovement[] m = new EnemyMovement[3];
+                EnemyMovement[] m = new EnemyMovement[1];
                 m[0].SpeedX = 4;
                 m[0].SpeedY = 0;
-                m[0].steps = 150;
+                m[0].steps = 250;
                 Enemy e = new Enemy(0, 400, m, ITERATION * 20, 2, 100);
                 Enemies.AddLast(new EnemyWrapper(e, 1500));
             }
 
             // Crveno heli
             {
-                EnemyMovement[] m = new EnemyMovement[3];
+                EnemyMovement[] m = new EnemyMovement[1];
                 m[0].SpeedX = -4;
                 m[0].SpeedY = 0;
-                m[0].steps = 150;
+                m[0].steps = 250;
                 Enemy e = new Enemy(740, 50, m, ITERATION * 20, 4, 200);
                 Enemies.AddLast(new EnemyWrapper(e, 1000));
             }
 
             // Crveno heli
             {
-                EnemyMovement[] m = new EnemyMovement[3];
+                EnemyMovement[] m = new EnemyMovement[1];
                 m[0].SpeedX = -3;
                 m[0].SpeedY = 0;
-                m[0].steps = 150;
+                m[0].steps = 400;
                 Enemy e = new Enemy(740, 400, m, ITERATION * 20, 5, 200);
                 Enemies.AddLast(new EnemyWrapper(e, 1700));
             }
 
             // Crveno heli
             {
-                EnemyMovement[] m = new EnemyMovement[3];
+                EnemyMovement[] m = new EnemyMovement[1];
                 m[0].SpeedX = -4;
                 m[0].SpeedY = 0;
-                m[0].steps = 150;
+                m[0].steps = 250;
                 Enemy e = new Enemy(740, 400, m, ITERATION * 20, 4, 200);
                 Enemies.AddLast(new EnemyWrapper(e, 1200));
             }

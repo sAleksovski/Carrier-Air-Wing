@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChoosePlane));
             this.btnThunderbolt = new System.Windows.Forms.Button();
             this.btnTomcat = new System.Windows.Forms.Button();
             this.btnTigerShark = new System.Windows.Forms.Button();
@@ -35,7 +36,7 @@
             // 
             // btnThunderbolt
             // 
-            this.btnThunderbolt.Location = new System.Drawing.Point(12, 12);
+            this.btnThunderbolt.Location = new System.Drawing.Point(13, 74);
             this.btnThunderbolt.Name = "btnThunderbolt";
             this.btnThunderbolt.Size = new System.Drawing.Size(148, 23);
             this.btnThunderbolt.TabIndex = 4;
@@ -45,7 +46,7 @@
             // 
             // btnTomcat
             // 
-            this.btnTomcat.Location = new System.Drawing.Point(12, 41);
+            this.btnTomcat.Location = new System.Drawing.Point(13, 16);
             this.btnTomcat.Name = "btnTomcat";
             this.btnTomcat.Size = new System.Drawing.Size(148, 23);
             this.btnTomcat.TabIndex = 5;
@@ -55,7 +56,7 @@
             // 
             // btnTigerShark
             // 
-            this.btnTigerShark.Location = new System.Drawing.Point(12, 70);
+            this.btnTigerShark.Location = new System.Drawing.Point(13, 45);
             this.btnTigerShark.Name = "btnTigerShark";
             this.btnTigerShark.Size = new System.Drawing.Size(148, 23);
             this.btnTigerShark.TabIndex = 6;
@@ -67,11 +68,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(177, 114);
+            this.ClientSize = new System.Drawing.Size(174, 112);
             this.Controls.Add(this.btnTigerShark);
             this.Controls.Add(this.btnTomcat);
             this.Controls.Add(this.btnThunderbolt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormChoosePlane";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

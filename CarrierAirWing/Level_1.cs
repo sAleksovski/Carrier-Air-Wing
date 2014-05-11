@@ -59,14 +59,14 @@ namespace CarrierAirWing
                 Enemies.AddLast(new EnemyWrapper(e, 500 + i * 165));
             }
 
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < 10; i++)
             {
                 EnemyMovement[] m = new EnemyMovement[1];
                 m[0].SpeedX = -5;
                 m[0].SpeedY = 0;
                 m[0].steps = 300;
-                Enemy e = new Enemy(740, 200 + i * 3, m, ITERATION * 20, 2, 100);
-                Enemies.AddLast(new EnemyWrapper(e, 500 + i * 150));
+                Enemy e = new Enemy(740, 200 + i * 10, m, ITERATION * 20, 2, 100);
+                Enemies.AddLast(new EnemyWrapper(e, 70 + i * 200));
             }
 
 
@@ -82,8 +82,8 @@ namespace CarrierAirWing
                 m[2].SpeedX = -5;
                 m[2].SpeedY = -1;
                 m[2].steps = 200;
-                Enemy e = new Enemy(740, 250 + i * 3, m, ITERATION * 20 + 200, 22, 80);
-                Enemies.AddLast(new EnemyWrapper(e, 100 + i * 100));
+                Enemy e = new Enemy(740, 150 + i * 50, m, ITERATION * 20 + 200, 22, 80);
+                Enemies.AddLast(new EnemyWrapper(e, 2000 + i * 45));
             }
         }
 
