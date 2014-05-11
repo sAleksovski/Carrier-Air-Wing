@@ -25,8 +25,8 @@ namespace CarrierAirWing
             randomizer = new Random();
 
             // Player Sprites
-            //F-20 TigerShark
-            //This are 100% correct
+            // F-20 TigerShark
+            // This are 100% correct
             planeSprites[0] = new Bitmap[3];
             Bitmap bmp = new Bitmap(Resources.UNSquadronPlayer);
             Bitmap croped = bmp.Clone(new Rectangle(5, 3, 43, 11), bmp.PixelFormat);
@@ -39,17 +39,17 @@ namespace CarrierAirWing
             scaled = new Bitmap(croped, (int)(croped.Width * 1.5), (int)(croped.Height * 1.5));
             planeSprites[0][2] = scaled;
 
-            //F-14 TomCat
-            //Should be corected
+            // F-14 TomCat
+            // 100% correcet
             planeSprites[1] = new Bitmap[3];
             bmp = new Bitmap(Resources.UNSquadronPlayer);
-            croped = bmp.Clone(new Rectangle(8, 250, 50, 15), bmp.PixelFormat);
+            croped = bmp.Clone(new Rectangle(10, 253, 47, 11), bmp.PixelFormat);
             scaled = new Bitmap(croped, (int)(croped.Width * 1.6), (int)(croped.Height * 1.6));
             planeSprites[1][0] = scaled;
-            croped = bmp.Clone(new Rectangle(295, 270, 48, 17), bmp.PixelFormat);
+            croped = bmp.Clone(new Rectangle(297, 272, 47, 12), bmp.PixelFormat);
             scaled = new Bitmap(croped, (int)(croped.Width * 1.6), (int)(croped.Height * 1.6));
             planeSprites[1][1] = scaled;
-            croped = bmp.Clone(new Rectangle(125, 295, 47, 18), bmp.PixelFormat);
+            croped = bmp.Clone(new Rectangle(127, 297, 47, 16), bmp.PixelFormat);
             scaled = new Bitmap(croped, (int)(croped.Width * 1.6), (int)(croped.Height * 1.6));
             planeSprites[1][2] = scaled;
 
@@ -277,49 +277,49 @@ namespace CarrierAirWing
             // Type 1
             explosionSprites[0] = new Bitmap[7];
             bmp = new Bitmap(Resources.exp10);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.0F), (int)(bmp.Height * 2.0F));
             explosionSprites[0][0] = scaled;
 
             bmp = new Bitmap(Resources.exp11);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.0F), (int)(bmp.Height * 2.0F));
             explosionSprites[0][1] = scaled;
 
             bmp = new Bitmap(Resources.exp12);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.0F), (int)(bmp.Height * 2.0F));
             explosionSprites[0][2] = scaled;
 
             bmp = new Bitmap(Resources.exp13);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.0F), (int)(bmp.Height * 2.0F));
             explosionSprites[0][3] = scaled;
 
             bmp = new Bitmap(Resources.exp14);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.0F), (int)(bmp.Height * 2.0F));
             explosionSprites[0][4] = scaled;
 
             bmp = new Bitmap(Resources.exp15);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.0F), (int)(bmp.Height * 2.0F));
             explosionSprites[0][5] = scaled;
 
             bmp = new Bitmap(Resources.exp16);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.0F), (int)(bmp.Height * 2.0F));
             explosionSprites[0][6] = scaled;
 
             // Type 2
             explosionSprites[1] = new Bitmap[4];
             bmp = new Bitmap(Resources.exp20);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.0F), (int)(bmp.Height * 2.0F));
             explosionSprites[1][0] = scaled;
 
             bmp = new Bitmap(Resources.exp21);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.0F), (int)(bmp.Height * 2.0F));
             explosionSprites[1][1] = scaled;
 
             bmp = new Bitmap(Resources.exp22);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.0F), (int)(bmp.Height * 2.0F));
             explosionSprites[1][2] = scaled;
 
             bmp = new Bitmap(Resources.exp23);
-            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.5F), (int)(bmp.Height * 2.5F));
+            scaled = new Bitmap(bmp, (int)(bmp.Width * 2.0F), (int)(bmp.Height * 2.0F));
             explosionSprites[1][3] = scaled;
 
 

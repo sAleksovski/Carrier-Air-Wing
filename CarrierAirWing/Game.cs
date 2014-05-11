@@ -30,9 +30,16 @@ namespace CarrierAirWing
         public int BoundsX { get; set; }
         public int BoundsY { get; set; }
         public int Score { get; set; }
-        public bool GameInProgress { get; set; }
+
         public int TTL { get; set; }
+        public bool GameInProgress { get; set; }
         public bool CanClose { get; set; }
+
+        LinkedList<Rocket> deleteRockets;
+        LinkedList<Bullet> deleteEnemyBullets;
+        LinkedList<Explosion> deleteExplosions;
+        LinkedList<Rocket> deletePlayerRockets;
+        LinkedList<Enemy> deleteEnemies;
         
         public Game()
         {
@@ -43,13 +50,19 @@ namespace CarrierAirWing
             enemyBullets = new LinkedList<Bullet>();
             enemies = new LinkedList<Enemy>();
             explosions = new LinkedList<Explosion>();
+
+            // Init LinkedLists
+            deleteRockets = new LinkedList<Rocket>();
+            deleteEnemyBullets = new LinkedList<Bullet>();
+            deleteExplosions = new LinkedList<Explosion>();
+            deletePlayerRockets = new LinkedList<Rocket>();
+            deleteEnemies = new LinkedList<Enemy>();
+
             foreach (Enemy e in level.Enemies)
             {
                 enemies.AddFirst(e);
             }
             
-            //p1 = new Player(new A10ThunderBolt(100, 100));
-            //p1 = new Player(new F14TomCat(100, 100));
             if(Settings.chosenPlane == 0)
                 p1 = new Player(new F20TigerShark(100, 100));
             else if(Settings.chosenPlane == 1)
@@ -73,16 +86,10 @@ namespace CarrierAirWing
             if (!GameInProgress)
             {
                 TTL--;
-                if(TTL <= 0)
+                if (TTL <= 0)
                     return;
             }
-                
 
-            p1.Move();
-            foreach (Explosion e in explosions)
-            {
-                e.Move();
-            }
             if (GameInProgress)
             {
                 if (level.Tick(enemies.Count))
@@ -95,6 +102,18 @@ namespace CarrierAirWing
             if (level.CanLevelUP)
                 level = level.LevelUP();
 
+            p1.Move();
+
+            foreach (Explosion e in explosions)
+            {
+                if (e.Status == -1)
+                {
+                    deleteExplosions.AddFirst(e);
+                    continue;
+                }
+                e.Move();
+            }
+
             foreach (Enemy e in enemies)
             {
                 e.Move();
@@ -103,131 +122,66 @@ namespace CarrierAirWing
                     enemyBullets.AddFirst(b);
             }
 
-            foreach (Bullet b in playerBullets)
-            {
-                b.Move();
-            }
-
             foreach (Rocket r in playerRockets)
             {
+                if (r.X >= BoundsX - 50)
+                {
+                    deleteRockets.AddFirst(r);
+                    continue;
+                }
                 r.Move();
+
             }
 
             foreach (Bullet b in enemyBullets)
             {
+                if ((b.X >= BoundsX) || (b.X <= 0) || (b.Y <= 0) || (b.Y >= BoundsY))
+                {
+                    deleteEnemyBullets.AddFirst(b);
+                    continue;
+                }
                 b.Move();
             }
 
             if (p1.plane.keys.ctrl == 1)
             {
-                Bullet b = p1.FireBullet();
-                if (b != null)
-                    playerBullets.AddFirst(b);
+                // Super Fire ...
             }
 
             if (p1.plane.keys.alt == 1)
             {
                 Rocket r = p1.FireRocket();
                 if (r != null)
-                    playerRockets.AddFirst(r); //ili AddLast?
+                    playerRockets.AddLast(r); //ili AddLast?
 
-            }
-            Remove();
-            Collision();
-        }
-
-        private void Remove()
-        {
-            LinkedList<Rocket> deleteRockets = new LinkedList<Rocket>();
-            LinkedList<Bullet> deletePlayerBullets = new LinkedList<Bullet>();
-            LinkedList<Bullet> deleteEnemyBullets = new LinkedList<Bullet>();
-            LinkedList<Explosion> deleteExplosions = new LinkedList<Explosion>();
-
-            //Remove
-            foreach (Bullet b in playerBullets)
-            {
-                if ((b.X >= BoundsX - 50) || (b.X <= 10) || (b.Y <= 10) || (b.Y >= BoundsY - 50))
-                    deletePlayerBullets.AddFirst(b);
-            }
-
-            foreach (Rocket r in playerRockets)
-            {
-                if (r.X >= BoundsX - 50)
-                    deleteRockets.AddFirst(r);
-            }
-
-            foreach (Explosion e in explosions)
-            {
-                if (e.Status == -1)
-                    deleteExplosions.AddFirst(e);
-            }
-
-            //10 to 0
-            foreach (Bullet b in enemyBullets)
-            {
-                if ((b.X >= BoundsX) || (b.X <= 0) || (b.Y <= 0) || (b.Y >= BoundsY))
-                    deleteEnemyBullets.AddFirst(b);
             }
 
             foreach (Rocket r in deleteRockets)
-            {
                 playerRockets.Remove(r);
-            }
-
-            foreach (Bullet b in deletePlayerBullets)
-            {
-                playerBullets.Remove(b);
-            }
+            deleteRockets.Clear();
 
             foreach (Bullet b in deleteEnemyBullets)
-            {
                 enemyBullets.Remove(b);
-            }
+            deleteEnemyBullets.Clear();
 
             foreach (Explosion e in deleteExplosions)
-            {
                 explosions.Remove(e);
-            }
-        }
+            deleteExplosions.Clear();
 
-        private void Collision()
-        {
-            LinkedList<Bullet> deletePlayerBullets = new LinkedList<Bullet>();
-            LinkedList<Rocket> deletePlayerRockets = new LinkedList<Rocket>();
-            LinkedList<Bullet> deleteEnemyBullets = new LinkedList<Bullet>();
-            LinkedList<Enemy> deleteEnemies = new LinkedList<Enemy>();
 
             foreach (Enemy e in enemies)
             {
-                foreach (Bullet b in playerBullets)
-                {
-                    if(e.Hit(b))
-                    {
-                        deletePlayerBullets.AddFirst(b);
-                        e.Health -= b.Damage;
-
-                        Score += 5;
-                        if (e.Health <= 0)
-                        {
-                            deleteEnemies.AddFirst(e);
-                            explosions.AddFirst(new Explosion(e.X, e.Y));
-                            Score += 10;
-                        }
-                        continue;    
-                    }
-                }
-
                 foreach (Rocket r in playerRockets)
                 {
                     if (e.Hit(r))
                     {
-                        
                         deletePlayerRockets.AddFirst(r);
                         e.Health -= r.Damage;
                         Score += 5;
                         if (e.Health <= 0)
                         {
                             deleteEnemies.AddFirst(e);
+                            e.Health = -1;
                             explosions.AddFirst(new Explosion(e.X, e.Y));
                             Score += 10;
                         }
@@ -263,18 +217,17 @@ namespace CarrierAirWing
                 }
             }
 
-            foreach (Bullet b in deletePlayerBullets)
-                playerBullets.Remove(b);
-
             foreach (Rocket r in deletePlayerRockets)
                 playerRockets.Remove(r);
+            deletePlayerRockets.Clear();
 
             foreach (Bullet b in deleteEnemyBullets)
                 enemyBullets.Remove(b);
+            deleteEnemyBullets.Clear();
 
             foreach (Enemy e in deleteEnemies)
                 enemies.Remove(e);
-
+            deleteEnemies.Clear();
         }
 
         public void Draw(Graphics g)
@@ -312,26 +265,28 @@ namespace CarrierAirWing
 
         public void DrawHUD(Graphics g)
         {
-            g.DrawRectangle(new Pen(Color.Red, 3), 1, 1, 220, 88);
-            g.DrawImage(p1.plane.PlayerFace, 160, 1);
-            g.DrawRectangle(new Pen(Color.Red, 3), 160, 1, 60, 70);
-            g.DrawString(string.Format("Lives: {0}", p1.Lives), 
-                new Font(FontFamily.GenericMonospace, 16), 
-                new SolidBrush(Color.Red), 
-                new PointF(5, 3));
-            g.DrawString("Health:",
-                new Font(FontFamily.GenericMonospace, 16), 
-                new SolidBrush(Color.Red),
-                new PointF(5, 42));
-            g.DrawLine(new Pen(Color.Red, 10), 8, 80, 8 + (int)(2*p1.Health), 80);
+            g.FillRectangle(new SolidBrush(Color.White), 0, 0, 64, 69);
+            g.DrawImage(p1.plane.PlayerFace, 1, 0);
+            g.DrawRectangle(new Pen(Color.Black, 2), 1, 1, 64, 69);
+
+            g.FillRectangle(new SolidBrush(Color.Red), 65, 50, 200, 20);
+            g.DrawLine(new Pen(Color.Yellow, 20), 65, 60, (int)(65 + p1.Health * 2), 60);
+            g.DrawRectangle(new Pen(Color.Black, 2), 65, 50, 200, 20);
+
+            g.DrawString(string.Format("Level: {0}", (Level.ITERATION - 1) * 3 + level.Lvl),
+                new Font(FontFamily.GenericSansSerif, 13, FontStyle.Bold),
+                new SolidBrush(Color.Gold),
+                new PointF(67, 2));
+
+            g.DrawString(string.Format("Lives: {0}", p1.Lives),
+                new Font(FontFamily.GenericSansSerif, 13, FontStyle.Bold),
+                new SolidBrush(Color.White),
+                new PointF(67, 27));
+
             g.DrawString(string.Format("Score: {0}", Score.ToString()),
-                new Font(FontFamily.GenericMonospace, 16),
-                new SolidBrush(Color.Red),
-                new PointF(225, 5));
-            g.DrawString(string.Format("Level: {0}", (Level.ITERATION - 1)*3 + level.Lvl),
-                new Font(FontFamily.GenericMonospace, 16),
-                new SolidBrush(Color.Red),
-                new PointF(225, 25));
+                new Font(FontFamily.GenericSansSerif, 13, FontStyle.Bold),
+                new SolidBrush(Color.White),
+                new PointF(160, 27));
         }
 
         public void GameOver()

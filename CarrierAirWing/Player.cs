@@ -31,11 +31,6 @@ namespace CarrierAirWing
             plane.Draw(g);
         }
 
-        public Bullet FireBullet()
-        {
-            return plane.FireBullet();
-        }
-
         public Rocket FireRocket()
         {
             return plane.FireRocket();

@@ -55,6 +55,12 @@ namespace CarrierAirWing
             this.fireDelay = fireDelay;
         }
 
+        // Konstruktor sas tip i fireDelay
+        public Enemy(int x, int y, EnemyMovement[] m, int sr, int health, int type, int fireDelay)
+            : this(x, y, m, sr, health, fireDelay)
+        {
+            //Da se doimplementira
+        }
 
         public void Move()
         {
@@ -94,7 +100,7 @@ namespace CarrierAirWing
             int differenceY = Math.Abs(y - Y);
 
             if (differenceY < 500 && differenceX < 500)
-            {    
+            {
                 CanFire = fireDelay;
                 int signX = (x < X) ? -1 : 1;
                 int signY = (y < Y) ? -1 : 1;
@@ -118,17 +124,8 @@ namespace CarrierAirWing
             if (GraphicsEngine.enemySprites[spriteIndex].Length == 3)
                 Sprite = GraphicsEngine.enemySprites[spriteIndex][2];
 
-            //if (Health <= 0)
-            //    SoundEngine.PlayExplosion(@"sounds\explosions\explosion1.mp3");
-
             return true;
         }
 
-        public bool Hit(Bullet b)
-        {
-            if (Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height), new Rectangle(b.X, b.Y, Properties.Resources.bullet0.Width, Properties.Resources.bullet0.Height)).IsEmpty)
-                return false;
-            return true;
-        }
     }
 }

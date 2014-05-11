@@ -25,12 +25,12 @@ namespace CarrierAirWing
                 Sprite = GraphicsEngine.planeSprites[1][0];
         }
 
-        public override Bullet FireBullet()
+        public Bullet FireBullet()
         {
             if (BulletCountdown == 0)
             {
                 BulletCountdown = 10;
-                return new Bullet((int)(X + Sprite.Width * 0.9F), Y+3, 5, 0, 20);
+                return new Bullet((int)(X + Sprite.Width * 0.9F), Y + 3, 5, 0, 20);
             }
             return null;
         }
@@ -43,9 +43,7 @@ namespace CarrierAirWing
                 RocketsLaunched++;
                 if (RocketsLaunched == 14)
                     RocketBlocked = true;
-                //return new Rocket(X + sprite.Width * 0.8F, Y, 12, 0, 2, 20); //Rocket ?
-                return new Rocket((int)(X + Sprite.Width * 0.8F), Y+5, 12, 0, 1, 20); //Rocket 1
-                //return new Rocket(X + sprite.Width * 0.8F, Y+5, 12, 0, 0, 50); //Rocket ?
+                return new Rocket((int)(X + Sprite.Width * 0.85F), Y - 2, 12, 0, 1, 20); //Rocket 1
             }
             return null;
         }

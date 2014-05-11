@@ -25,7 +25,7 @@ namespace CarrierAirWing
                 Sprite = GraphicsEngine.planeSprites[2][0];
         }
 
-        public override Bullet FireBullet()
+        public Bullet FireBullet()
         {
             if (BulletCountdown == 0)
             {
@@ -46,7 +46,7 @@ namespace CarrierAirWing
                 //return new Rocket(X + sprite.Width * 0.8F, Y, 12, 0, 2, 20); //Rocket ?
                 //return new Rocket(X + sprite.Width * 0.8F, Y+5, 12, 0, 1, 50); //Rocket ?
                 return new Rocket((int)(X + Sprite.Width * 0.85F), Y + 5, 12, 0, 2, 20); //Rocket 2
-                
+
             }
             return null;
         }
