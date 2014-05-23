@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boss.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="EnemyWrapper.cs" />
@@ -191,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="f16_multirole_fighter_icon.ico" />
+    <Content Include="Resources\Images\Boss\boss1.png" />
     <Content Include="Resources\Images\bullet2.png" />
     <Content Include="Resources\Images\bullet4.png" />
     <Content Include="Resources\Images\Bullets\bullet0.png" />

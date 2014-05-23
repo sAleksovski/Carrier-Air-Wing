@@ -14,9 +14,11 @@ namespace CarrierAirWing
         public static Bitmap[][] enemySprites = new Bitmap[27][];
         public static Bitmap[] playerFaceSprites = new Bitmap[3];
         public static Bitmap[][] explosionSprites = new Bitmap[2][];
+
         public static Bitmap Level1;
         public static Bitmap Level2;
         public static Bitmap[] Level3 = new Bitmap[5];
+        
         public static Random randomizer;
 
         public static void Init()
@@ -272,6 +274,16 @@ namespace CarrierAirWing
             scaled = new Bitmap(croped, (int)(croped.Width * 1.3), (int)(croped.Height * 1.3));
             enemySprites[22][2] = scaled;
 
+            // Boss 1
+            enemySprites[23] = new Bitmap[3];
+            bmp = new Bitmap(Resources.boss1);
+            croped = bmp.Clone(new Rectangle(6, 5, 139, 79), bmp.PixelFormat);
+            scaled = new Bitmap(croped, (int)(croped.Width * 1.5), (int)(croped.Height * 1.5));
+            enemySprites[23][0] = enemySprites[23][1] = scaled;
+            croped = bmp.Clone(new Rectangle(154, 5, 139, 79), bmp.PixelFormat);
+            scaled = new Bitmap(croped, (int)(croped.Width * 1.5), (int)(croped.Height * 1.5));
+            enemySprites[23][2] = scaled;
+
 
             // Explosion sprites
             // Type 1
@@ -356,6 +368,8 @@ namespace CarrierAirWing
             croped = bmp.Clone(new Rectangle(1328, 33, 262, 152), bmp.PixelFormat);
             scaled = new Bitmap(croped, 800, 600);
             Level3[4] = scaled;
+
+            
         }
 
     }

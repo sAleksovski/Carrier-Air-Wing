@@ -14,7 +14,7 @@ namespace CarrierAirWing
         public Form formMenu;
         public Game game;
         public Timer timer;
-        public static int FRAMES_PER_SECOND = 40;
+        public static int FRAMES_PER_SECOND = 45;
 
         public FormGame()
         {

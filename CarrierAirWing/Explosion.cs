@@ -33,18 +33,14 @@ namespace CarrierAirWing
         {
             if (ticks == 0)
             {
-                ticks = 2;
                 currentSprite++;
-
                 if (currentSprite >= GraphicsEngine.explosionSprites[spriteIndex].Length)
                     Status = -1;
                 else
                     Sprite = GraphicsEngine.explosionSprites[spriteIndex][currentSprite];
             }
-            else
-            {
-                ticks--;
-            }
+
+            ticks = (ticks + 1) % 2;
         }
 
         public void Draw(Graphics g)

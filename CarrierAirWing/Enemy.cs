@@ -17,15 +17,15 @@ namespace CarrierAirWing
     public class Enemy
     {
         public Bitmap Sprite { get; set; }
-        private int spriteIndex;
+        protected int spriteIndex;
         public int X { get; set; }
         public int Y { get; set; }
         public int SpeedX { get; set; }
         public int SpeedY { get; set; }
         public EnemyMovement[] movement;
-        private int currentMovement;
-        private int ticks;
-        private int CanFire;
+        protected int currentMovement;
+        protected int ticks;
+        protected int CanFire;
         public int Health { get; set; }
         public int Status { get; set; }
 
@@ -64,7 +64,7 @@ namespace CarrierAirWing
             spriteIndex = type;
         }
 
-        public void Move()
+        public virtual void Move()
         {
             ticks++;
             ChangeSprite();
@@ -84,7 +84,7 @@ namespace CarrierAirWing
                 CanFire--;
         }
 
-        public void ChangeSprite()
+        public virtual void ChangeSprite()
         {
             if (ticks % 4 == 0)
                 Sprite = GraphicsEngine.enemySprites[spriteIndex][0];
@@ -118,7 +118,7 @@ namespace CarrierAirWing
             g.DrawImage(Sprite, X, Y);
         }
 
-        public bool Hit(Rocket r)
+        public virtual bool Hit(Rocket r)
         {
             if (Rectangle.Intersect(new Rectangle(X, Y, Sprite.Width, Sprite.Height), new Rectangle(r.X, r.Y, r.Sprite.Width, r.Sprite.Height)).IsEmpty)
                 return false;

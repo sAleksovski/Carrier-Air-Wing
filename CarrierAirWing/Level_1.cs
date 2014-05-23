@@ -15,6 +15,21 @@ namespace CarrierAirWing
             Lvl = 1;
             LevelBackground = Properties.Resources.level0;
             AddEnemies();
+
+            // Sort all enemies by tick value
+            List<EnemyWrapper> temp = Enemies.ToList();
+            temp.Sort(
+                    delegate(EnemyWrapper ew1, EnemyWrapper ew2)
+                    {
+                        return ew1.Ticks.CompareTo(ew2.Ticks);
+                    }
+                );
+            Enemies.Clear();
+
+            // Add them back to LinkedList
+            foreach (EnemyWrapper ew in temp)
+                Enemies.AddLast(ew);
+            temp.Clear();
         }
 
         private void AddEnemies()
@@ -84,6 +99,29 @@ namespace CarrierAirWing
                 m[2].steps = 200;
                 Enemy e = new Enemy(740, 150 + i * 50, m, ITERATION * 20 + 200, 22, 80);
                 Enemies.AddLast(new EnemyWrapper(e, 2000 + i * 45));
+            }
+
+
+            for (int i = 0; i < 1; i++)
+            {
+                EnemyMovement[] m = new EnemyMovement[4];
+                m[0].SpeedX = -3;
+                m[0].SpeedY = 3;
+                m[0].steps = 35;
+
+                m[1].SpeedX = -3;
+                m[1].SpeedY = -3;
+                m[1].steps = 35;
+
+                m[2].SpeedX = +3;
+                m[2].SpeedY = -3;
+                m[2].steps = 25;
+
+                m[3].SpeedX = 3;
+                m[3].SpeedY = +3;
+                m[3].steps = 25;
+                Enemy e = new Boss(740, 150, m, ITERATION * 20 + 1000, 23, 100);
+                Enemies.AddLast(new EnemyWrapper(e, 2550 ));
             }
         }
 

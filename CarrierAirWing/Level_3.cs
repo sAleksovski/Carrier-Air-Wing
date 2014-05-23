@@ -19,6 +19,21 @@ namespace CarrierAirWing
             t = 1;
             forward = true;
             AddEnemies();
+
+            // Sort all enemies by tick value
+            List<EnemyWrapper> temp = Enemies.ToList();
+            temp.Sort(
+                    delegate(EnemyWrapper ew1, EnemyWrapper ew2)
+                    {
+                        return ew1.Ticks.CompareTo(ew2.Ticks);
+                    }
+                );
+            Enemies.Clear();
+
+            // Add them back to LinkedList
+            foreach (EnemyWrapper ew in temp)
+                Enemies.AddLast(ew);
+            temp.Clear();
         }
 
         private void AddEnemies()

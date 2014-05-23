@@ -27,3 +27,18 @@ C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirW
 C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\Carrier-Air-Wing.csproj.GenerateResource.Cache
 C:\Users\Stefan\Documents\Visual Studio 2010\Projects\CarrierAirWing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormCredits.resources
 C:\Users\user\Documents\GitHub\Carrier-Air-Wing\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormCredits.resources
+D:\Game\MyRe-Build\CarrierAirWing\obj\x86\Debug\Interop.WMPLib.dll
+D:\Game\MyRe-Build\CarrierAirWing\obj\x86\Debug\Carrier-Air-Wing.csproj.ResolveComReference.cache
+D:\Game\MyRe-Build\CarrierAirWing\obj\x86\Debug\CarrierAirWing.exe
+D:\Game\MyRe-Build\CarrierAirWing\obj\x86\Debug\CarrierAirWing.pdb
+D:\Game\MyRe-Build\CarrierAirWing\bin\Debug\CarrierAirWing.exe
+D:\Game\MyRe-Build\CarrierAirWing\bin\Debug\CarrierAirWing.pdb
+D:\Game\MyRe-Build\CarrierAirWing\obj\x86\Debug\Carrier-Air-Wing.csprojResolveAssemblyReference.cache
+D:\Game\MyRe-Build\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormChoosePlane.resources
+D:\Game\MyRe-Build\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormCredits.resources
+D:\Game\MyRe-Build\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormGame.resources
+D:\Game\MyRe-Build\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormGetName.resources
+D:\Game\MyRe-Build\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormHighScore.resources
+D:\Game\MyRe-Build\CarrierAirWing\obj\x86\Debug\CarrierAirWing.FormMenu.resources
+D:\Game\MyRe-Build\CarrierAirWing\obj\x86\Debug\CarrierAirWing.Properties.Resources.resources
+D:\Game\MyRe-Build\CarrierAirWing\obj\x86\Debug\Carrier-Air-Wing.csproj.GenerateResource.Cache

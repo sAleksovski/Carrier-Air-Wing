@@ -31,17 +31,14 @@ namespace CarrierAirWing
         public int BoundsX { get; set; }
         public int BoundsY { get; set; }
         public int Score { get; set; }
-
         public int TTL { get; set; }
         public bool GameInProgress { get; set; }
         public bool CanClose { get; set; }
-
-        LinkedList<Rocket> deleteRockets;
-        LinkedList<Bullet> deleteEnemyBullets;
-        LinkedList<Explosion> deleteExplosions;
-        LinkedList<Rocket> deletePlayerRockets;
-        LinkedList<Enemy> deleteEnemies;
-        LinkedList<EnemyWrapper> brisi;
+        LinkedList<LinkedListNode<Bullet>> deleteEnemyBullets;
+        LinkedList<LinkedListNode<Explosion>> deleteExplosions;
+        LinkedList<LinkedListNode<Rocket>> deletePlayerRockets;
+        LinkedList<LinkedListNode<Enemy>> deleteEnemies;
+        LinkedList<LinkedListNode<EnemyWrapper>> brisi;
 
         public Game(int boundsX, int boundsY)
         {
@@ -54,12 +51,11 @@ namespace CarrierAirWing
             explosions = new LinkedList<Explosion>();
 
             // Init LinkedLists
-            deleteRockets = new LinkedList<Rocket>();
-            deleteEnemyBullets = new LinkedList<Bullet>();
-            deleteExplosions = new LinkedList<Explosion>();
-            deletePlayerRockets = new LinkedList<Rocket>();
-            deleteEnemies = new LinkedList<Enemy>();
-            brisi = new LinkedList<EnemyWrapper>();
+            deleteEnemyBullets = new LinkedList<LinkedListNode<Bullet>>();
+            deleteExplosions = new LinkedList<LinkedListNode<Explosion>>();
+            deletePlayerRockets = new LinkedList<LinkedListNode<Rocket>>();
+            deleteEnemies = new LinkedList<LinkedListNode<Enemy>>();
+            brisi = new LinkedList<LinkedListNode<EnemyWrapper>>();
 
             if (Settings.chosenPlane == 0)
                 p1 = new Player(new F20TigerShark(100, 100, boundsX, boundsY));
@@ -99,19 +95,19 @@ namespace CarrierAirWing
                 {
                     LinkedListNode<EnemyWrapper> temp = level.Enemies.First;
                         
-                    while (temp != null)
+                    while (temp != null && (temp.Value.Ticks <= level.Ticks))
                     {
-                        if (temp.Value.Ticks <= level.Ticks)
-                        {
-                            enemies.AddLast(temp.Value.EnemyPlane);
-                            brisi.AddFirst(temp.Value);
-                        }
+                        enemies.AddLast(temp.Value.EnemyPlane);
+                        brisi.AddLast(temp);
                         temp = temp.Next;
                     }
 
-                    foreach (EnemyWrapper e in brisi)
+                    foreach (LinkedListNode<EnemyWrapper> e in brisi)
                         level.Enemies.Remove(e);
-                    brisi.Clear();
+                    brisi = new LinkedList<LinkedListNode<EnemyWrapper>>();
+
+                    // LinkedList<T>.Clear();
+                    // This method is an O(n) operation, where n is Count.
                 }
             }
 
@@ -120,53 +116,55 @@ namespace CarrierAirWing
 
             p1.Move();
 
-            foreach (Explosion e in explosions)
+            for (LinkedListNode<Explosion> e = explosions.First; e != null; e = e.Next)
             {
-                if (e.Status == -1)
+                if (e.Value.Status == -1)
                 {
-                    Debug.Print("Explosion for delete added");
-                    deleteExplosions.AddFirst(e);
+                    //Debug.Print("Explosion for delete added");
+                    deleteExplosions.AddLast(e);
                     continue;
                 }
-                e.Move();
+
+                e.Value.Move();
             }
 
-            foreach (Enemy e in enemies)
+            for (LinkedListNode<Enemy> e = enemies.First; e != null; e = e.Next)
             {
-                if (e.Status == -1 && (e.X - e.Sprite.Width <=0 || e.Y - e.Sprite.Width <=0 || e.X >= BoundsX || e.Y >= BoundsY))
+                if (e.Value.Status == -1 && (e.Value.X - e.Value.Sprite.Width <= 0 || e.Value.Y - e.Value.Sprite.Width <= 0 || e.Value.X >= BoundsX || e.Value.Y >= BoundsY))
                 {
-                    Debug.Print("Enemy for delete added");
-                    deleteEnemies.AddFirst(e);
+                    //Debug.Print("Enemy for delete added");
+                    deleteEnemies.AddLast(e);
                     continue;
                 }
 
-                e.Move();
-                Bullet b = e.Fire(p1.plane.X, p1.plane.Y);
+                e.Value.Move();
+                Bullet b = e.Value.Fire(p1.plane.X, p1.plane.Y);
                 if (b != null)
-                    enemyBullets.AddFirst(b);
+                    enemyBullets.AddLast(b);
             }
 
-            foreach (Rocket r in playerRockets)
+            for (LinkedListNode<Rocket> r = playerRockets.First; r != null; r = r.Next)
             {
-                if (r.X >= BoundsX - 50)
+                if (r.Value.X >= BoundsX - 50)
                 {
-                    Debug.Print("Rocket for delete added");
-                    deleteRockets.AddFirst(r);
+                    //Debug.Print("Rocket for delete added");
+                    deletePlayerRockets.AddLast(r);
                     continue;
                 }
-                r.Move();
 
+                r.Value.Move();
             }
 
-            foreach (Bullet b in enemyBullets)
+            for (LinkedListNode<Bullet> b = enemyBullets.First; b != null; b = b.Next )
             {
-                if ((b.X >= BoundsX) || (b.X <= 0) || (b.Y <= 0) || (b.Y >= BoundsY))
+                if ((b.Value.X >= BoundsX) || (b.Value.X <= 0) || (b.Value.Y <= 0) || (b.Value.Y >= BoundsY))
                 {
-                    Debug.Print("Bullet for delete added");
-                    deleteEnemyBullets.AddFirst(b);
+                    //Debug.Print("Bullet for delete added");
+                    deleteEnemyBullets.AddLast(b);
                     continue;
                 }
-                b.Move();
+
+                b.Value.Move();
             }
 
 
@@ -184,61 +182,61 @@ namespace CarrierAirWing
 
             }
 
-            foreach(Enemy e in deleteEnemies)
+            foreach (LinkedListNode<Enemy> e in deleteEnemies)
                 enemies.Remove(e);
-            deleteEnemies.Clear();
+            deleteEnemies = new LinkedList<LinkedListNode<Enemy>>();
 
-            foreach (Rocket r in deleteRockets)
+            foreach (LinkedListNode<Rocket> r in deletePlayerRockets)
                 playerRockets.Remove(r);
-            deleteRockets.Clear();
+            deletePlayerRockets = new LinkedList<LinkedListNode<Rocket>>();
 
-            foreach (Bullet b in deleteEnemyBullets)
+            foreach (LinkedListNode<Bullet> b in deleteEnemyBullets)
                 enemyBullets.Remove(b);
-            deleteEnemyBullets.Clear();
+            deleteEnemyBullets = new LinkedList<LinkedListNode<Bullet>>();
 
-            foreach (Explosion e in deleteExplosions)
+            foreach (LinkedListNode<Explosion> e in deleteExplosions)
                 explosions.Remove(e);
-            deleteExplosions.Clear();
+            deleteExplosions = new LinkedList<LinkedListNode<Explosion>>();
 
 
-            foreach (Enemy e in enemies)
+            for (LinkedListNode<Enemy> e = enemies.First; e != null; e = e.Next)
             {
-                foreach (Rocket r in playerRockets)
+                for (LinkedListNode<Rocket> r = playerRockets.First; r != null; r = r.Next )
                 {
-                    if (e.Hit(r))
+                    if (e.Value.Hit(r.Value))
                     {
-                        deletePlayerRockets.AddFirst(r);
-                        e.Health -= r.Damage;
+                        deletePlayerRockets.AddLast(r);
+                        e.Value.Health -= r.Value.Damage;
                         Score += 5;
-                        if (e.Health <= 0)
+                        if (e.Value.Health <= 0)
                         {
-                            deleteEnemies.AddFirst(e);
-                            e.Health = -1;
-                            explosions.AddFirst(new Explosion(e.X, e.Y));
+                            deleteEnemies.AddLast(e);
+                            e.Value.Health = -1;
+                            explosions.AddLast(new Explosion(e.Value.X, e.Value.Y));
                             Score += 10;
                         }
-                        continue;
                     }
                 }
 
-                if (p1.plane.Hit(e))
+                if (p1.plane.Hit(e.Value))
                 {
                     p1.Health = 100;
                     p1.Lives -= 1;
                     Score += 10;
-                    deleteEnemies.AddFirst(e);
-                    explosions.AddFirst(new Explosion(e.X, e.Y));
+                    deleteEnemies.AddLast(e);
+                    explosions.AddLast(new Explosion(e.Value.X, e.Value.Y));
                     if (p1.Lives == 0)
                         GameOver();
                 }
             }
 
-            foreach (Bullet b in enemyBullets)
+            //
+            for (LinkedListNode<Bullet> b = enemyBullets.First; b != null; b = b.Next )
             {
-                if (p1.plane.Hit(b))
+                if (p1.plane.Hit(b.Value))
                 {
-                    deleteEnemyBullets.AddFirst(b);
-                    p1.Health -= b.Damage;
+                    deleteEnemyBullets.AddLast(b);
+                    p1.Health -= b.Value.Damage;
                     if (p1.Health <= 0)
                     {
                         p1.Lives -= 1;
@@ -249,17 +247,36 @@ namespace CarrierAirWing
                 }
             }
 
-            foreach (Rocket r in deletePlayerRockets)
-                playerRockets.Remove(r);
-            deletePlayerRockets.Clear();
 
-            foreach (Bullet b in deleteEnemyBullets)
+            foreach (LinkedListNode<Rocket> r in deletePlayerRockets)
+            {
+                try
+                {
+                    playerRockets.Remove(r);
+                }
+                catch (Exception ex)
+                {
+                    // ...
+                }
+            }
+            deletePlayerRockets = new LinkedList<LinkedListNode<Rocket>>();
+
+            foreach (LinkedListNode<Bullet> b in deleteEnemyBullets)
                 enemyBullets.Remove(b);
-            deleteEnemyBullets.Clear();
+            deleteEnemyBullets = new LinkedList<LinkedListNode<Bullet>>();
 
-            foreach (Enemy e in deleteEnemies)
-                enemies.Remove(e);
-            deleteEnemies.Clear();
+            foreach (LinkedListNode<Enemy> e in deleteEnemies)
+            {
+                try
+                {
+                    enemies.Remove(e);
+                }
+                catch (Exception ex)
+                {
+                    // e ajde de ... duplikat enemie za brisanje
+                }
+            }
+            deleteEnemies = new LinkedList<LinkedListNode<Enemy>>();
         }
 
         public void Draw(Graphics g)
